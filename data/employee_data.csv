@@ -1,0 +1,31 @@
+id,name,department,role,salary,hire_date,performance_score,years_experience
+1,Ava Thompson,Analytics,Data Analyst,78000,2020-03-15,4.7,5
+2,Liam Carter,Engineering,Software Engineer,98000,2019-06-10,4.5,7
+3,Noah Patel,Sales,Account Executive,86000,2021-01-22,4.3,6
+4,Emma Rivera,Marketing,Growth Strategist,82000,2018-09-05,4.6,8
+5,Sophia Kim,Finance,Financial Analyst,91000,2017-11-13,4.8,9
+6,Mason Brooks,Operations,Operations Manager,95000,2016-04-19,4.4,10
+7,Isabella Nguyen,HR,People Partner,76000,2022-02-08,4.2,4
+8,Ethan Morris,Analytics,BI Developer,93000,2020-08-31,4.7,6
+9,Olivia Price,Engineering,Frontend Engineer,97000,2021-10-12,4.5,5
+10,Lucas Reed,Support,Customer Success Lead,72000,2019-12-01,4.4,7
+11,Mia Turner,Analytics,Data Scientist,108000,2018-05-14,4.9,9
+12,Elijah Foster,Engineering,Platform Engineer,112000,2017-07-24,4.6,11
+13,Charlotte Diaz,Marketing,Content Manager,79000,2020-01-17,4.1,5
+14,James Flores,Finance,Controller,118000,2015-03-03,4.8,13
+15,Amelia Cooper,Operations,Program Manager,94000,2019-09-27,4.3,8
+16,Benjamin Ward,Analytics,Reporting Specialist,74000,2022-06-20,4.0,3
+17,Harper Ross,Sales,Sales Manager,102000,2018-02-11,4.6,10
+18,Henry Bell,Engineering,Backend Engineer,105000,2021-04-09,4.4,6
+19,Evelyn Murphy,HR,Recruiter,70000,2023-01-16,4.2,4
+20,Alexander Perry,Support,Support Analyst,65000,2022-11-07,4.1,3
+21,Abigail Cook,Analytics,Product Analyst,88000,2020-10-28,4.5,7
+22,Michael Richardson,Engineering,QA Engineer,89000,2019-03-18,4.3,8
+23,Ella Peterson,Marketing,SEO Specialist,77000,2021-05-26,4.4,5
+24,Daniel Bailey,Finance,Payroll Manager,83000,2017-12-04,4.6,9
+25,Scarlett Sanders,Operations,Logistics Coordinator,69000,2023-03-21,4.0,2
+26,Jackson Bennett,Sales,Business Development Rep,68000,2022-07-18,4.1,3
+27,Grace Hughes,Analytics,Data Engineer,115000,2018-08-30,4.8,10
+28,Sebastian Coleman,Engineering,DevOps Engineer,110000,2016-10-25,4.7,12
+29,Chloe Jenkins,HR,Learning Specialist,73000,2021-09-02,4.3,6
+30,Logan Powell,Support,Implementation Manager,84000,2019-11-15,4.5,8

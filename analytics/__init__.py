@@ -1,0 +1,1 @@
+"""InsightHub analytics package."""

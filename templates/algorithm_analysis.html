@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>{{ lock_title }}</h3>
+        <p>{{ lock_message }}</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="table-card">
+        <h3>Search Algorithm Complexity</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Name</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th></tr></thead>
+                <tbody>
+                    {% for row in algo_data.search_algorithms or [] %}
+                    <tr><td>{{ row.name }}</td><td>{{ row.best }}</td><td>{{ row.average }}</td><td>{{ row.worst }}</td><td>{{ row.space }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="table-card">
+        <h3>Sorting Algorithm Complexity</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Name</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th></tr></thead>
+                <tbody>
+                    {% for row in algo_data.sort_algorithms or [] %}
+                    <tr><td>{{ row.name }}</td><td>{{ row.best }}</td><td>{{ row.average }}</td><td>{{ row.worst }}</td><td>{{ row.space }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="chart-card">
+        <div class="section-header"><h3>Timing Comparison</h3><span class="small-muted">Bubble vs Merge vs Quick Sort</span></div>
+        <canvas data-chart-config='{{ {
+            "type": "line",
+            "data": {
+                "labels": algo_data.timings.n_values if algo_data.timings else [],
+                "datasets": [
+                    {"label": "Bubble Sort", "data": algo_data.timings.bubble_sort if algo_data.timings else [], "borderColor": "#e63946", "backgroundColor": "rgba(230,57,70,0.15)", "tension": 0.3},
+                    {"label": "Merge Sort", "data": algo_data.timings.merge_sort if algo_data.timings else [], "borderColor": "#4361ee", "backgroundColor": "rgba(67,97,238,0.15)", "tension": 0.3},
+                    {"label": "Quick Sort", "data": algo_data.timings.quick_sort if algo_data.timings else [], "borderColor": "#2ecc71", "backgroundColor": "rgba(46,204,113,0.15)", "tension": 0.3}
+                ]
+            },
+            "options": {"responsive": true, "maintainAspectRatio": false}
+        }|tojson }}'></canvas>
+    </div>
+</section>
+{% endblock %}
+{% set lock_title = 'Algorithm Analysis Center Locked' %}
+{% set lock_message = 'Complete Week 6 Assignment to unlock the Algorithm Analysis Center.' %}

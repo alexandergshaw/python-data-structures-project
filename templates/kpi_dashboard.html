@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>{{ lock_title }}</h3>
+        <p>{{ lock_message }}</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="card-grid">
+        {% for kpi in kpis %}
+        <div class="content-card">
+            <div class="section-header">
+                <h3>{{ kpi.name }}</h3>
+                <span class="trend-badge trend-{{ kpi.trend }}">
+                    <i class="fa-solid fa-arrow-{% if kpi.trend == 'up' %}up{% elif kpi.trend == 'down' %}down{% else %}right{% endif %}"></i>
+                    {{ kpi.change }}
+                </span>
+            </div>
+            <div class="kpi-value">{{ kpi.value }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% set lock_title = 'KPI Dashboard Locked' %}
+{% set lock_message = 'Complete Week 3 Assignment to unlock the KPI Dashboard.' %}
