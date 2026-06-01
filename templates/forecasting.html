@@ -6,8 +6,8 @@
 <div class="lock-overlay">
     <div class="lock-card">
         <div class="icon"><i class="fa-solid fa-lock"></i></div>
-        <h3>{{ lock_title }}</h3>
-        <p>{{ lock_message }}</p>
+        <h3>Forecasting Center Locked</h3>
+        <p>Complete Week 11 Assignment to unlock the Forecasting Center.</p>
     </div>
 </div>
 {% endif %}
@@ -19,9 +19,9 @@
             "data": {
                 "labels": (forecast_data.months or []) + (forecast_data.forecast_months or []),
                 "datasets": [
-                    {"label": "Historical", "data": (forecast_data.historical or []) + [none, none, none, none, none, none], "borderColor": "#4361ee", "spanGaps": false, "tension": 0.3},
-                    {"label": "Moving Avg", "data": (forecast_data.moving_avg or []) + [none, none, none, none, none, none], "borderColor": "#2ecc71", "spanGaps": false, "tension": 0.3},
-                    {"label": "Forecast", "data": [none, none, none, none, none, none, none, none, none, none, none, none] + (forecast_data.forecast or []), "borderColor": "#f4a261", "borderDash": [6, 6], "spanGaps": false, "tension": 0.3}
+                    {"label": "Historical", "data": forecast_data.historical_padded or [], "borderColor": "#4361ee", "spanGaps": false, "tension": 0.3},
+                    {"label": "Moving Avg", "data": forecast_data.moving_avg_padded or [], "borderColor": "#2ecc71", "spanGaps": false, "tension": 0.3},
+                    {"label": "Forecast", "data": forecast_data.forecast_padded or [], "borderColor": "#f4a261", "borderDash": [6, 6], "spanGaps": false, "tension": 0.3}
                 ]
             },
             "options": {"responsive": true, "maintainAspectRatio": false}
@@ -29,5 +29,3 @@
     </div>
 </section>
 {% endblock %}
-{% set lock_title = 'Forecasting Center Locked' %}
-{% set lock_message = 'Complete Week 11 Assignment to unlock the Forecasting Center.' %}

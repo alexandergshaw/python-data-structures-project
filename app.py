@@ -228,6 +228,9 @@ def forecasting() -> str:
                 'forecast': [round(avg * (1 + 0.05 * i), 2) for i in range(1, 7)],
                 'months': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 'forecast_months': ['Jan+1', 'Feb+1', 'Mar+1', 'Apr+1', 'May+1', 'Jun+1'],
+                'historical_padded': amounts[:12] + [None] * 6,
+                'moving_avg_padded': [sum(amounts[max(0, i - 2): i + 1]) / min(3, i + 1) for i in range(12)] + [None] * 6,
+                'forecast_padded': [None] * 12 + [round(avg * (1 + 0.05 * i), 2) for i in range(1, 7)],
             }
     context.update({'unlocked': week11_complete, 'unlock_week': 11, 'forecast_data': forecast_data})
     return render_template('forecasting.html', **context)
@@ -288,4 +291,6 @@ def api_stats():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    debug = os.environ.get('FLASK_DEBUG', '0') == '1'
+    app.run(debug=debug)
