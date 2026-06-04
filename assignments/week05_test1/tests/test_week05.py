@@ -18,42 +18,54 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_describe_dataset_basic():
-    data = [{'score': 10}, {'score': 20}, {'score': 15}]
-    assert assignment.describe_dataset(data) == {'records': 3, 'columns': 1}
+def test_is_anagram_true():
+    assert assignment.is_anagram("listen", "silent") is True
 
 
-def test_describe_dataset_empty():
-    assert assignment.describe_dataset([]) == {'records': 0, 'columns': 0}
+def test_is_anagram_false():
+    assert assignment.is_anagram("hello", "world") is False
 
 
-def test_filter_by_value_basic():
-    data = [{'score': 10}, {'score': 20}, {'score': 15}]
-    result = assignment.filter_by_value(data, 'score', 15)
-    assert len(result) == 2
+def test_is_anagram_case_insensitive():
+    assert assignment.is_anagram("Listen", "Silent") is True
 
 
-def test_filter_by_value_all_below():
-    data = [{'score': 5}, {'score': 8}]
-    assert assignment.filter_by_value(data, 'score', 10) == []
+def test_find_max_basic():
+    assert assignment.find_max([3, 1, 4, 1, 5, 9]) == 9
 
 
-def test_filter_by_value_exact_threshold():
-    data = [{'score': 10}]
-    assert len(assignment.filter_by_value(data, 'score', 10)) == 1
+def test_find_max_negatives():
+    assert assignment.find_max([-5, -1, -3]) == -1
 
 
-def test_rank_items_first():
-    data = [{'score': 10}, {'score': 20}, {'score': 15}]
-    assert assignment.rank_items(data, 'score')[0]['score'] == 20
+def test_find_max_empty():
+    assert assignment.find_max([]) is None
 
 
-def test_rank_items_last():
-    data = [{'score': 10}, {'score': 20}, {'score': 15}]
-    assert assignment.rank_items(data, 'score')[-1]['score'] == 10
+def test_find_max_single():
+    assert assignment.find_max([42]) == 42
 
 
-def test_rank_items_length_unchanged():
-    data = [{'score': 10}, {'score': 20}, {'score': 15}]
-    assert len(assignment.rank_items(data, 'score')) == 3
+def test_reverse_string_basic():
+    assert assignment.reverse_string("hello") == "olleh"
 
+
+def test_reverse_string_mixed_case():
+    assert assignment.reverse_string("Python") == "nohtyP"
+
+
+def test_reverse_string_empty():
+    assert assignment.reverse_string("") == ""
+
+
+def test_merge_dicts_basic():
+    result = assignment.merge_dicts({"a": 1, "b": 2}, {"b": 99, "c": 3})
+    assert result == {"a": 1, "b": 99, "c": 3}
+
+
+def test_merge_dicts_no_overlap():
+    assert assignment.merge_dicts({"a": 1}, {"b": 2}) == {"a": 1, "b": 2}
+
+
+def test_merge_dicts_empty_first():
+    assert assignment.merge_dicts({}, {"x": 10}) == {"x": 10}

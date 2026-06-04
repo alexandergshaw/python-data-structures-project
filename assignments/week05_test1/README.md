@@ -1,56 +1,76 @@
 # Week 05: Test 1 Preparation
 
 ## Learning Objectives
-- Describe the shape of a dataset (rows and columns).
-- Filter rows using a threshold value.
-- Sort rows in descending order by a chosen column.
+- Check whether two strings are anagrams.
+- Find the maximum value in a list without using `max()`.
+- Reverse a string.
+- Merge two dictionaries.
 
 ## What You Need to Do
-Open `assignment.py` and implement the three functions below.
+Open `assignment.py` and implement the four functions below. These tasks combine concepts from Weeks 1–4.
 
 ---
 
-### Task 1 — `describe_dataset(data)`
-Return a dictionary with keys `"records"` and `"columns"` describing the dataset's size.
+### Task 1 — `is_anagram(a, b)`
+Return `True` if `a` and `b` are anagrams of each other (same letters, any order).
+The comparison is case-insensitive.
 
 ```python
-data = [{"score": 10}, {"score": 20}]
-describe_dataset(data)  # → {"records": 2, "columns": 1}
+is_anagram("listen", "silent")  # → True
+is_anagram("hello", "world")    # → False
+```
+
+**Hint:** Sort the lowercase characters of each string and compare:
+```python
+sorted(a.lower()) == sorted(b.lower())
+```
+
+---
+
+### Task 2 — `find_max(numbers)`
+Return the largest number in `numbers` **without** using the built-in `max()`.
+Return `None` if the list is empty.
+
+```python
+find_max([3, 1, 4, 1, 5, 9])  # → 9
+find_max([-5, -1, -3])         # → -1
+find_max([])                   # → None
 ```
 
 **Hints:**
-- `"records"` = `len(data)`.
-- `"columns"` = `len(data[0])` if data is not empty, else `0`.
+1. Return `None` immediately if `numbers` is empty.
+2. Start with `current_max = numbers[0]`.
+3. Loop over the rest; update `current_max` whenever you find a larger value.
 
 ---
 
-### Task 2 — `filter_by_value(data, column, threshold)`
-Return only the rows where the value in `column` is **greater than or equal to** `threshold`.
+### Task 3 — `reverse_string(s)`
+Return `s` reversed.
 
 ```python
-data = [{"score": 10}, {"score": 20}, {"score": 15}]
-filter_by_value(data, "score", 15)
-# → [{"score": 20}, {"score": 15}]
+reverse_string("hello")   # → "olleh"
+reverse_string("Python")  # → "nohtyP"
+reverse_string("")         # → ""
 ```
 
-**Hints:**
-1. Loop over the rows (or use a list comprehension).
-2. Keep a row if `float(row.get(column, 0) or 0) >= threshold`.
+**Hint:** Use slice notation: `s[::-1]`
 
 ---
 
-### Task 3 — `rank_items(data, column)`
-Return the rows sorted from highest to lowest by the values in `column`.
+### Task 4 — `merge_dicts(d1, d2)`
+Return a new dictionary with all entries from both `d1` and `d2`.
+When both share a key, `d2`'s value wins.
 
 ```python
-data = [{"score": 10}, {"score": 20}, {"score": 15}]
-rank_items(data, "score")
-# → [{"score": 20}, {"score": 15}, {"score": 10}]
+merge_dicts({"a": 1, "b": 2}, {"b": 99, "c": 3})
+# → {'a': 1, 'b': 99, 'c': 3}
 ```
 
-**Hint:** Use Python's `sorted()` with `reverse=True` and a `key` function:
+**Hint:**
 ```python
-sorted(data, key=lambda row: row.get(column, 0), reverse=True)
+result = dict(d1)
+result.update(d2)
+return result
 ```
 
 ---

@@ -19,60 +19,53 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_find_missing_values_basic():
-    data = [{'value': 1}, {'value': ''}, {'value': 1}, {'value': 1}]
-    assert assignment.find_missing_values(data) == 1
+def test_classify_number_positive():
+    assert assignment.classify_number(5) == "positive"
 
 
-def test_find_missing_values_none():
-    data = [{'a': None, 'b': 1}]
-    assert assignment.find_missing_values(data) == 1
+def test_classify_number_negative():
+    assert assignment.classify_number(-3) == "negative"
 
 
-def test_find_missing_values_none_present():
-    data = [{'id': 1, 'name': None}, {'id': 2, 'name': 'Ava'}]
-    assert assignment.find_missing_values(data) == 1
+def test_classify_number_zero():
+    assert assignment.classify_number(0) == "zero"
 
 
-def test_find_missing_values_clean():
-    data = [{'id': 1, 'name': 'Ava'}]
-    assert assignment.find_missing_values(data) == 0
+def test_fizzbuzz_fizzbuzz():
+    assert assignment.fizzbuzz(15) == "FizzBuzz"
 
 
-def test_find_duplicates_one_duplicate_pattern():
-    data = [{'value': 1}, {'value': ''}, {'value': 1}, {'value': 1}]
-    assert assignment.find_duplicates(data) == 1
+def test_fizzbuzz_fizz():
+    assert assignment.fizzbuzz(9) == "Fizz"
 
 
-def test_find_duplicates_no_duplicates():
-    data = [{'x': 1}, {'x': 2}, {'x': 3}]
-    assert assignment.find_duplicates(data) == 0
+def test_fizzbuzz_buzz():
+    assert assignment.fizzbuzz(10) == "Buzz"
 
 
-def test_validate_positive_zero():
-    assert assignment.validate_positive(0, 'value') is True
+def test_fizzbuzz_other():
+    assert assignment.fizzbuzz(7) == "7"
 
 
-def test_validate_positive_positive():
-    assert assignment.validate_positive(5, 'price') is True
+def test_count_positives_mixed():
+    assert assignment.count_positives([1, -2, 3, 0, 5]) == 3
 
 
-def test_validate_positive_negative_raises():
-    with pytest.raises(ValueError):
-        assignment.validate_positive(-1, 'price')
+def test_count_positives_all_negative():
+    assert assignment.count_positives([-1, -2]) == 0
 
 
-def test_count_valid_records_basic():
-    data = [{'value': 1}, {'value': ''}, {'value': 1}, {'value': 1}]
-    assert assignment.count_valid_records(data) == 3
+def test_count_positives_empty():
+    assert assignment.count_positives([]) == 0
 
 
-def test_count_valid_records_all_valid():
-    data = [{'id': 1, 'name': 'Ava'}, {'id': 2, 'name': 'Leo'}]
-    assert assignment.count_valid_records(data) == 2
+def test_find_first_negative_found():
+    assert assignment.find_first_negative([3, 1, -5, 2]) == -5
 
 
-def test_count_valid_records_none_value():
-    data = [{'id': 1, 'name': None}]
-    assert assignment.count_valid_records(data) == 0
+def test_find_first_negative_none():
+    assert assignment.find_first_negative([1, 2, 3]) is None
 
+
+def test_find_first_negative_first_element():
+    assert assignment.find_first_negative([-1, 2, 3]) == -1

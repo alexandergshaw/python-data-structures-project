@@ -4,92 +4,111 @@ WEEK_NUMBER = 2
 TOPIC = 'Control Flow'
 FEATURE_NAME = 'Data Cleaning Center'
 
-from typing import Any
-
 LEARNING_OBJECTIVES = [
-    "Use conditionals to validate records.",
-    "Identify missing values and duplicates.",
-    "Count records that pass validation rules.",
+    "Use if/elif/else to branch on conditions.",
+    "Use for loops to iterate over lists.",
+    "Return early from a loop when you find what you need.",
 ]
 
 
-def find_missing_values(data: list[dict[str, Any]]) -> int:
-    """Count empty or None values across all rows and columns.
+def classify_number(n: int | float) -> str:
+    """Return 'positive', 'negative', or 'zero' based on n.
 
     Example:
-        >>> find_missing_values([{"id": 1, "name": "Ava"}, {"id": 2, "name": None}])
-        1
-
-    Hints:
-        1. Use a nested loop: outer over rows, inner over row.values().
-        2. A value is missing when it is None or "" (empty string).
-        3. Keep a running count and return it.
-    """
-    count = 0
-    for row in data:
-        for value in row.values():
-            pass  # TODO: if value is None or "" (empty string), add 1 to count
-    return count
-
-
-def find_duplicates(data: list[dict[str, Any]]) -> int:
-    """Return the number of distinct row patterns that appear more than once.
-
-    Example:
-        >>> find_duplicates([{"x": 1}, {"x": 2}, {"x": 1}])
-        1
-
-    Hints:
-        1. Convert each row to a comparable form:
-               marker = tuple(sorted(row.items()))
-        2. Build a list of all markers.
-        3. For each unique marker, check if it appears more than once.
-        4. Count how many unique markers are duplicated.
-    """
-    markers = [tuple(sorted(row.items())) for row in data]
-    duplicated = 0
-    for marker in set(markers):
-        if markers.count(marker) > 1:
-            pass  # TODO: add 1 to duplicated
-    return duplicated
-
-
-def validate_positive(value: int | float, field_name: str) -> bool:
-    """Return True when value >= 0, raise ValueError when value < 0.
-
-    Example:
-        >>> validate_positive(10, "price")
-        True
-        >>> validate_positive(-1, "price")   # raises ValueError
-        ...
+        >>> classify_number(5)
+        'positive'
+        >>> classify_number(-3)
+        'negative'
+        >>> classify_number(0)
+        'zero'
 
     Hint:
-        if value < 0:
-            raise ValueError(f"{field_name} must be non-negative")
-        return True
+        Use if n > 0, elif n < 0, else.
     """
-    if value < 0:
-        pass  # TODO: raise a ValueError with a message like "{field_name} must be non-negative"
-    return True
+    if n > 0:
+        pass  # TODO: return "positive"
+    elif n < 0:
+        pass  # TODO: return "negative"
+    else:
+        pass  # TODO: return "zero"
 
 
-def count_valid_records(data: list[dict[str, Any]]) -> int:
-    """Return the number of rows that have no empty or None values.
+def fizzbuzz(n: int) -> str:
+    """Return "FizzBuzz", "Fizz", "Buzz", or the number as a string.
+
+    Rules:
+        - Divisible by both 3 and 5 → "FizzBuzz"
+        - Divisible by 3 only        → "Fizz"
+        - Divisible by 5 only        → "Buzz"
+        - Otherwise                  → str(n)
 
     Example:
-        >>> count_valid_records([{"id": 1, "name": "Ava"}, {"id": 2, "name": ""}])
-        1
+        >>> fizzbuzz(15)
+        'FizzBuzz'
+        >>> fizzbuzz(9)
+        'Fizz'
+        >>> fizzbuzz(10)
+        'Buzz'
+        >>> fizzbuzz(7)
+        '7'
+
+    Hint:
+        Check n % 3 == 0 and n % 5 == 0 FIRST (the combined case).
+    """
+    if n % 3 == 0 and n % 5 == 0:
+        pass  # TODO: return "FizzBuzz"
+    elif n % 3 == 0:
+        pass  # TODO: return "Fizz"
+    elif n % 5 == 0:
+        pass  # TODO: return "Buzz"
+    else:
+        pass  # TODO: return str(n)
+
+
+def count_positives(numbers: list[int | float]) -> int:
+    """Return how many numbers in the list are greater than zero.
+
+    Example:
+        >>> count_positives([1, -2, 3, 0, 5])
+        3
+        >>> count_positives([-1, -2])
+        0
+        >>> count_positives([])
+        0
 
     Hints:
-        1. Loop over each row.
-        2. Check whether all values in the row are neither None nor "".
-        3. Count and return the rows that pass.
+        1. Start count = 0.
+        2. Loop over numbers with a for loop.
+        3. If num > 0, add 1 to count.
+        4. Return count.
     """
     count = 0
-    for row in data:
-        if all(v is not None and v != "" for v in row.values()):
+    for num in numbers:
+        if num > 0:
             pass  # TODO: add 1 to count
     return count
+
+
+def find_first_negative(numbers: list[int | float]) -> int | float | None:
+    """Return the first negative number in the list, or None if there are none.
+
+    Example:
+        >>> find_first_negative([3, 1, -5, 2])
+        -5
+        >>> find_first_negative([1, 2, 3])
+        None
+        >>> find_first_negative([-1, 2, 3])
+        -1
+
+    Hints:
+        1. Loop over the list with a for loop.
+        2. If num < 0, return num immediately (return early).
+        3. After the loop ends, return None.
+    """
+    for num in numbers:
+        if num < 0:
+            pass  # TODO: return num here (return early — don't wait for the loop to finish)
+    return None
 
 
 def is_complete() -> bool:
@@ -111,4 +130,3 @@ def get_week_summary() -> dict[str, object]:
         'objectives': LEARNING_OBJECTIVES,
         'complete': is_complete(),
     }
-

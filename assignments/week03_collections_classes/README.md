@@ -1,67 +1,79 @@
 # Week 03: Collections and Classes
 
 ## Learning Objectives
-- Create Python classes with `__init__`, instance variables, and methods.
-- Store and inspect data inside a class.
-- Compute a numeric result and format it as a string.
+- Remove duplicates with a `set` and sort a list.
+- Count word occurrences with a dictionary.
+- Build a simple class with an `__init__` and methods.
 
 ## What You Need to Do
-Open `assignment.py` and implement the two classes below.
+Open `assignment.py` and implement the two functions and one class below.
 
 ---
 
-### Task 1 — `Dataset` class
-
-A `Dataset` holds a collection of named records.
-
-#### `__init__(self, name, records=None)`
-- Store `name` as `self.name`.
-- Store a **copy** of `records` (or an empty list when `records` is `None`) as `self.records`.
-
-#### `add_record(self, record)`
-- Append `record` (a dictionary) to `self.records`.
-
-#### `get_summary(self) -> dict`
-- Return a dictionary with three keys: `"name"`, `"records"`, and `"columns"`.
-- `"records"` = number of rows in `self.records`.
-- `"columns"` = number of keys in the first row (or `0` if empty).
+### Task 1 — `get_unique_items(items)`
+Return a **sorted** list containing each item only once.
 
 ```python
-ds = Dataset("sales")
-ds.add_record({"id": 1, "amount": 50})
-ds.get_summary()
-# → {"name": "sales", "records": 1, "columns": 2}
+get_unique_items([3, 1, 2, 1, 3])  # → [1, 2, 3]
+get_unique_items(["b", "a", "b"])  # → ['a', 'b']
 ```
+
+**Hints:**
+1. Convert `items` to a `set` to remove duplicates.
+2. Wrap the result in `sorted()` to get a sorted list.
 
 ---
 
-### Task 2 — `KPI` class
-
-A `KPI` stores a named metric value.
-
-#### `__init__(self, name, value=0.0)`
-- Store `name` as `self.name` and `value` as `self.value`.
-
-#### `calculate(self, values) -> float`
-- Compute the **average** of the numbers in `values`.
-- Save the result to `self.value` and return it.
-- Return `0.0` when `values` is empty.
-
-#### `format_value(self) -> str`
-- Return `self.value` formatted to two decimal places with commas.
+### Task 2 — `word_frequency(words)`
+Given a list of words, return a dictionary mapping each word to its count.
 
 ```python
-kpi = KPI("Revenue")
-kpi.calculate([10, 20, 30])  # → 20.0
-kpi.format_value()            # → "20.00"
+word_frequency(["hi", "bye", "hi"])  # → {'hi': 2, 'bye': 1}
+word_frequency([])                   # → {}
 ```
 
-**Hints for `calculate`:**
-- Use `sum(values) / len(values)` for the average.
-- Guard against an empty list with an `if` check.
+**Hints:**
+1. Start with `freq = {}`.
+2. Loop over `words`.
+3. For each word: `freq[word] = freq.get(word, 0) + 1`
+4. Return `freq`.
 
-**Hint for `format_value`:**
-- Use `f"{self.value:,.2f}"`.
+---
+
+### Task 3 — `Counter` class
+
+A `Counter` keeps track of a running integer count.
+
+#### `__init__(self, start=0)`
+Store `start` in `self.count`.
+
+#### `increment(self)`
+Add `1` to `self.count`.
+
+#### `decrement(self)`
+Subtract `1` from `self.count`.
+
+#### `reset(self)`
+Set `self.count` back to `0`.
+
+#### `get_value(self) -> int`
+Return `self.count`.
+
+```python
+c = Counter()
+c.increment()
+c.increment()
+c.get_value()   # → 2
+
+c.decrement()
+c.get_value()   # → 1
+
+c.reset()
+c.get_value()   # → 0
+
+c2 = Counter(10)
+c2.get_value()  # → 10
+```
 
 ---
 
@@ -70,4 +82,4 @@ kpi.format_value()            # → "20.00"
 pytest assignments/week03_collections_classes/tests/
 ```
 
-All tests should pass once you complete each class.
+All tests should pass once you complete each task.

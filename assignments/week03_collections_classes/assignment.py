@@ -4,119 +4,125 @@ WEEK_NUMBER = 3
 TOPIC = 'Collections and Classes'
 FEATURE_NAME = 'KPI Dashboard'
 
-from typing import Any
-
 LEARNING_OBJECTIVES = [
-    "Build reusable classes for datasets and KPIs.",
-    "Store records in object-oriented structures.",
-    "Compute formatted KPI values.",
+    "Remove duplicates with a set and sort a list.",
+    "Count word occurrences with a dictionary.",
+    "Build a simple class with an __init__ and methods.",
 ]
 
 
-class Dataset:
-    """A named collection of records (rows as dictionaries)."""
+def get_unique_items(items: list) -> list:
+    """Return a sorted list of unique items from the input list.
 
-    def __init__(self, name: str, records: list[dict[str, Any]] | None = None) -> None:
-        """Store the dataset name and an initial list of records.
+    Example:
+        >>> get_unique_items([3, 1, 2, 1, 3])
+        [1, 2, 3]
+        >>> get_unique_items(["b", "a", "b"])
+        ['a', 'b']
+        >>> get_unique_items([1, 2, 3])
+        [1, 2, 3]
+
+    Hints:
+        1. Convert items to a set to remove duplicates: set(items)
+        2. Sort and return as a list: sorted(set(items))
+    """
+    return None  # TODO: replace None — return sorted(set(items))
+
+
+def word_frequency(words: list[str]) -> dict[str, int]:
+    """Return a dict mapping each word to how many times it appears.
+
+    Example:
+        >>> word_frequency(["hi", "bye", "hi"])
+        {'hi': 2, 'bye': 1}
+        >>> word_frequency([])
+        {}
+
+    Hints:
+        1. Start with an empty dict: freq = {}
+        2. Loop over words.
+        3. Use freq[word] = freq.get(word, 0) + 1
+        4. Return freq.
+    """
+    freq = {}
+    for word in words:
+        pass  # TODO: freq[word] = freq.get(word, 0) + 1
+    return freq
+
+
+class Counter:
+    """A simple integer counter that can be incremented, decremented, and reset."""
+
+    def __init__(self, start: int = 0) -> None:
+        """Store the starting value in self.count.
 
         Example:
-            >>> ds = Dataset("sales", [{"id": 1}])
-            >>> ds.name
-            'sales'
+            >>> c = Counter()
+            >>> c.count
+            0
+            >>> c = Counter(10)
+            >>> c.count
+            10
 
-        Hints:
-            - Save name to self.name.
-            - Save a COPY of records to self.records (or [] if records is None).
-              Use records[:] to copy, or just [] when None.
+        Hint:
+            self.count = start
         """
-        self.name = None   # TODO: replace None — store the name parameter
-        self.records = None  # TODO: replace None — use records[:] if records is not None, else []
+        self.count = None  # TODO: replace None — store start in self.count
 
-    def add_record(self, record: dict[str, Any]) -> None:
-        """Append a new record (dict) to self.records.
+    def increment(self) -> None:
+        """Add 1 to self.count.
 
         Example:
-            >>> ds = Dataset("sales")
-            >>> ds.add_record({"id": 1})
-            >>> len(ds.records)
+            >>> c = Counter()
+            >>> c.increment()
+            >>> c.count
             1
 
         Hint:
-            Use self.records.append(record).
+            self.count += 1
         """
-        pass  # TODO: append record to self.records
+        pass  # TODO: self.count += 1
 
-    def get_summary(self) -> dict[str, Any]:
-        """Return a dict with keys "name", "records", and "columns".
-
-        "records" is the row count.
-        "columns" is the number of keys in the first row (0 if empty).
+    def decrement(self) -> None:
+        """Subtract 1 from self.count.
 
         Example:
-            >>> ds = Dataset("sales")
-            >>> ds.add_record({"id": 1, "amount": 50})
-            >>> ds.get_summary()
-            {'name': 'sales', 'records': 1, 'columns': 2}
-
-        Hints:
-            - columns = len(self.records[0]) if self.records else 0
-        """
-        columns = None  # TODO: replace None — use len(self.records[0]) if self.records else 0
-        return {
-            "name": self.name,
-            "records": len(self.records),
-            "columns": columns,
-        }
-
-
-class KPI:
-    """A named key performance indicator with a numeric value."""
-
-    def __init__(self, name: str, value: float = 0.0) -> None:
-        """Store the KPI name and initial value.
-
-        Example:
-            >>> kpi = KPI("Revenue")
-            >>> kpi.name
-            'Revenue'
+            >>> c = Counter(5)
+            >>> c.decrement()
+            >>> c.count
+            4
 
         Hint:
-            Set self.name = name and self.value = value.
+            self.count -= 1
         """
-        self.name = None   # TODO: replace None — store the name parameter
-        self.value = None  # TODO: replace None — store the value parameter
+        pass  # TODO: self.count -= 1
 
-    def calculate(self, values: list[int | float]) -> float:
-        """Compute the average of values, store it in self.value, and return it.
-
-        Return 0.0 when values is empty.
+    def reset(self) -> None:
+        """Set self.count back to 0.
 
         Example:
-            >>> kpi = KPI("Revenue")
-            >>> kpi.calculate([10, 20, 30])
-            20.0
-
-        Hints:
-            - Average = sum(values) / len(values)
-            - Guard against empty list: return 0.0 if not values
-        """
-        if not values:
-            return 0.0
-        self.value = None  # TODO: replace None — compute sum(values) / len(values)
-        return self.value
-
-    def format_value(self) -> str:
-        """Return self.value formatted to 2 decimal places with commas.
-
-        Example:
-            >>> kpi = KPI("Revenue", 20.0)
-            >>> kpi.format_value()
-            '20.00'
+            >>> c = Counter(5)
+            >>> c.reset()
+            >>> c.count
+            0
 
         Hint:
-            Use f"{self.value:,.2f}"
+            self.count = 0
         """
-        return None  # TODO: replace None — use an f-string: f"{self.value:,.2f}"
+        pass  # TODO: self.count = 0
+
+    def get_value(self) -> int:
+        """Return the current count.
+
+        Example:
+            >>> c = Counter(7)
+            >>> c.get_value()
+            7
+
+        Hint:
+            return self.count
+        """
+        return None  # TODO: replace None — return self.count
 
 
 def is_complete() -> bool:
@@ -138,4 +144,3 @@ def get_week_summary() -> dict[str, object]:
         'objectives': LEARNING_OBJECTIVES,
         'complete': is_complete(),
     }
-

@@ -1,57 +1,82 @@
 # Week 04: Review and Integration
 
 ## Learning Objectives
-- Combine two datasets into one.
-- Generate a simple summary report from multiple datasets.
-- Calculate a percentage growth rate between two numbers.
+- Check whether a string is a palindrome.
+- Count vowels in a string using a loop.
+- Clamp a value between a minimum and maximum.
+- Summarize a list of numbers into a single dictionary.
 
 ## What You Need to Do
-Open `assignment.py` and implement the three functions below.
+Open `assignment.py` and implement the four functions below.
 
 ---
 
-### Task 1 — `combine_datasets(d1, d2)`
-Return a single list that contains all rows from `d1` followed by all rows from `d2`.
+### Task 1 — `is_palindrome(s)`
+Return `True` if `s` reads the same forwards and backwards, `False` otherwise.
 
 ```python
-d1 = [{"id": 1}]
-d2 = [{"id": 2}, {"id": 3}]
-combine_datasets(d1, d2)  # → [{"id": 1}, {"id": 2}, {"id": 3}]
+is_palindrome("racecar")  # → True
+is_palindrome("hello")    # → False
+is_palindrome("a")        # → True
 ```
 
-**Hint:** Use the `+` operator to concatenate two lists.
+**Hint:** A string is a palindrome when `s == s[::-1]`. The `[::-1]` slice reverses a string.
 
 ---
 
-### Task 2 — `generate_report(datasets)`
-Given a list of datasets (each dataset is a list of rows), return a dictionary with:
-- `"dataset_count"`: how many datasets were passed in.
-- `"total_records"`: the total number of rows across all datasets.
+### Task 2 — `count_vowels(text)`
+Return the number of vowels (`a, e, i, o, u`) in `text`. The check is case-insensitive.
 
 ```python
-datasets = [[{"id": 1}], [{"id": 2}, {"id": 3}]]
-generate_report(datasets)
-# → {"dataset_count": 2, "total_records": 3}
+count_vowels("hello")  # → 2
+count_vowels("AEIOU")  # → 5
+count_vowels("gym")    # → 0
 ```
 
 **Hints:**
-1. `dataset_count` = `len(datasets)`.
-2. `total_records` = sum of `len(ds)` for each dataset in the list.
+1. Convert to lowercase first: `text.lower()`
+2. Loop over each character.
+3. Check if the character is in `"aeiou"`.
+4. Count matches and return the total.
 
 ---
 
-### Task 3 — `calculate_growth_rate(old_val, new_val)`
-Return the percentage change from `old_val` to `new_val`.
+### Task 3 — `clamp(value, lo, hi)`
+Return `value` kept within the range `[lo, hi]`.
 
-Formula: `((new_val - old_val) / old_val) * 100`
-
-Return `0.0` if `old_val` is `0` (to avoid division by zero).
+- If `value < lo`, return `lo`.
+- If `value > hi`, return `hi`.
+- Otherwise return `value`.
 
 ```python
-calculate_growth_rate(100, 125)  # → 25.0
-calculate_growth_rate(200, 150)  # → -25.0
-calculate_growth_rate(0, 50)     # → 0.0
+clamp(5, 1, 10)    # → 5
+clamp(-3, 0, 100)  # → 0
+clamp(200, 0, 100) # → 100
 ```
+
+---
+
+### Task 4 — `summarize(numbers)`
+Return a dictionary describing the list of numbers.
+
+| Key | Value |
+|-----|-------|
+| `"count"` | how many numbers |
+| `"total"` | their sum |
+| `"minimum"` | the smallest |
+| `"maximum"` | the largest |
+
+Return all zeros when `numbers` is empty.
+
+```python
+summarize([3, 1, 4, 1, 5])
+# → {'count': 5, 'total': 14, 'minimum': 1, 'maximum': 5}
+
+summarize([])
+# → {'count': 0, 'total': 0, 'minimum': 0, 'maximum': 0}
+```
+
+**Hint:** Use `len()`, `sum()`, `min()`, and `max()`.
 
 ---
 

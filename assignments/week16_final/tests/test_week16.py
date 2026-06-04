@@ -18,45 +18,122 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_generate_final_summary_counts_completed():
-    progress = {1: {'complete': True}, 2: {'complete': False}}
-    result = assignment.generate_final_summary(progress)
-    assert result['completed'] == 1
+# --- Student class ---
+
+def test_student_name_stored():
+    s = assignment.Student("Alice")
+    assert s.name == "Alice"
 
 
-def test_generate_final_summary_total():
-    progress = {1: {'complete': True}, 2: {'complete': False}, 3: {'complete': True}}
-    result = assignment.generate_final_summary(progress)
-    assert result['total'] == 3
+def test_student_scores_default_empty():
+    s = assignment.Student("Alice")
+    assert s.scores == []
 
 
-def test_generate_final_summary_all_complete():
-    progress = {1: {'complete': True}, 2: {'complete': True}}
-    result = assignment.generate_final_summary(progress)
-    assert result['completed'] == 2
+def test_student_scores_stored():
+    s = assignment.Student("Alice", [80, 90])
+    assert s.scores == [80, 90]
 
 
-def test_create_resume_bullets_content():
-    bullets = assignment.create_resume_bullets(['Python'])
-    assert bullets[0] == 'Applied Python in InsightHub portfolio work.'
+def test_student_add_score():
+    s = assignment.Student("Alice")
+    s.add_score(95)
+    assert s.scores == [95]
 
 
-def test_create_resume_bullets_multiple():
-    bullets = assignment.create_resume_bullets(['Python', 'Sorting'])
-    assert len(bullets) == 2
+def test_student_get_average_basic():
+    s = assignment.Student("Alice", [80, 100])
+    assert s.get_average() == 90.0
 
 
-def test_create_resume_bullets_empty():
-    assert assignment.create_resume_bullets([]) == []
+def test_student_get_average_empty():
+    s = assignment.Student("Bob")
+    assert s.get_average() == 0.0
 
 
-def test_calculate_final_grade_a():
-    assert assignment.calculate_final_grade(16) == 'A'
+def test_student_get_letter_grade_a():
+    s = assignment.Student("Alice", [95])
+    assert s.get_letter_grade() == 'A'
 
 
-def test_calculate_final_grade_b():
-    assert assignment.calculate_final_grade(13) == 'B'
+def test_student_get_letter_grade_b():
+    s = assignment.Student("Bob", [85])
+    assert s.get_letter_grade() == 'B'
 
 
-def test_calculate_final_grade_f():
-    assert assignment.calculate_final_grade(0) == 'F'
+def test_student_get_letter_grade_c():
+    s = assignment.Student("Carol", [75])
+    assert s.get_letter_grade() == 'C'
+
+
+def test_student_get_letter_grade_d():
+    s = assignment.Student("Dave", [65])
+    assert s.get_letter_grade() == 'D'
+
+
+def test_student_get_letter_grade_f():
+    s = assignment.Student("Eve", [50])
+    assert s.get_letter_grade() == 'F'
+
+
+# --- sort_students ---
+
+def test_sort_students_order():
+    a = assignment.Student("Alice", [90])
+    b = assignment.Student("Bob", [70])
+    c = assignment.Student("Carol", [80])
+    result = assignment.sort_students([a, b, c])
+    assert [s.name for s in result] == ["Alice", "Carol", "Bob"]
+
+
+def test_sort_students_length():
+    students = [assignment.Student(n, [s]) for n, s in [("A", 60), ("B", 90)]]
+    assert len(assignment.sort_students(students)) == 2
+
+
+# --- find_student ---
+
+def test_find_student_found():
+    a = assignment.Student("Alice", [90])
+    b = assignment.Student("Bob", [70])
+    result = assignment.find_student([a, b], "Bob")
+    assert result is b
+
+
+def test_find_student_not_found():
+    a = assignment.Student("Alice", [90])
+    assert assignment.find_student([a], "Zara") is None
+
+
+# --- sum_recursive ---
+
+def test_sum_recursive_basic():
+    assert assignment.sum_recursive([1, 2, 3, 4]) == 10
+
+
+def test_sum_recursive_empty():
+    assert assignment.sum_recursive([]) == 0
+
+
+def test_sum_recursive_single():
+    assert assignment.sum_recursive([5]) == 5
+
+
+# --- grade_distribution ---
+
+def test_grade_distribution_basic():
+    a = assignment.Student("Alice", [95])
+    b = assignment.Student("Bob", [85])
+    c = assignment.Student("Carol", [92])
+    result = assignment.grade_distribution([a, b, c])
+    assert result == {'A': 2, 'B': 1}
+
+
+def test_grade_distribution_empty():
+    assert assignment.grade_distribution([]) == {}
+
+
+def test_grade_distribution_all_same():
+    students = [assignment.Student(f"S{i}", [95]) for i in range(3)]
+    result = assignment.grade_distribution(students)
+    assert result == {'A': 3}

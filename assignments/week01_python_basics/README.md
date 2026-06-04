@@ -1,66 +1,65 @@
 # Week 01: Python Basics
 
 ## Learning Objectives
-- Work with lists of dictionaries (tabular data).
-- Write simple functions that inspect and summarize a dataset.
-- Format numbers as human-readable strings.
+- Work with variables and data types.
+- Write functions that use arithmetic and f-strings.
+- Use the modulo operator to check divisibility.
 
 ## What You Need to Do
-Open `assignment.py` and implement the four functions below. Each function body currently contains `pass`—replace that with your code.
+Open `assignment.py` and implement the four functions below. Each function body contains `return None`—replace that with your code.
 
 ---
 
-### Task 1 — `count_records(data)`
-Return the total number of rows in a dataset.
-
-A dataset is a **list of dictionaries**, where each dictionary is one row.
+### Task 1 — `greet(name)`
+Return a personalised greeting string.
 
 ```python
-data = [{"id": 1, "name": "Ava"}, {"id": 2, "name": "Liam"}]
-count_records(data)  # → 2
+greet("Alice")  # → "Hello, Alice!"
+greet("World")  # → "Hello, World!"
 ```
 
-**Hint:** Use Python's built-in `len()` function.
+**Hint:** Use an f-string: `f"Hello, {name}!"`
 
 ---
 
-### Task 2 — `count_columns(data)`
-Return how many columns (keys) exist in the first row of the dataset.
-Return `0` if the dataset is empty.
+### Task 2 — `add(a, b)`
+Return the sum of two numbers.
 
 ```python
-data = [{"id": 1, "name": "Ava"}]
-count_columns(data)  # → 2
+add(3, 4)     # → 7
+add(1.5, 2.5) # → 4.0
+add(-1, 1)    # → 0
 ```
 
-**Hints:**
-- Check whether `data` is empty first.
-- Access the first element with `data[0]`, then count its keys.
+**Hint:** Use the `+` operator.
 
 ---
 
-### Task 3 — `get_dataset_summary(data, name)`
-Return a dictionary with three keys: `"name"`, `"records"`, and `"columns"`.
+### Task 3 — `is_even(n)`
+Return `True` if `n` is even, `False` otherwise.
 
 ```python
-data = [{"id": 1}]
-get_dataset_summary(data, "sales")
-# → {"name": "sales", "records": 1, "columns": 1}
+is_even(4)  # → True
+is_even(7)  # → False
+is_even(0)  # → True
 ```
 
-**Hint:** Call your `count_records` and `count_columns` functions to fill in the values.
+**Hint:** A number is even when `n % 2 == 0`. The `%` operator gives the remainder after division.
 
 ---
 
-### Task 4 — `format_number(n)`
-Return a number formatted with commas as a string.
+### Task 4 — `celsius_to_fahrenheit(c)`
+Convert a Celsius temperature to Fahrenheit.
+
+**Formula:** `(c × 9 / 5) + 32`
 
 ```python
-format_number(12000)   # → "12,000"
-format_number(1000000) # → "1,000,000"
+celsius_to_fahrenheit(0)    # → 32.0
+celsius_to_fahrenheit(100)  # → 212.0
+celsius_to_fahrenheit(-40)  # → -40.0
 ```
 
-**Hint:** Use an f-string with the `,` format specifier: `f"{n:,}"`.
+**Hint:** Apply the formula directly: `(c * 9 / 5) + 32`
 
 ---
 

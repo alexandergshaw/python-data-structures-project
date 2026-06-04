@@ -5,89 +5,209 @@ TOPIC = 'Final Portfolio Build'
 FEATURE_NAME = 'Recruiter View'
 
 LEARNING_OBJECTIVES = [
-    "Summarize weekly progress.",
-    "Draft resume-ready bullet points.",
-    "Compute a final grade from completion.",
+    "Build a class with instance methods and control flow.",
+    "Sort a list of objects by a computed attribute.",
+    "Search a list using a linear scan.",
+    "Write a recursive function with a base case.",
+    "Summarize a collection of objects into a dictionary.",
 ]
 
 
-def generate_final_summary(progress: dict[int, dict[str, object]]) -> dict[str, int]:
-    """Count completed weeks and total weeks.
+# ---------------------------------------------------------------------------
+# Task 1: Student class
+# ---------------------------------------------------------------------------
 
-    Args:
-        progress: dict mapping week numbers to dicts with a "complete" key.
+class Student:
+    """Represents a student with a name and a list of test scores."""
 
-    Returns:
-        A dict with "completed" (int) and "total" (int).
+    def __init__(self, name: str, scores: list[int | float] | None = None) -> None:
+        """Store the student's name and a copy of their scores.
+
+        Example:
+            >>> s = Student("Alice", [80, 90])
+            >>> s.name
+            'Alice'
+            >>> s.scores
+            [80, 90]
+            >>> s2 = Student("Bob")
+            >>> s2.scores
+            []
+
+        Hints:
+            - self.name = name
+            - self.scores = scores[:] if scores is not None else []
+        """
+        self.name = None    # TODO: replace None — store name
+        self.scores = None  # TODO: replace None — store a copy of scores, or [] if None
+
+    def add_score(self, score: int | float) -> None:
+        """Append score to self.scores.
+
+        Example:
+            >>> s = Student("Alice")
+            >>> s.add_score(95)
+            >>> s.scores
+            [95]
+
+        Hint:
+            self.scores.append(score)
+        """
+        pass  # TODO: self.scores.append(score)
+
+    def get_average(self) -> float:
+        """Return the average of self.scores, or 0.0 if there are no scores.
+
+        Example:
+            >>> Student("Alice", [80, 100]).get_average()
+            90.0
+            >>> Student("Bob").get_average()
+            0.0
+
+        Hints:
+            - Guard against empty: if not self.scores, return 0.0
+            - Average = sum(self.scores) / len(self.scores)
+        """
+        if not self.scores:
+            return 0.0
+        return None  # TODO: replace None — return sum(self.scores) / len(self.scores)
+
+    def get_letter_grade(self) -> str:
+        """Return the letter grade based on get_average().
+
+        Grade scale:
+            >= 90 → 'A'
+            >= 80 → 'B'
+            >= 70 → 'C'
+            >= 60 → 'D'
+            < 60  → 'F'
+
+        Example:
+            >>> Student("Alice", [95]).get_letter_grade()
+            'A'
+            >>> Student("Bob", [55]).get_letter_grade()
+            'F'
+
+        Hint:
+            avg = self.get_average()
+            Then use if/elif/else comparing avg to 90, 80, 70, 60.
+        """
+        avg = self.get_average()
+        if avg >= 90:
+            return 'A'
+        elif avg >= 80:
+            pass  # TODO: return 'B'
+        elif avg >= 70:
+            pass  # TODO: return 'C'
+        elif avg >= 60:
+            pass  # TODO: return 'D'
+        else:
+            pass  # TODO: return 'F'
+
+
+# ---------------------------------------------------------------------------
+# Task 2: sort_students
+# ---------------------------------------------------------------------------
+
+def sort_students(students: list[Student]) -> list[Student]:
+    """Return students sorted from highest to lowest average score.
 
     Example:
-        >>> p = {1: {"complete": True}, 2: {"complete": False}, 3: {"complete": True}}
-        >>> generate_final_summary(p)
-        {'completed': 2, 'total': 3}
+        >>> a = Student("Alice", [90])
+        >>> b = Student("Bob", [70])
+        >>> c = Student("Carol", [80])
+        >>> [s.name for s in sort_students([a, b, c])]
+        ['Alice', 'Carol', 'Bob']
 
-    Hints:
-        Step 1: Count how many values have .get("complete") == True.
-                You can use: sum(1 for v in progress.values() if v.get("complete"))
-        Step 2: "total" is just len(progress).
-        Step 3: Return {"completed": ..., "total": ...}
+    Hint:
+        Use sorted() with a key and reverse=True:
+        sorted(students, key=lambda s: s.get_average(), reverse=True)
     """
-    completed = sum(1 for v in progress.values() if v.get("complete"))
-    return {"completed": completed, "total": None}  # TODO: replace None with len(progress)
+    return None  # TODO: replace None — use sorted() with key=lambda s: s.get_average() and reverse=True
 
 
-def create_resume_bullets(skills: list[str]) -> list[str]:
-    """Convert a list of skills into resume-style bullet strings.
+# ---------------------------------------------------------------------------
+# Task 3: find_student
+# ---------------------------------------------------------------------------
 
-    Args:
-        skills: List of skill names (e.g., ["Python", "Sorting"]).
-
-    Returns:
-        A list of strings: "Applied {skill} in InsightHub portfolio work."
+def find_student(students: list[Student], name: str) -> Student | None:
+    """Return the first Student whose name matches, or None if not found.
 
     Example:
-        >>> create_resume_bullets(["Python", "Sorting"])
-        ['Applied Python in InsightHub portfolio work.',
-         'Applied Sorting in InsightHub portfolio work.']
+        >>> a = Student("Alice", [90])
+        >>> b = Student("Bob", [70])
+        >>> find_student([a, b], "Bob").name
+        'Bob'
+        >>> find_student([a, b], "Carol") is None
+        True
 
     Hints:
-        Step 1: Use a list comprehension.
-        Step 2: For each skill: f"Applied {skill} in InsightHub portfolio work."
+        1. Loop over students.
+        2. If student.name == name, return that student.
+        3. After the loop, return None.
     """
-    return [None for skill in skills]  # TODO: replace None with f"Applied {skill} in InsightHub portfolio work."
+    for student in students:
+        if student.name == name:
+            pass  # TODO: return student
+    return None
 
 
-def calculate_final_grade(weeks_completed: int) -> str:
-    """Return a letter grade based on weeks completed out of 16.
+# ---------------------------------------------------------------------------
+# Task 4: sum_recursive
+# ---------------------------------------------------------------------------
 
-    Grade scale (percentage of 16 weeks):
-        >= 90% → 'A'
-        >= 80% → 'B'
-        >= 70% → 'C'
-        >= 60% → 'D'
-        < 60%  → 'F'
+def sum_recursive(numbers: list[int | float]) -> int | float:
+    """Return the sum of numbers using recursion.
 
-    Examples:
-        >>> calculate_final_grade(16)
-        'A'
-        >>> calculate_final_grade(0)
-        'F'
+    Example:
+        >>> sum_recursive([1, 2, 3, 4])
+        10
+        >>> sum_recursive([])
+        0
+        >>> sum_recursive([5])
+        5
 
     Hints:
-        Step 1: percentage = (weeks_completed / 16) * 100
-        Step 2: Use if/elif/else comparing percentage to 90, 80, 70, 60.
+        Base case:  if not numbers, return 0
+        Recursive:  return numbers[0] + sum_recursive(numbers[1:])
     """
-    percentage = (weeks_completed / 16) * 100
-    if percentage >= 90:
-        return 'A'
-    elif percentage >= 80:
-        return None  # TODO: replace None — what letter grade is 80–89%?
-    elif percentage >= 70:
-        return None  # TODO: replace None — what letter grade is 70–79%?
-    elif percentage >= 60:
-        return None  # TODO: replace None — what letter grade is 60–69%?
-    else:
-        return None  # TODO: replace None — what letter grade is below 60%?
+    if not numbers:
+        return 0
+    return None  # TODO: replace None — return numbers[0] + sum_recursive(numbers[1:])
 
+
+# ---------------------------------------------------------------------------
+# Task 5: grade_distribution
+# ---------------------------------------------------------------------------
+
+def grade_distribution(students: list[Student]) -> dict[str, int]:
+    """Return a dict counting how many students received each letter grade.
+
+    Only include grades that appear at least once.
+
+    Example:
+        >>> a = Student("Alice", [95])   # 'A'
+        >>> b = Student("Bob", [85])     # 'B'
+        >>> c = Student("Carol", [92])   # 'A'
+        >>> grade_distribution([a, b, c])
+        {'A': 2, 'B': 1}
+
+    Hints:
+        1. Start with dist = {}
+        2. Loop over students.
+        3. Get each student's letter grade.
+        4. dist[grade] = dist.get(grade, 0) + 1
+        5. Return dist.
+    """
+    dist = {}
+    for student in students:
+        grade = student.get_letter_grade()
+        pass  # TODO: dist[grade] = dist.get(grade, 0) + 1
+    return dist
+
+
+# ---------------------------------------------------------------------------
+# Boilerplate — do not change below this line
+# ---------------------------------------------------------------------------
 
 def is_complete() -> bool:
     """Return completion status for this week's assignment starter."""
@@ -108,4 +228,3 @@ def get_week_summary() -> dict[str, object]:
         'objectives': LEARNING_OBJECTIVES,
         'complete': is_complete(),
     }
-
