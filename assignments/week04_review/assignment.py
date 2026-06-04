@@ -25,11 +25,8 @@ def is_palindrome(s: str) -> bool:
         >>> is_palindrome("a")
         True
 
-    Hint:
-        A string is a palindrome when it equals its reverse.
-        Reverse a string with slicing: s[::-1]
     """
-    return None  # TODO: replace None — return s == s[::-1]
+    return None  # TODO
 
 
 def count_vowels(text: str) -> int:
@@ -45,16 +42,11 @@ def count_vowels(text: str) -> int:
         >>> count_vowels("gym")
         0
 
-    Hints:
-        1. Convert text to lowercase: text.lower()
-        2. Loop over each character.
-        3. Check if the character is in the string "aeiou".
-        4. Count matches and return the total.
     """
     count = 0
     for char in text.lower():
         if char in "aeiou":
-            pass  # TODO: add 1 to count
+            pass  # TODO
     return count
 
 
@@ -73,15 +65,11 @@ def clamp(value: int | float, lo: int | float, hi: int | float) -> int | float:
         >>> clamp(200, 0, 100)
         100
 
-    Hints:
-        1. if value < lo: return lo
-        2. if value > hi: return hi
-        3. return value
     """
     if value < lo:
-        pass  # TODO: return lo
+        pass  # TODO
     if value > hi:
-        pass  # TODO: return hi
+        pass  # TODO
     return value
 
 
@@ -102,17 +90,14 @@ def summarize(numbers: list[int | float]) -> dict[str, int | float]:
         >>> summarize([])
         {'count': 0, 'total': 0, 'minimum': 0, 'maximum': 0}
 
-    Hints:
-        - Guard against an empty list: if not numbers, return the zero dict.
-        - Use len(), sum(), min(), max() for the values.
     """
     if not numbers:
         return {"count": 0, "total": 0, "minimum": 0, "maximum": 0}
     return {
-        "count": None,    # TODO: replace None — use len(numbers)
-        "total": None,    # TODO: replace None — use sum(numbers)
-        "minimum": None,  # TODO: replace None — use min(numbers)
-        "maximum": None,  # TODO: replace None — use max(numbers)
+        "count": None,    # TODO
+        "total": None,    # TODO
+        "minimum": None,  # TODO
+        "maximum": None,  # TODO
     }
 
 

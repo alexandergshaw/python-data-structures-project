@@ -22,11 +22,8 @@ def get_unique_items(items: list) -> list:
         >>> get_unique_items([1, 2, 3])
         [1, 2, 3]
 
-    Hints:
-        1. Convert items to a set to remove duplicates: set(items)
-        2. Sort and return as a list: sorted(set(items))
     """
-    return None  # TODO: replace None — return sorted(set(items))
+    return None  # TODO
 
 
 def word_frequency(words: list[str]) -> dict[str, int]:
@@ -38,15 +35,10 @@ def word_frequency(words: list[str]) -> dict[str, int]:
         >>> word_frequency([])
         {}
 
-    Hints:
-        1. Start with an empty dict: freq = {}
-        2. Loop over words.
-        3. Use freq[word] = freq.get(word, 0) + 1
-        4. Return freq.
     """
     freq = {}
     for word in words:
-        pass  # TODO: freq[word] = freq.get(word, 0) + 1
+        pass  # TODO
     return freq
 
 
@@ -64,10 +56,8 @@ class Counter:
             >>> c.count
             10
 
-        Hint:
-            self.count = start
         """
-        self.count = None  # TODO: replace None — store start in self.count
+        self.count = None  # TODO
 
     def increment(self) -> None:
         """Add 1 to self.count.
@@ -78,10 +68,8 @@ class Counter:
             >>> c.count
             1
 
-        Hint:
-            self.count += 1
         """
-        pass  # TODO: self.count += 1
+        pass  # TODO
 
     def decrement(self) -> None:
         """Subtract 1 from self.count.
@@ -92,10 +80,8 @@ class Counter:
             >>> c.count
             4
 
-        Hint:
-            self.count -= 1
         """
-        pass  # TODO: self.count -= 1
+        pass  # TODO
 
     def reset(self) -> None:
         """Set self.count back to 0.
@@ -106,10 +92,8 @@ class Counter:
             >>> c.count
             0
 
-        Hint:
-            self.count = 0
         """
-        pass  # TODO: self.count = 0
+        pass  # TODO
 
     def get_value(self) -> int:
         """Return the current count.
@@ -119,10 +103,8 @@ class Counter:
             >>> c.get_value()
             7
 
-        Hint:
-            return self.count
         """
-        return None  # TODO: replace None — return self.count
+        return None  # TODO
 
 
 def is_complete() -> bool:

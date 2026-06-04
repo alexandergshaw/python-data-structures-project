@@ -42,14 +42,6 @@ class BinarySearchTree:
             >>> bst.root.value
             10
 
-        Hints:
-            Define a helper inside this method:
-                def _insert(node, new_value):
-                    if node is None: return TreeNode(new_value)
-                    if new_value < node.value: node.left = _insert(node.left, new_value)
-                    elif new_value > node.value: node.right = _insert(node.right, new_value)
-                    return node
-            Then call: self.root = _insert(self.root, value)
         """
         def _insert(node, new_value):
             if node is None:
@@ -57,7 +49,7 @@ class BinarySearchTree:
             if new_value < node.value:
                 node.left = _insert(node.left, new_value)
             elif new_value > node.value:
-                pass  # TODO: set node.right = _insert(node.right, new_value)
+                pass  # TODO
             return node
         self.root = _insert(self.root, value)
 
@@ -72,22 +64,15 @@ class BinarySearchTree:
             >>> bst.search(99)
             False
 
-        Hints:
-            current = self.root
-            while current is not None:
-                if current.value == value: return True
-                elif value < current.value: current = current.left
-                else: current = current.right
-            return False
         """
         current = self.root
         while current is not None:
             if current.value == value:
                 return True
             elif value < current.value:
-                current = None  # TODO: replace None — move to the left child
+                current = None  # TODO
             else:
-                current = None  # TODO: replace None — move to the right child
+                current = None  # TODO
         return False
 
     def inorder(self) -> list[int]:
@@ -99,46 +84,31 @@ class BinarySearchTree:
             >>> bst.inorder()
             [5, 10, 15]
 
-        Hint:
-            def _walk(node):
-                if node is None: return []
-                return _walk(node.left) + [node.value] + _walk(node.right)
-            return _walk(self.root)
         """
         def _walk(node):
             if node is None:
                 return []
-            return None  # TODO: replace None — return _walk(node.left) + [node.value] + _walk(node.right)
+            return None  # TODO
         return _walk(self.root)
 
     def preorder(self) -> list[int]:
         """Return values in preorder (node, left, right).
 
-        Hint:
-            def _walk(node):
-                if node is None: return []
-                return [node.value] + _walk(node.left) + _walk(node.right)
-            return _walk(self.root)
         """
         def _walk(node):
             if node is None:
                 return []
-            return None  # TODO: replace None — return [node.value] + _walk(node.left) + _walk(node.right)
+            return None  # TODO
         return _walk(self.root)
 
     def postorder(self) -> list[int]:
         """Return values in postorder (left, right, node).
 
-        Hint:
-            def _walk(node):
-                if node is None: return []
-                return _walk(node.left) + _walk(node.right) + [node.value]
-            return _walk(self.root)
         """
         def _walk(node):
             if node is None:
                 return []
-            return None  # TODO: replace None — return _walk(node.left) + _walk(node.right) + [node.value]
+            return None  # TODO
         return _walk(self.root)
 
     def get_height(self) -> int:
@@ -152,16 +122,11 @@ class BinarySearchTree:
             >>> bst.get_height()
             1
 
-        Hint:
-            def _height(node):
-                if node is None: return 0
-                return 1 + max(_height(node.left), _height(node.right))
-            return _height(self.root)
         """
         def _height(node):
             if node is None:
                 return 0
-            return None  # TODO: replace None — return 1 + max(_height(node.left), _height(node.right))
+            return None  # TODO
         return _height(self.root)
 
 

@@ -61,3 +61,38 @@ def test_recursive_count_nested():
 def test_recursive_count_flat():
     assert assignment.recursive_count([1, 2, 3, 4]) == 4
 
+
+def test_recursive_sum_negatives():
+    assert assignment.recursive_sum([-1, -2, -3]) == -6
+
+
+def test_recursive_sum_mixed():
+    assert assignment.recursive_sum([10, -3, 2]) == 9
+
+
+def test_recursive_sum_large():
+    assert assignment.recursive_sum(list(range(101))) == 5050
+
+
+def test_recursive_search_last_element():
+    assert assignment.recursive_search([10, 20, 30], 30) == 2
+
+
+def test_recursive_search_empty_list():
+    assert assignment.recursive_search([], 'x') == -1
+
+
+def test_flatten_nested_deeply_nested():
+    assert assignment.flatten_nested([1, [2, [3, [4]]]]) == [1, 2, 3, 4]
+
+
+def test_flatten_nested_empty_sublists():
+    assert assignment.flatten_nested([[], [1], [], [2, 3]]) == [1, 2, 3]
+
+
+def test_recursive_count_empty():
+    assert assignment.recursive_count([]) == 0
+
+
+def test_recursive_count_with_empty_sublists():
+    assert assignment.recursive_count([[], [1], []]) == 1

@@ -20,10 +20,8 @@ def greet(name: str) -> str:
         >>> greet("World")
         'Hello, World!'
 
-    Hint:
-        Use an f-string: f"Hello, {name}!"
     """
-    return None  # TODO: replace None — return f"Hello, {name}!"
+    return None  # TODO
 
 
 def add(a: int | float, b: int | float) -> int | float:
@@ -35,10 +33,8 @@ def add(a: int | float, b: int | float) -> int | float:
         >>> add(1.5, 2.5)
         4.0
 
-    Hint:
-        Use the + operator: a + b
     """
-    return None  # TODO: replace None — return a + b
+    return None  # TODO
 
 
 def is_even(n: int) -> bool:
@@ -52,11 +48,8 @@ def is_even(n: int) -> bool:
         >>> is_even(0)
         True
 
-    Hint:
-        A number is even when n % 2 == 0.
-        The % operator gives the remainder after division.
     """
-    return None  # TODO: replace None — return n % 2 == 0
+    return None  # TODO
 
 
 def celsius_to_fahrenheit(c: float) -> float:
@@ -72,10 +65,8 @@ def celsius_to_fahrenheit(c: float) -> float:
         >>> celsius_to_fahrenheit(-40)
         -40.0
 
-    Hint:
-        Apply the formula: (c * 9 / 5) + 32
     """
-    return None  # TODO: replace None — apply the formula (c * 9 / 5) + 32
+    return None  # TODO
 
 
 def is_complete() -> bool:

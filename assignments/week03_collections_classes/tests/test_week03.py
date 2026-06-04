@@ -80,3 +80,51 @@ def test_counter_reset():
 def test_counter_get_value():
     c = assignment.Counter(7)
     assert c.get_value() == 7
+
+def test_get_unique_items_empty():
+    assert assignment.get_unique_items([]) == []
+
+
+def test_get_unique_items_single():
+    assert assignment.get_unique_items([42]) == [42]
+
+
+def test_get_unique_items_all_same():
+    assert assignment.get_unique_items([7, 7, 7]) == [7]
+
+
+def test_word_frequency_single():
+    assert assignment.word_frequency(["hello"]) == {"hello": 1}
+
+
+def test_word_frequency_multiple_unique():
+    assert assignment.word_frequency(["a", "b", "c"]) == {"a": 1, "b": 1, "c": 1}
+
+
+def test_counter_decrement_to_negative():
+    c = assignment.Counter()
+    c.decrement()
+    assert c.count == -1
+
+
+def test_counter_sequence():
+    c = assignment.Counter(5)
+    c.increment()
+    c.decrement()
+    c.decrement()
+    assert c.count == 4
+
+
+def test_counter_reset_after_increments():
+    c = assignment.Counter()
+    c.increment()
+    c.increment()
+    c.increment()
+    c.reset()
+    assert c.count == 0
+
+
+def test_counter_get_value_after_operations():
+    c = assignment.Counter(10)
+    c.decrement()
+    assert c.get_value() == 9

@@ -67,3 +67,41 @@ def test_linked_list_head_value():
     ll.append(99)
     assert ll.head.value == 99
 
+
+def test_dynamic_array_items_multiple():
+    arr = assignment.DynamicArray()
+    arr.append(10)
+    arr.append(20)
+    arr.append(30)
+    assert arr.items == [10, 20, 30]
+
+
+def test_dynamic_array_items_is_list():
+    arr = assignment.DynamicArray()
+    assert isinstance(arr.items, list)
+
+
+def test_linked_list_head_is_none_when_empty():
+    ll = assignment.LinkedList()
+    assert ll.head is None
+
+
+def test_linked_list_append_strings():
+    ll = assignment.LinkedList()
+    ll.append("hello")
+    ll.append("world")
+    assert ll.to_list() == ["hello", "world"]
+
+
+def test_linked_list_order_preserved():
+    ll = assignment.LinkedList()
+    for i in range(5):
+        ll.append(i)
+    assert ll.to_list() == [0, 1, 2, 3, 4]
+
+
+def test_linked_list_second_node_next_is_none():
+    ll = assignment.LinkedList()
+    ll.append(1)
+    ll.append(2)
+    assert ll.head.next.next is None

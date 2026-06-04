@@ -69,3 +69,57 @@ def test_merge_dicts_no_overlap():
 
 def test_merge_dicts_empty_first():
     assert assignment.merge_dicts({}, {"x": 10}) == {"x": 10}
+
+def test_is_anagram_empty_strings():
+    assert assignment.is_anagram("", "") is True
+
+
+def test_is_anagram_single_match():
+    assert assignment.is_anagram("a", "a") is True
+
+
+def test_is_anagram_single_no_match():
+    assert assignment.is_anagram("a", "b") is False
+
+
+def test_find_max_all_same():
+    assert assignment.find_max([5, 5, 5]) == 5
+
+
+def test_find_max_duplicates():
+    assert assignment.find_max([3, 9, 9, 1]) == 9
+
+
+def test_find_max_large():
+    assert assignment.find_max(list(range(100))) == 99
+
+
+def test_reverse_string_single_char():
+    assert assignment.reverse_string("a") == "a"
+
+
+def test_reverse_string_palindrome():
+    assert assignment.reverse_string("racecar") == "racecar"
+
+
+def test_reverse_string_spaces():
+    assert assignment.reverse_string("ab cd") == "dc ba"
+
+
+def test_merge_dicts_both_empty():
+    assert assignment.merge_dicts({}, {}) == {}
+
+
+def test_merge_dicts_empty_second():
+    assert assignment.merge_dicts({"a": 1}, {}) == {"a": 1}
+
+
+def test_merge_dicts_d2_overwrites_d1():
+    result = assignment.merge_dicts({"x": 1}, {"x": 99})
+    assert result["x"] == 99
+
+
+def test_merge_dicts_does_not_mutate_d1():
+    d1 = {"a": 1}
+    assignment.merge_dicts(d1, {"b": 2})
+    assert d1 == {"a": 1}

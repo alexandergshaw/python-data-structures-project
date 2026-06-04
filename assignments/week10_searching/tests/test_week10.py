@@ -59,3 +59,33 @@ def test_compare_search_binary_index():
     result = assignment.compare_search_algorithms(data, 1, 'id')
     assert result['binary_index'] == 0
 
+
+def test_linear_search_last_element():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    assert assignment.linear_search(data, 3, 'id') == 2
+
+
+def test_linear_search_empty():
+    assert assignment.linear_search([], 1, 'id') == -1
+
+
+def test_binary_search_middle():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}, {'id': 4}, {'id': 5}]
+    assert assignment.binary_search(data, 3, 'id') == 2
+
+
+def test_binary_search_single_element_found():
+    data = [{'id': 42}]
+    assert assignment.binary_search(data, 42, 'id') == 0
+
+
+def test_binary_search_single_element_not_found():
+    data = [{'id': 42}]
+    assert assignment.binary_search(data, 1, 'id') == -1
+
+
+def test_compare_search_not_found():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    result = assignment.compare_search_algorithms(data, 99, 'id')
+    assert result['linear_index'] == -1
+    assert result['binary_index'] == -1

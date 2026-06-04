@@ -55,3 +55,43 @@ def test_polymorphism_different_outputs():
     # All four should produce different strings
     assert len(set(rendered)) == 4
 
+
+def test_kpi_report_is_analytics_report():
+    report = assignment.KPIReport('Sales')
+    assert isinstance(report, assignment.AnalyticsReport)
+
+
+def test_visualization_report_is_analytics_report():
+    report = assignment.VisualizationReport('Chart')
+    assert isinstance(report, assignment.AnalyticsReport)
+
+
+def test_recommendation_report_is_analytics_report():
+    report = assignment.RecommendationReport('Tips')
+    assert isinstance(report, assignment.AnalyticsReport)
+
+
+def test_visualization_report_title_stored():
+    report = assignment.VisualizationReport('Sales Trend')
+    assert report.title == 'Sales Trend'
+
+
+def test_recommendation_report_title_stored():
+    report = assignment.RecommendationReport('Action Items')
+    assert report.title == 'Action Items'
+
+
+def test_analytics_report_render_is_string():
+    assert isinstance(assignment.AnalyticsReport('x').render(), str)
+
+
+def test_all_render_contain_title():
+    title = 'DataTest'
+    reports = [
+        assignment.AnalyticsReport(title),
+        assignment.KPIReport(title),
+        assignment.VisualizationReport(title),
+        assignment.RecommendationReport(title),
+    ]
+    for r in reports:
+        assert title in r.render()

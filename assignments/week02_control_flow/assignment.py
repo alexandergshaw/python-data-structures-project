@@ -22,15 +22,13 @@ def classify_number(n: int | float) -> str:
         >>> classify_number(0)
         'zero'
 
-    Hint:
-        Use if n > 0, elif n < 0, else.
     """
     if n > 0:
-        pass  # TODO: return "positive"
+        pass  # TODO
     elif n < 0:
-        pass  # TODO: return "negative"
+        pass  # TODO
     else:
-        pass  # TODO: return "zero"
+        pass  # TODO
 
 
 def fizzbuzz(n: int) -> str:
@@ -52,17 +50,15 @@ def fizzbuzz(n: int) -> str:
         >>> fizzbuzz(7)
         '7'
 
-    Hint:
-        Check n % 3 == 0 and n % 5 == 0 FIRST (the combined case).
     """
     if n % 3 == 0 and n % 5 == 0:
-        pass  # TODO: return "FizzBuzz"
+        pass  # TODO
     elif n % 3 == 0:
-        pass  # TODO: return "Fizz"
+        pass  # TODO
     elif n % 5 == 0:
-        pass  # TODO: return "Buzz"
+        pass  # TODO
     else:
-        pass  # TODO: return str(n)
+        pass  # TODO
 
 
 def count_positives(numbers: list[int | float]) -> int:
@@ -76,16 +72,11 @@ def count_positives(numbers: list[int | float]) -> int:
         >>> count_positives([])
         0
 
-    Hints:
-        1. Start count = 0.
-        2. Loop over numbers with a for loop.
-        3. If num > 0, add 1 to count.
-        4. Return count.
     """
     count = 0
     for num in numbers:
         if num > 0:
-            pass  # TODO: add 1 to count
+            pass  # TODO
     return count
 
 
@@ -100,14 +91,10 @@ def find_first_negative(numbers: list[int | float]) -> int | float | None:
         >>> find_first_negative([-1, 2, 3])
         -1
 
-    Hints:
-        1. Loop over the list with a for loop.
-        2. If num < 0, return num immediately (return early).
-        3. After the loop ends, return None.
     """
     for num in numbers:
         if num < 0:
-            pass  # TODO: return num here (return early — don't wait for the loop to finish)
+            pass  # TODO
     return None
 
 

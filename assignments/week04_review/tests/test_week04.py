@@ -72,3 +72,63 @@ def test_summarize_single():
     assert result["count"] == 1
     assert result["minimum"] == 7
     assert result["maximum"] == 7
+
+def test_is_palindrome_two_same_chars():
+    assert assignment.is_palindrome("aa") is True
+
+
+def test_is_palindrome_case_sensitive():
+    # "Racecar" != "racecaR" so not a palindrome
+    assert assignment.is_palindrome("Racecar") is False
+
+
+def test_is_palindrome_two_char_false():
+    assert assignment.is_palindrome("ab") is False
+
+
+def test_count_vowels_empty():
+    assert assignment.count_vowels("") == 0
+
+
+def test_count_vowels_mixed_case():
+    assert assignment.count_vowels("Hello World") == 3
+
+
+def test_count_vowels_no_vowels_consonants():
+    assert assignment.count_vowels("bcdfg") == 0
+
+
+def test_clamp_exactly_at_lo():
+    assert assignment.clamp(0, 0, 10) == 0
+
+
+def test_clamp_exactly_at_hi():
+    assert assignment.clamp(10, 0, 10) == 10
+
+
+def test_clamp_floats():
+    assert assignment.clamp(1.5, 1.0, 2.0) == 1.5
+
+
+def test_summarize_all_keys_present():
+    result = assignment.summarize([3, 1, 4])
+    assert 'count' in result
+    assert 'total' in result
+    assert 'minimum' in result
+    assert 'maximum' in result
+
+
+def test_summarize_negative_numbers():
+    result = assignment.summarize([-3, -1, -5])
+    assert result['count'] == 3
+    assert result['total'] == -9
+    assert result['minimum'] == -5
+    assert result['maximum'] == -1
+
+
+def test_summarize_single_item():
+    result = assignment.summarize([42])
+    assert result['count'] == 1
+    assert result['total'] == 42
+    assert result['minimum'] == 42
+    assert result['maximum'] == 42

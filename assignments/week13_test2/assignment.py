@@ -22,13 +22,9 @@ def evaluate_skills(scores: list[int]) -> dict[str, float]:
         >>> evaluate_skills([])
         {'total': 0, 'average': 0.0}
 
-    Hints:
-        total = sum(scores)
-        average = total / len(scores) if scores else 0.0
-        return {'total': total, 'average': average}
     """
     total = sum(scores)
-    average = None  # TODO: replace None — compute total / len(scores) if scores else 0.0
+    average = None  # TODO
     return {"total": total, "average": average}
 
 
@@ -41,13 +37,10 @@ def next_study_topic(scores: dict[str, int]) -> str:
         >>> next_study_topic({})
         'review'
 
-    Hints:
-        if not scores: return 'review'
-        return min(scores, key=scores.get)
     """
     if not scores:
         return 'review'
-    return None  # TODO: replace None — use min(scores, key=scores.get) to find the lowest topic
+    return None  # TODO
 
 
 def is_complete() -> bool:

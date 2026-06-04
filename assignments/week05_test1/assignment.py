@@ -26,11 +26,8 @@ def is_anagram(a: str, b: str) -> bool:
         >>> is_anagram("Dormitory", "Dirty room")
         False  (spaces differ — exact character-for-character match only)
 
-    Hint:
-        Sort the lowercase characters of each string and compare:
-        sorted(a.lower()) == sorted(b.lower())
     """
-    return None  # TODO: replace None — return sorted(a.lower()) == sorted(b.lower())
+    return None  # TODO
 
 
 def find_max(numbers: list[int | float]) -> int | float | None:
@@ -46,18 +43,13 @@ def find_max(numbers: list[int | float]) -> int | float | None:
         >>> find_max([])
         None
 
-    Hints:
-        1. Return None immediately if numbers is empty.
-        2. Start with current_max = numbers[0].
-        3. Loop over the rest; if a number is larger, update current_max.
-        4. Return current_max.
     """
     if not numbers:
         return None
     current_max = numbers[0]
     for num in numbers[1:]:
         if num > current_max:
-            pass  # TODO: update current_max to num
+            pass  # TODO
     return current_max
 
 
@@ -72,10 +64,8 @@ def reverse_string(s: str) -> str:
         >>> reverse_string("")
         ''
 
-    Hint:
-        Use string slicing: s[::-1]
     """
-    return None  # TODO: replace None — return s[::-1]
+    return None  # TODO
 
 
 def merge_dicts(d1: dict, d2: dict) -> dict:
@@ -89,15 +79,10 @@ def merge_dicts(d1: dict, d2: dict) -> dict:
         >>> merge_dicts({}, {"x": 10})
         {'x': 10}
 
-    Hint:
-        Build a copy of d1 first, then update it with d2:
-            result = dict(d1)
-            result.update(d2)
-            return result
     """
     result = dict(d1)
     result.update(d2)
-    return None  # TODO: replace None — return result
+    return None  # TODO
 
 
 def is_complete() -> bool:

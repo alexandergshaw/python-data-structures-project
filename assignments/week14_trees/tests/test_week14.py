@@ -75,3 +75,57 @@ def test_get_height_multi():
         tree.insert(v)
     assert tree.get_height() >= 2
 
+
+def test_insert_left_child():
+    tree = assignment.BinarySearchTree()
+    tree.insert(10)
+    tree.insert(5)
+    assert tree.root.left.value == 5
+
+
+def test_insert_right_child():
+    tree = assignment.BinarySearchTree()
+    tree.insert(10)
+    tree.insert(15)
+    assert tree.root.right.value == 15
+
+
+def test_search_left_subtree():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 3, 7]:
+        tree.insert(v)
+    assert tree.search(3) is True
+    assert tree.search(7) is True
+
+
+def test_inorder_full_result():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15]:
+        tree.insert(v)
+    assert tree.inorder() == [5, 10, 15]
+
+
+def test_preorder_full_result():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15]:
+        tree.insert(v)
+    assert tree.preorder() == [10, 5, 15]
+
+
+def test_postorder_full_result():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15]:
+        tree.insert(v)
+    assert tree.postorder() == [5, 15, 10]
+
+
+def test_get_height_skewed():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 15, 20, 25]:
+        tree.insert(v)
+    assert tree.get_height() == 4
+
+
+def test_inorder_empty():
+    tree = assignment.BinarySearchTree()
+    assert tree.inorder() == []

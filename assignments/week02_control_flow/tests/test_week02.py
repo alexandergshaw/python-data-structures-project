@@ -69,3 +69,42 @@ def test_find_first_negative_none():
 
 def test_find_first_negative_first_element():
     assert assignment.find_first_negative([-1, 2, 3]) == -1
+
+def test_classify_number_float_positive():
+    assert assignment.classify_number(3.14) == "positive"
+
+
+def test_classify_number_float_negative():
+    assert assignment.classify_number(-0.1) == "negative"
+
+
+def test_fizzbuzz_three():
+    assert assignment.fizzbuzz(3) == "Fizz"
+
+
+def test_fizzbuzz_five():
+    assert assignment.fizzbuzz(5) == "Buzz"
+
+
+def test_fizzbuzz_thirty():
+    assert assignment.fizzbuzz(30) == "FizzBuzz"
+
+
+def test_fizzbuzz_one():
+    assert assignment.fizzbuzz(1) == "1"
+
+
+def test_count_positives_all_positive():
+    assert assignment.count_positives([1, 2, 3]) == 3
+
+
+def test_count_positives_zero_not_counted():
+    assert assignment.count_positives([0, 0, 0]) == 0
+
+
+def test_find_first_negative_multiple_negatives():
+    assert assignment.find_first_negative([-3, -1, -5]) == -3
+
+
+def test_find_first_negative_last_element():
+    assert assignment.find_first_negative([1, 2, -4]) == -4

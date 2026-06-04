@@ -21,47 +21,34 @@ def bubble_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
         >>> bubble_sort(data, "score")
         [{'score': 1}, {'score': 2}, {'score': 3}]
 
-    Algorithm:
-        1. items = data[:]            # copy the list
-        2. Outer loop: for i in range(len(items))
-        3. Inner loop: for j in range(len(items) - 1 - i)
-        4.     if items[j][key] > items[j+1][key]:
-                   items[j], items[j+1] = items[j+1], items[j]
-        5. return items
     """
     items = data[:]
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
             if items[j][key] > items[j + 1][key]:
-                pass  # TODO: swap items[j] and items[j+1]
+                pass  # TODO
     return items
 
 
 def insertion_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
-    Hint:
-        sorted(data, key=lambda row: row.get(key))
     """
-    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(key)
+    return None  # TODO
 
 
 def merge_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
-    Hint:
-        sorted(data, key=lambda row: row.get(key))
     """
-    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(key)
+    return None  # TODO
 
 
 def quick_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
-    Hint:
-        sorted(data, key=lambda row: row.get(key))
     """
-    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(key)
+    return None  # TODO
 
 
 def compare_sort_algorithms(data: list[dict[str, Any]], key: str) -> dict[str, list[dict[str, Any]]]:
@@ -73,14 +60,12 @@ def compare_sort_algorithms(data: list[dict[str, Any]], key: str) -> dict[str, l
         >>> compare_sort_algorithms([{"score": 2}, {"score": 1}], "score")
         {'bubble': [...], 'insertion': [...], 'merge': [...], 'quick': [...]}
 
-    Hint:
-        Call each of the four sorting functions and put the results in a dict.
     """
     return {
         "bubble": bubble_sort(data, key),
-        "insertion": None,  # TODO: replace None — call insertion_sort with data and key
-        "merge": None,      # TODO: replace None — call merge_sort with data and key
-        "quick": None,      # TODO: replace None — call quick_sort with data and key
+        "insertion": None,  # TODO
+        "merge": None,      # TODO
+        "quick": None,      # TODO
     }
 
 

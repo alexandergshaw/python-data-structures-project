@@ -22,10 +22,8 @@ class AnalyticsReport:
             >>> report.title
             'Overview'
 
-        Hint:
-            self.title = title
         """
-        self.title = None  # TODO: replace None — store the title parameter
+        self.title = None  # TODO
 
     def render(self) -> str:
         """Return a formatted string describing this report.
@@ -34,10 +32,8 @@ class AnalyticsReport:
             >>> AnalyticsReport("Overview").render()
             'Analytics Report: Overview'
 
-        Hint:
-            return f"Analytics Report: {self.title}"
         """
-        return None  # TODO: replace None — return f"Analytics Report: {self.title}"
+        return None  # TODO
 
 
 class KPIReport(AnalyticsReport):
@@ -53,10 +49,8 @@ class KPIReport(AnalyticsReport):
             >>> KPIReport("Revenue").render()
             'KPI Report: Revenue'
 
-        Hint:
-            return f"KPI Report: {self.title}"
         """
-        return None  # TODO: replace None — return f"KPI Report: {self.title}"
+        return None  # TODO
 
 
 class VisualizationReport(AnalyticsReport):
@@ -72,10 +66,8 @@ class VisualizationReport(AnalyticsReport):
             >>> VisualizationReport("Trend").render()
             'Visualization Report: Trend'
 
-        Hint:
-            return f"Visualization Report: {self.title}"
         """
-        return None  # TODO: replace None — return f"Visualization Report: {self.title}"
+        return None  # TODO
 
 
 class RecommendationReport(AnalyticsReport):
@@ -91,10 +83,8 @@ class RecommendationReport(AnalyticsReport):
             >>> RecommendationReport("Next Steps").render()
             'Recommendation Report: Next Steps'
 
-        Hint:
-            return f"Recommendation Report: {self.title}"
         """
-        return None  # TODO: replace None — return f"Recommendation Report: {self.title}"
+        return None  # TODO
 
 
 def is_complete() -> bool:

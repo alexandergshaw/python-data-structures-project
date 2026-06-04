@@ -22,14 +22,10 @@ def time_function(func: Callable[..., Any], *args: Any) -> float:
         >>> elapsed >= 0
         True
 
-    Hints:
-        1. start = time.perf_counter()
-        2. Call func(*args)
-        3. return time.perf_counter() - start
     """
     start = time.perf_counter()
     func(*args)
-    return None  # TODO: replace None — return the elapsed time (current time minus start)
+    return None  # TODO
 
 
 def compare_operations(data_sizes: list[int]) -> list[dict[str, int]]:
@@ -41,12 +37,10 @@ def compare_operations(data_sizes: list[int]) -> list[dict[str, int]]:
         >>> compare_operations([10, 20])
         [{'size': 10, 'operations': 20}, {'size': 20, 'operations': 40}]
 
-    Hint:
-        [{"size": s, "operations": s * 2} for s in data_sizes]
     """
     result = []
     for s in data_sizes:
-        result.append({"size": s, "operations": None})  # TODO: replace None — operations is s * 2
+        result.append({"size": s, "operations": None})  # TODO
     return result
 
 
@@ -57,10 +51,8 @@ def generate_complexity_report(results: list[dict[str, int]]) -> str:
         >>> generate_complexity_report([{"size": 10, "operations": 20}])
         'Analyzed 1 data sizes.'
 
-    Hint:
-        f"Analyzed {len(results)} data sizes."
     """
-    return None  # TODO: replace None — return f"Analyzed {len(results)} data sizes."
+    return None  # TODO
 
 
 def is_complete() -> bool:

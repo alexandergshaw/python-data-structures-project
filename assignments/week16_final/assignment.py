@@ -33,12 +33,9 @@ class Student:
             >>> s2.scores
             []
 
-        Hints:
-            - self.name = name
-            - self.scores = scores[:] if scores is not None else []
         """
-        self.name = None    # TODO: replace None — store name
-        self.scores = None  # TODO: replace None — store a copy of scores, or [] if None
+        self.name = None    # TODO
+        self.scores = None  # TODO
 
     def add_score(self, score: int | float) -> None:
         """Append score to self.scores.
@@ -49,10 +46,8 @@ class Student:
             >>> s.scores
             [95]
 
-        Hint:
-            self.scores.append(score)
         """
-        pass  # TODO: self.scores.append(score)
+        pass  # TODO
 
     def get_average(self) -> float:
         """Return the average of self.scores, or 0.0 if there are no scores.
@@ -63,13 +58,10 @@ class Student:
             >>> Student("Bob").get_average()
             0.0
 
-        Hints:
-            - Guard against empty: if not self.scores, return 0.0
-            - Average = sum(self.scores) / len(self.scores)
         """
         if not self.scores:
             return 0.0
-        return None  # TODO: replace None — return sum(self.scores) / len(self.scores)
+        return None  # TODO
 
     def get_letter_grade(self) -> str:
         """Return the letter grade based on get_average().
@@ -87,21 +79,18 @@ class Student:
             >>> Student("Bob", [55]).get_letter_grade()
             'F'
 
-        Hint:
-            avg = self.get_average()
-            Then use if/elif/else comparing avg to 90, 80, 70, 60.
         """
         avg = self.get_average()
         if avg >= 90:
             return 'A'
         elif avg >= 80:
-            pass  # TODO: return 'B'
+            pass  # TODO
         elif avg >= 70:
-            pass  # TODO: return 'C'
+            pass  # TODO
         elif avg >= 60:
-            pass  # TODO: return 'D'
+            pass  # TODO
         else:
-            pass  # TODO: return 'F'
+            pass  # TODO
 
 
 # ---------------------------------------------------------------------------
@@ -118,11 +107,8 @@ def sort_students(students: list[Student]) -> list[Student]:
         >>> [s.name for s in sort_students([a, b, c])]
         ['Alice', 'Carol', 'Bob']
 
-    Hint:
-        Use sorted() with a key and reverse=True:
-        sorted(students, key=lambda s: s.get_average(), reverse=True)
     """
-    return None  # TODO: replace None — use sorted() with key=lambda s: s.get_average() and reverse=True
+    return None  # TODO
 
 
 # ---------------------------------------------------------------------------
@@ -140,14 +126,10 @@ def find_student(students: list[Student], name: str) -> Student | None:
         >>> find_student([a, b], "Carol") is None
         True
 
-    Hints:
-        1. Loop over students.
-        2. If student.name == name, return that student.
-        3. After the loop, return None.
     """
     for student in students:
         if student.name == name:
-            pass  # TODO: return student
+            pass  # TODO
     return None
 
 
@@ -166,13 +148,10 @@ def sum_recursive(numbers: list[int | float]) -> int | float:
         >>> sum_recursive([5])
         5
 
-    Hints:
-        Base case:  if not numbers, return 0
-        Recursive:  return numbers[0] + sum_recursive(numbers[1:])
     """
     if not numbers:
         return 0
-    return None  # TODO: replace None — return numbers[0] + sum_recursive(numbers[1:])
+    return None  # TODO
 
 
 # ---------------------------------------------------------------------------
@@ -191,17 +170,11 @@ def grade_distribution(students: list[Student]) -> dict[str, int]:
         >>> grade_distribution([a, b, c])
         {'A': 2, 'B': 1}
 
-    Hints:
-        1. Start with dist = {}
-        2. Loop over students.
-        3. Get each student's letter grade.
-        4. dist[grade] = dist.get(grade, 0) + 1
-        5. Return dist.
     """
     dist = {}
     for student in students:
         grade = student.get_letter_grade()
-        pass  # TODO: dist[grade] = dist.get(grade, 0) + 1
+        pass  # TODO
     return dist
 
 

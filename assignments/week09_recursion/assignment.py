@@ -22,13 +22,10 @@ def recursive_sum(data: list[int]) -> int:
         >>> recursive_sum([])
         0
 
-    Hints:
-        Base case:     if not data: return 0
-        Recursive case: data[0] + recursive_sum(data[1:])
     """
     if not data:
         return 0
-    return None  # TODO: replace None — add data[0] to the recursive sum of data[1:]
+    return None  # TODO
 
 
 def recursive_search(data: list[Any], target: Any, index: int = 0) -> int:
@@ -40,16 +37,12 @@ def recursive_search(data: list[Any], target: Any, index: int = 0) -> int:
         >>> recursive_search(['a', 'b', 'c'], 'z')
         -1
 
-    Hints:
-        Base case 1:   if index >= len(data): return -1
-        Base case 2:   if data[index] == target: return index
-        Recursive case: return recursive_search(data, target, index + 1)
     """
     if index >= len(data):
         return -1
     if data[index] == target:
         return index
-    return None  # TODO: replace None — recurse with index + 1
+    return None  # TODO
 
 
 def flatten_nested(data: list[Any]) -> list[Any]:
@@ -61,19 +54,13 @@ def flatten_nested(data: list[Any]) -> list[Any]:
         >>> flatten_nested([1, 2, 3])
         [1, 2, 3]
 
-    Hints:
-        1. Start with flat = []
-        2. For each item in data:
-               if isinstance(item, list): flat.extend(flatten_nested(item))
-               else:                      flat.append(item)
-        3. Return flat
     """
     flat = []
     for item in data:
         if isinstance(item, list):
-            pass  # TODO: extend flat with the result of recursively flattening item
+            pass  # TODO
         else:
-            pass  # TODO: append item to flat
+            pass  # TODO
     return flat
 
 
@@ -84,10 +71,8 @@ def recursive_count(data: list[Any]) -> int:
         >>> recursive_count([1, [2, [3]]])
         3
 
-    Hint:
-        Use flatten_nested(data) and return len() of the result.
     """
-    return None  # TODO: replace None — call flatten_nested(data) then return len() of the result
+    return None  # TODO
 
 
 def is_complete() -> bool:

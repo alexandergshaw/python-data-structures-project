@@ -73,3 +73,48 @@ def test_pipeline_run_returns_copy():
     result.append('extra')
     assert len(pipeline.run()) == 1
 
+
+def test_stack_items_is_list():
+    stack = assignment.Stack()
+    assert isinstance(stack.items, list)
+
+
+def test_stack_items_after_push():
+    stack = assignment.Stack()
+    stack.push(1)
+    stack.push(2)
+    assert stack.items == [1, 2]
+
+
+def test_stack_pop_reduces_size():
+    stack = assignment.Stack()
+    stack.push('a')
+    stack.push('b')
+    stack.pop()
+    assert len(stack.items) == 1
+
+
+def test_queue_fifo_three_items():
+    queue = assignment.Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    assert queue.dequeue() == 1
+    assert queue.dequeue() == 2
+
+
+def test_queue_items_after_enqueue():
+    from collections import deque
+    queue = assignment.Queue()
+    queue.enqueue('a')
+    assert isinstance(queue.items, deque)
+
+
+def test_pipeline_empty_run():
+    pipeline = assignment.DataPipeline()
+    assert pipeline.run() == []
+
+
+def test_pipeline_steps_is_list():
+    pipeline = assignment.DataPipeline()
+    assert isinstance(pipeline.steps, list)

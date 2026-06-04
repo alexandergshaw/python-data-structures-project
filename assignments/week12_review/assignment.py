@@ -21,10 +21,8 @@ def review_checklist() -> list[str]:
         >>> 'arrays' in review_checklist()
         True
 
-    Hint:
-        return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting']
     """
-    return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', None]  # TODO: replace None with the last missing topic
+    return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', None]  # TODO
 
 
 def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
@@ -42,13 +40,10 @@ def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
         >>> score_readiness(0, 6)
         0.0
 
-    Hint:
-        if total_topics == 0: return 0.0
-        return (completed_topics / total_topics) * 100
     """
     if total_topics == 0:
         return 0.0
-    return None  # TODO: replace None — compute (completed_topics / total_topics) * 100
+    return None  # TODO
 
 
 def is_complete() -> bool:

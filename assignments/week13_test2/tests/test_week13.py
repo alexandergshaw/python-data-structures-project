@@ -45,3 +45,36 @@ def test_next_study_topic_single():
 def test_next_study_topic_empty():
     assert assignment.next_study_topic({}) == 'review'
 
+
+def test_evaluate_skills_single_score():
+    stats = assignment.evaluate_skills([100])
+    assert stats['total'] == 100
+    assert stats['average'] == 100.0
+
+
+def test_evaluate_skills_three_scores():
+    stats = assignment.evaluate_skills([70, 80, 90])
+    assert stats['total'] == 240
+    assert stats['average'] == 80.0
+
+
+def test_evaluate_skills_returns_dict():
+    stats = assignment.evaluate_skills([90])
+    assert isinstance(stats, dict)
+    assert 'total' in stats
+    assert 'average' in stats
+
+
+def test_next_study_topic_returns_string():
+    assert isinstance(assignment.next_study_topic({'a': 5}), str)
+
+
+def test_next_study_topic_all_same():
+    # Any key is acceptable when all scores are equal
+    result = assignment.next_study_topic({'a': 50, 'b': 50})
+    assert result in ('a', 'b')
+
+
+def test_next_study_topic_not_highest():
+    result = assignment.next_study_topic({'trees': 70, 'sorting': 60, 'arrays': 80})
+    assert result == 'sorting'

@@ -20,10 +20,8 @@ class Stack:
     def __init__(self) -> None:
         """Initialize self.items as an empty list.
 
-        Hint:
-            self.items = []
         """
-        self.items = None  # TODO: replace None — initialize as an empty list []
+        self.items = None  # TODO
 
     def push(self, value: Any) -> None:
         """Add value to the top (end) of the stack.
@@ -34,10 +32,8 @@ class Stack:
             >>> s.items
             ['a']
 
-        Hint:
-            self.items.append(value)
         """
-        pass  # TODO: append value to self.items
+        pass  # TODO
 
     def pop(self) -> Any:
         """Remove and return the top (last) item.
@@ -48,10 +44,8 @@ class Stack:
             >>> s.pop()
             'a'
 
-        Hint:
-            return self.items.pop()
         """
-        return None  # TODO: replace None — use self.items.pop() to remove and return the last item
+        return None  # TODO
 
 
 class Queue:
@@ -60,10 +54,8 @@ class Queue:
     def __init__(self) -> None:
         """Initialize self.items as an empty deque.
 
-        Hint:
-            self.items = deque()
         """
-        self.items = None  # TODO: replace None — initialize as deque()
+        self.items = None  # TODO
 
     def enqueue(self, value: Any) -> None:
         """Add value to the back (right) of the queue.
@@ -72,10 +64,8 @@ class Queue:
             >>> q = Queue()
             >>> q.enqueue('x')
 
-        Hint:
-            self.items.append(value)
         """
-        pass  # TODO: use self.items.append(value) to add to the right side
+        pass  # TODO
 
     def dequeue(self) -> Any:
         """Remove and return the item at the front (left) of the queue.
@@ -86,10 +76,8 @@ class Queue:
             >>> q.dequeue()
             'x'
 
-        Hint:
-            return self.items.popleft()
         """
-        return None  # TODO: replace None — use self.items.popleft() to remove and return the front item
+        return None  # TODO
 
 
 class DataPipeline:
@@ -98,10 +86,8 @@ class DataPipeline:
     def __init__(self) -> None:
         """Initialize self.steps as an empty list.
 
-        Hint:
-            self.steps = []
         """
-        self.steps = None  # TODO: replace None — initialize as an empty list []
+        self.steps = None  # TODO
 
     def add_step(self, step: str) -> None:
         """Append step name to self.steps.
@@ -112,10 +98,8 @@ class DataPipeline:
             >>> p.steps
             ['extract']
 
-        Hint:
-            self.steps.append(step)
         """
-        pass  # TODO: append step to self.steps
+        pass  # TODO
 
     def run(self) -> list[str]:
         """Return a copy of self.steps.
@@ -126,10 +110,8 @@ class DataPipeline:
             >>> p.run()
             ['extract']
 
-        Hint:
-            return self.steps[:]
         """
-        return None  # TODO: replace None — return a copy of self.steps using self.steps[:]
+        return None  # TODO
 
 
 def is_complete() -> bool:

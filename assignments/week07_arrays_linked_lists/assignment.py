@@ -22,10 +22,8 @@ class DynamicArray:
     def __init__(self) -> None:
         """Initialize self.items as an empty list.
 
-        Hint:
-            self.items = []
         """
-        self.items = None  # TODO: replace None — initialize as an empty list []
+        self.items = None  # TODO
 
     def append(self, value: Any) -> None:
         """Add value to the end of self.items.
@@ -36,10 +34,8 @@ class DynamicArray:
             >>> arr.items
             [10]
 
-        Hint:
-            self.items.append(value)
         """
-        pass  # TODO: append value to self.items
+        pass  # TODO
 
     def __len__(self) -> int:
         """Return the number of items stored.
@@ -50,10 +46,8 @@ class DynamicArray:
             >>> len(arr)
             1
 
-        Hint:
-            return len(self.items)
         """
-        return None  # TODO: replace None — use len() on self.items
+        return None  # TODO
 
 
 @dataclass
@@ -69,8 +63,6 @@ class LinkedList:
     def __init__(self) -> None:
         """Initialize an empty list with self.head = None.
 
-        Hint:
-            self.head = None
         """
         self.head = None  # this is correct — head starts as None (empty list)
 
@@ -83,11 +75,6 @@ class LinkedList:
             >>> ll.head.value
             1
 
-        Hints:
-            1. Create new_node = Node(value).
-            2. If self.head is None, set self.head = new_node and return.
-            3. Otherwise, walk from self.head until current.next is None.
-            4. Set current.next = new_node.
         """
         new_node = Node(value)
         if self.head is None:
@@ -96,7 +83,7 @@ class LinkedList:
         current = self.head
         while current.next is not None:
             current = current.next
-        pass  # TODO: set current.next to new_node to attach it at the end
+        pass  # TODO
 
     def to_list(self) -> list[Any]:
         """Return all node values as a plain Python list, head to tail.
@@ -108,18 +95,12 @@ class LinkedList:
             >>> ll.to_list()
             [1, 2]
 
-        Hints:
-            1. Start with values = [] and current = self.head.
-            2. While current is not None:
-                   values.append(current.value)
-                   current = current.next
-            3. Return values.
         """
         values = []
         current = self.head
         while current is not None:
             values.append(current.value)
-            current = None  # TODO: replace None — advance to the next node (current.next)
+            current = None  # TODO
         return values
 
 

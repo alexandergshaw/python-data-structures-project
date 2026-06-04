@@ -47,3 +47,38 @@ def test_score_readiness_zero_completed():
 def test_score_readiness_zero_total():
     assert assignment.score_readiness(0, 0) == 0.0
 
+
+def test_review_checklist_length():
+    assert len(assignment.review_checklist()) == 6
+
+
+def test_review_checklist_no_none():
+    assert None not in assignment.review_checklist()
+
+
+def test_review_checklist_contains_linked_lists():
+    assert 'linked lists' in assignment.review_checklist()
+
+
+def test_review_checklist_contains_stacks():
+    assert 'stacks' in assignment.review_checklist()
+
+
+def test_review_checklist_contains_queues():
+    assert 'queues' in assignment.review_checklist()
+
+
+def test_score_readiness_returns_float():
+    assert isinstance(assignment.score_readiness(3, 6), float)
+
+
+def test_score_readiness_one_quarter():
+    assert assignment.score_readiness(1, 4) == 25.0
+
+
+def test_score_readiness_all_zero():
+    assert assignment.score_readiness(0, 0) == 0.0
+
+
+def test_score_readiness_partial():
+    assert assignment.score_readiness(4, 8) == 50.0
