@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Forecasting Center Locked</h3>
+        <p>Complete Week 11 Assignment to unlock the Forecasting Center.</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="chart-card" style="min-height: 420px;">
+        <div class="section-header"><h3>Forecast Trend</h3><span class="small-muted">Historical, moving average, and projected revenue</span></div>
+        <canvas data-chart-config='{{ {
+            "type": "line",
+            "data": {
+                "labels": (forecast_data.months or []) + (forecast_data.forecast_months or []),
+                "datasets": [
+                    {"label": "Historical", "data": forecast_data.historical_padded or [], "borderColor": "#4361ee", "spanGaps": false, "tension": 0.3},
+                    {"label": "Moving Avg", "data": forecast_data.moving_avg_padded or [], "borderColor": "#2ecc71", "spanGaps": false, "tension": 0.3},
+                    {"label": "Forecast", "data": forecast_data.forecast_padded or [], "borderColor": "#f4a261", "borderDash": [6, 6], "spanGaps": false, "tension": 0.3}
+                ]
+            },
+            "options": {"responsive": true, "maintainAspectRatio": false}
+        }|tojson }}'></canvas>
+    </div>
+</section>
+{% endblock %}

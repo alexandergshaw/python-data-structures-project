@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Data Structures Showcase Locked</h3>
+        <p>Complete Week 7 Assignment to unlock the Data Structures Showcase.</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="structures-grid">
+        {% for structure in structures %}
+        <div class="structure-card">
+            <h4>{{ structure.name }}</h4>
+            <p class="table-muted">{{ structure.description }}</p>
+            <div class="structure-ops">
+                {% for name, complexity in structure.operations.items() %}
+                <div><span>{{ name|capitalize }}</span><strong>{{ complexity }}</strong></div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

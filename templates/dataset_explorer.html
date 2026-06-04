@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Dataset Explorer Locked</h3>
+        <p>Complete Week 1 Assignment to unlock the Dataset Explorer.</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="table-card">
+        <div class="section-header">
+            <h3>Available Datasets</h3>
+            <span class="small-muted">Explore shape and metadata for each source</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Type</th><th>Records</th><th>Columns</th><th>Column List</th></tr>
+                </thead>
+                <tbody>
+                    {% for dataset in datasets %}
+                    <tr>
+                        <td>{{ dataset.name }}</td>
+                        <td>{{ dataset.type }}</td>
+                        <td>{{ dataset.records }}</td>
+                        <td>{{ dataset.columns }}</td>
+                        <td class="table-muted">{{ dataset.column_names|join(', ') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

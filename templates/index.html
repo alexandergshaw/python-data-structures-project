@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid">
+    <div class="metrics-grid">
+        <div class="metric-card"><div class="metric-label">Total Records Analyzed</div><div class="metric-value">{{ stats.total_records }}</div><div class="metric-footnote">Across available CSV datasets</div></div>
+        <div class="metric-card"><div class="metric-label">Datasets Loaded</div><div class="metric-value">{{ stats.datasets_loaded }}</div><div class="metric-footnote">CSV and JSON sources</div></div>
+        <div class="metric-card"><div class="metric-label">KPIs Generated</div><div class="metric-value">{{ stats.kpis_generated }}</div><div class="metric-footnote">Unlocked with Week 3</div></div>
+        <div class="metric-card"><div class="metric-label">Reports Generated</div><div class="metric-value">{{ stats.reports_generated }}</div><div class="metric-footnote">Based on completed weeks</div></div>
+        <div class="metric-card"><div class="metric-label">Visualizations Generated</div><div class="metric-value">{{ stats.visualizations_generated }}</div><div class="metric-footnote">Charts across analytics centers</div></div>
+        <div class="metric-card"><div class="metric-label">Algorithms Completed</div><div class="metric-value">{{ stats.algorithms_completed }}</div><div class="metric-footnote">Algorithm-focused weeks</div></div>
+        <div class="metric-card"><div class="metric-label">Overall Completion %</div><div class="metric-value">{{ stats.completion_percentage }}%</div><div class="metric-footnote">Assignment completion progress</div></div>
+        <div class="metric-card"><div class="metric-label">Weeks Completed / 16</div><div class="metric-value">{{ stats.weeks_completed }}/{{ stats.total_weeks }}</div><div class="metric-footnote">Unlock more portfolio features each week</div></div>
+    </div>
+
+    <div class="table-card">
+        <div class="section-header">
+            <h3>Assignment Progress</h3>
+            <span class="small-muted">All 16 weeks tracked automatically</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Assignment Folder</th>
+                        <th>Unlocked Feature</th>
+                        <th>Status</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for week, data in progress.items() %}
+                    <tr>
+                        <td>Week {{ '%02d'|format(week) }}</td>
+                        <td>{{ data.folder or 'Not found' }}</td>
+                        <td>{{ data.feature.name if data.feature else 'N/A' }}</td>
+                        <td>
+                            {% if data.complete %}
+                                <span class="status-pill status-complete"><i class="fa-solid fa-check"></i> Complete</span>
+                            {% else %}
+                                <span class="status-pill status-locked"><i class="fa-solid fa-lock"></i> Locked</span>
+                            {% endif %}
+                        </td>
+                        <td class="table-muted">
+                            {% if data.summary is mapping %}
+                                {{ data.summary.get('topic', 'Assignment starter ready') }}
+                            {% else %}
+                                {{ data.summary or 'Starter assignment scaffold created.' }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,87 @@
+{
+  "company": "TechCorp Analytics",
+  "fiscal_year": 2024,
+  "quarters": [
+    {
+      "quarter": "Q1",
+      "revenue": 425000,
+      "profit_margin": 18.4,
+      "customer_growth": 7.2
+    },
+    {
+      "quarter": "Q2",
+      "revenue": 468500,
+      "profit_margin": 19.1,
+      "customer_growth": 8.0
+    },
+    {
+      "quarter": "Q3",
+      "revenue": 492300,
+      "profit_margin": 17.8,
+      "customer_growth": 6.4
+    },
+    {
+      "quarter": "Q4",
+      "revenue": 538900,
+      "profit_margin": 20.2,
+      "customer_growth": 9.1
+    }
+  ],
+  "kpis": {
+    "net_promoter_score": 64,
+    "retention_rate": 92.5,
+    "avg_resolution_hours": 6.2,
+    "data_quality_score": 94.2,
+    "forecast_accuracy": 88.7
+  },
+  "departments": [
+    {
+      "name": "Analytics",
+      "headcount": 7,
+      "budget": 890000,
+      "priority": "high"
+    },
+    {
+      "name": "Engineering",
+      "headcount": 8,
+      "budget": 1240000,
+      "priority": "high"
+    },
+    {
+      "name": "Sales",
+      "headcount": 4,
+      "budget": 540000,
+      "priority": "medium"
+    },
+    {
+      "name": "Marketing",
+      "headcount": 3,
+      "budget": 360000,
+      "priority": "medium"
+    },
+    {
+      "name": "Operations",
+      "headcount": 4,
+      "budget": 420000,
+      "priority": "medium"
+    },
+    {
+      "name": "Finance",
+      "headcount": 3,
+      "budget": 310000,
+      "priority": "high"
+    },
+    {
+      "name": "HR",
+      "headcount": 3,
+      "budget": 210000,
+      "priority": "low"
+    },
+    {
+      "name": "Support",
+      "headcount": 3,
+      "budget": 275000,
+      "priority": "medium"
+    }
+  ]
+}

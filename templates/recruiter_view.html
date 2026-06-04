@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>{{ lock_title }}</h3>
+        <p>{{ lock_message }}</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="resume-grid">
+        <div class="resume-card">
+            <h3>Portfolio Snapshot</h3>
+            <div class="metric-value">{{ recruiter_data.completion_pct or 0 }}%</div>
+            <p class="table-muted">{{ recruiter_data.weeks_completed or 0 }} of 16 assignments completed</p>
+        </div>
+        <div class="resume-card">
+            <h3>Core Skills</h3>
+            <ul class="skill-list">
+                {% for skill in recruiter_data.skills or [] %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="resume-card">
+            <h3>Resume Bullets</h3>
+            <ul class="resume-list">
+                {% for bullet in recruiter_data.bullets or [] %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="resume-card">
+            <h3>Unlocked Features</h3>
+            <ul class="resume-list">
+                {% for feature in recruiter_data.features_unlocked or [] %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% set lock_title = 'Recruiter View Locked' %}
+{% set lock_message = 'Complete Week 16 Assignment to unlock the Recruiter View.' %}

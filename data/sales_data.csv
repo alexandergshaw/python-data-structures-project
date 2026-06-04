@@ -1,0 +1,51 @@
+id,date,product,category,region,sales_amount,units_sold,discount,profit
+1,2023-01-15,Laptop,Computers,North,1299.99,8,0.05,320.0
+2,2023-01-28,Monitor,Accessories,South,349.5,15,0.1,92.4
+3,2023-02-03,Keyboard,Accessories,West,89.99,30,0.0,28.5
+4,2023-02-17,Mouse,Accessories,East,49.99,42,0.08,14.2
+5,2023-03-04,Tablet,Mobile,North,599.0,12,0.07,143.76
+6,2023-03-18,Headphones,Audio,South,159.95,20,0.12,41.5
+7,2023-04-02,Webcam,Accessories,West,119.49,16,0.03,33.1
+8,2023-04-21,Printer,Office,East,279.0,9,0.09,65.25
+9,2023-05-07,Laptop,Computers,Central,1399.0,7,0.04,355.1
+10,2023-05-22,Docking Station,Office,North,229.99,11,0.06,58.9
+11,2023-06-05,SSD Drive,Storage,South,149.99,18,0.05,37.8
+12,2023-06-26,Monitor,Accessories,West,399.0,10,0.11,101.0
+13,2023-07-08,Router,Networking,East,189.0,14,0.02,46.2
+14,2023-07-19,Keyboard,Accessories,Central,95.99,27,0.04,30.1
+15,2023-08-01,Laptop,Computers,North,1249.0,6,0.03,298.5
+16,2023-08-16,Projector,Office,South,799.0,5,0.1,165.0
+17,2023-09-02,Mouse,Accessories,West,54.99,35,0.06,15.75
+18,2023-09-20,Tablet,Mobile,East,629.0,9,0.05,151.8
+19,2023-10-04,Server Rack,Infrastructure,Central,1899.0,3,0.08,420.0
+20,2023-10-24,Headphones,Audio,North,169.95,19,0.09,45.0
+21,2023-11-06,Monitor,Accessories,South,359.0,13,0.07,96.15
+22,2023-11-21,Laptop,Computers,West,1499.0,5,0.05,382.4
+23,2023-12-03,Keyboard,Accessories,East,84.99,33,0.02,26.7
+24,2023-12-18,Cloud Gateway,Networking,Central,499.0,8,0.06,121.4
+25,2024-01-09,Tablet,Mobile,North,649.0,11,0.04,158.2
+26,2024-01-24,Mouse,Accessories,South,52.99,38,0.05,15.1
+27,2024-02-06,Laptop,Computers,West,1349.0,9,0.07,331.0
+28,2024-02-20,Printer,Office,East,289.0,7,0.08,69.2
+29,2024-03-05,Monitor,Accessories,Central,429.0,12,0.09,108.45
+30,2024-03-27,SSD Drive,Storage,North,159.99,22,0.03,41.3
+31,2024-04-10,Headphones,Audio,South,179.95,17,0.1,47.25
+32,2024-04-29,Router,Networking,West,199.0,16,0.04,49.8
+33,2024-05-11,Keyboard,Accessories,East,99.99,24,0.0,31.2
+34,2024-05-30,Docking Station,Office,Central,239.99,13,0.05,61.1
+35,2024-06-13,Laptop,Computers,North,1549.0,4,0.06,401.75
+36,2024-06-26,Monitor,Accessories,South,389.0,14,0.08,98.6
+37,2024-07-09,Webcam,Accessories,West,129.49,18,0.05,35.4
+38,2024-07-23,Tablet,Mobile,East,679.0,10,0.07,165.9
+39,2024-08-08,Server Rack,Infrastructure,Central,1950.0,2,0.05,460.0
+40,2024-08-21,Mouse,Accessories,North,57.99,31,0.03,16.9
+41,2024-09-04,Printer,Office,South,305.0,8,0.09,72.3
+42,2024-09-18,Cloud Gateway,Networking,West,549.0,6,0.04,134.6
+43,2024-10-03,Laptop,Computers,East,1449.0,7,0.05,370.8
+44,2024-10-19,Headphones,Audio,Central,189.95,21,0.11,48.75
+45,2024-11-02,Monitor,Accessories,North,419.0,11,0.06,107.2
+46,2024-11-17,Keyboard,Accessories,South,102.99,26,0.04,32.5
+47,2024-12-01,SSD Drive,Storage,West,169.99,20,0.05,43.6
+48,2024-12-12,Projector,Office,East,829.0,4,0.07,171.4
+49,2024-12-20,Router,Networking,Central,209.0,15,0.03,52.1
+50,2024-12-29,Laptop,Computers,North,1599.0,5,0.08,414.3

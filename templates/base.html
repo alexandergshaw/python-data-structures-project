@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | InsightHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8BCL7QyL4sz5D7C7Qev3K0qA8mY+Mgw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-badge"><i class="fa-solid fa-chart-pie"></i></div>
+            <div>
+                <h1>InsightHub</h1>
+                <p>Analytics portfolio platform</p>
+            </div>
+        </div>
+
+        <div class="sidebar-section-title">Navigation</div>
+        {% set nav_items = [
+            {'label': 'Executive Dashboard', 'route': '/', 'page_key': 'dashboard', 'icon': 'gauge-high', 'week': None},
+            {'label': 'Dataset Explorer', 'route': '/datasets', 'page_key': 'datasets', 'icon': 'database', 'week': 1},
+            {'label': 'Data Cleaning Center', 'route': '/cleaning', 'page_key': 'cleaning', 'icon': 'broom', 'week': 2},
+            {'label': 'KPI Dashboard', 'route': '/kpis', 'page_key': 'kpis', 'icon': 'chart-line', 'week': 3},
+            {'label': 'Algorithm Analysis', 'route': '/algorithms', 'page_key': 'algorithms', 'icon': 'tachometer-alt', 'week': 6},
+            {'label': 'Data Structures Showcase', 'route': '/structures', 'page_key': 'structures', 'icon': 'sitemap', 'week': 7},
+            {'label': 'Forecasting Center', 'route': '/forecasting', 'page_key': 'forecasting', 'icon': 'chart-area', 'week': 11},
+            {'label': 'Insights & Recommendations', 'route': '/insights', 'page_key': 'insights', 'icon': 'lightbulb', 'week': 15},
+            {'label': 'Recruiter View', 'route': '/recruiter', 'page_key': 'recruiter', 'icon': 'briefcase', 'week': 16}
+        ] %}
+        <ul class="nav-list">
+            {% for item in nav_items %}
+                {% set unlocked = item.week is none or progress.get(item.week, {}).get('complete', False) %}
+                <li class="nav-item {% if page == item.page_key %}active{% endif %}">
+                    {% if unlocked %}
+                        <a href="{{ item.route }}">
+                            <span class="nav-icon"><i class="fa-solid fa-{{ item.icon }}"></i></span>
+                            <span class="nav-label-group">
+                                <span class="nav-label">{{ item.label }}</span>
+                                <span class="nav-meta">{% if item.week %}Unlocked by Week {{ item.week }}{% else %}Always available{% endif %}</span>
+                            </span>
+                        </a>
+                    {% else %}
+                        <div class="nav-disabled">
+                            <span class="nav-icon"><i class="fa-solid fa-{{ item.icon }}"></i></span>
+                            <span class="nav-label-group">
+                                <span class="nav-label">{{ item.label }}</span>
+                                <span class="nav-meta">Complete Week {{ item.week }}</span>
+                            </span>
+                            <span class="nav-lock"><i class="fa-solid fa-lock"></i></span>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="sidebar-section-title">Milestones</div>
+        <div class="progress-note">{{ completion_percentage }}% complete · {{ unlocked_features|length }} unlocked features</div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h2>{{ title }}</h2>
+                <div class="page-subtitle">Professional BI dashboard powered by weekly Python assignment progress.</div>
+            </div>
+            <div class="progress-chip">
+                <strong>{{ completion_percentage }}% completion</strong>
+                <div class="progress-track">
+                    <div class="progress-bar" data-width="{{ completion_percentage }}"></div>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer">InsightHub · Flask analytics portfolio · Ready for Vercel deployment</footer>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-grid locked-shell">
+
+{% if not unlocked %}
+<div class="lock-overlay">
+    <div class="lock-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>{{ lock_title }}</h3>
+        <p>{{ lock_message }}</p>
+    </div>
+</div>
+{% endif %}
+
+    <div class="insight-grid">
+        {% for insight in insight_data.insights or [] %}
+        <div class="insight-card">
+            <div class="section-header">
+                <h4>{{ insight.title }}</h4>
+                <span class="badge badge-{{ insight.type }}">{{ insight.type|capitalize }}</span>
+            </div>
+            <p>{{ insight.body }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% set lock_title = 'Insights & Recommendations Locked' %}
+{% set lock_message = 'Complete Week 15 Assignment to unlock the Insights & Recommendations Center.' %}
