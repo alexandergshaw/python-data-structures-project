@@ -17,13 +17,26 @@ def is_palindrome(s: str) -> bool:
 
     Comparison is case-sensitive.
 
-    Example:
-        >>> is_palindrome("racecar")
-        True
-        >>> is_palindrome("hello")
-        False
-        >>> is_palindrome("a")
-        True
+    Examples:
+        A classic palindrome reads identically in both directions:
+            >>> is_palindrome("racecar")
+            True
+
+        A non-palindrome returns False:
+            >>> is_palindrome("hello")
+            False
+
+        A single character is always a palindrome:
+            >>> is_palindrome("a")
+            True
+
+        An empty string is also considered a palindrome:
+            >>> is_palindrome("")
+            True
+
+        The comparison is case-sensitive, so mixed case does not match:
+            >>> is_palindrome("Racecar")
+            False
 
     Hint:
         A string is a palindrome when it equals its reverse.
@@ -37,13 +50,26 @@ def count_vowels(text: str) -> int:
 
     Case-insensitive: 'A' and 'a' both count.
 
-    Example:
-        >>> count_vowels("hello")
-        2
-        >>> count_vowels("AEIOU")
-        5
-        >>> count_vowels("gym")
-        0
+    Examples:
+        'hello' contains 'e' and 'o' — two vowels:
+            >>> count_vowels("hello")
+            2
+
+        All five standard vowels are counted, regardless of case:
+            >>> count_vowels("AEIOU")
+            5
+
+        A word with no vowels returns zero:
+            >>> count_vowels("gym")
+            0
+
+        Mixed case is handled correctly — 'H' and 'W' are not vowels:
+            >>> count_vowels("Hello World")
+            3
+
+        An empty string has no vowels:
+            >>> count_vowels("")
+            0
 
     Hints:
         1. Convert text to lowercase: text.lower()
@@ -65,13 +91,26 @@ def clamp(value: int | float, lo: int | float, hi: int | float) -> int | float:
     If value > hi, return hi.
     Otherwise return value.
 
-    Example:
-        >>> clamp(5, 1, 10)
-        5
-        >>> clamp(-3, 0, 100)
-        0
-        >>> clamp(200, 0, 100)
-        100
+    Examples:
+        A value already within the range is returned unchanged:
+            >>> clamp(5, 1, 10)
+            5
+
+        A value below the minimum is clamped up to lo:
+            >>> clamp(-3, 0, 100)
+            0
+
+        A value above the maximum is clamped down to hi:
+            >>> clamp(200, 0, 100)
+            100
+
+        Exactly at the boundary is still within range:
+            >>> clamp(0, 0, 100)
+            0
+
+        Works with floats as well:
+            >>> clamp(3.7, 0.0, 5.0)
+            3.7
 
     Hints:
         1. if value < lo: return lo
@@ -96,11 +135,22 @@ def summarize(numbers: list[int | float]) -> dict[str, int | float]:
 
     Return all zeros when the list is empty.
 
-    Example:
-        >>> summarize([3, 1, 4, 1, 5])
-        {'count': 5, 'total': 14, 'minimum': 1, 'maximum': 5}
-        >>> summarize([])
-        {'count': 0, 'total': 0, 'minimum': 0, 'maximum': 0}
+    Examples:
+        A typical list — five elements with various values:
+            >>> summarize([3, 1, 4, 1, 5])
+            {'count': 5, 'total': 14, 'minimum': 1, 'maximum': 5}
+
+        An empty list returns a zero-filled summary to avoid errors:
+            >>> summarize([])
+            {'count': 0, 'total': 0, 'minimum': 0, 'maximum': 0}
+
+        A single-element list has equal minimum and maximum:
+            >>> summarize([42])
+            {'count': 1, 'total': 42, 'minimum': 42, 'maximum': 42}
+
+        Negative numbers are handled correctly:
+            >>> summarize([-5, -1, -3])
+            {'count': 3, 'total': -9, 'minimum': -5, 'maximum': -1}
 
     Hints:
         - Guard against an empty list: if not numbers, return the zero dict.

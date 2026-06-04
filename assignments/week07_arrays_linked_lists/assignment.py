@@ -30,11 +30,26 @@ class DynamicArray:
     def append(self, value: Any) -> None:
         """Add value to the end of self.items.
 
-        Example:
-            >>> arr = DynamicArray()
-            >>> arr.append(10)
-            >>> arr.items
-            [10]
+        Examples:
+            Appending to an empty array adds the first element:
+                >>> arr = DynamicArray()
+                >>> arr.append(10)
+                >>> arr.items
+                [10]
+
+            Subsequent appends grow the array in order:
+                >>> arr = DynamicArray()
+                >>> arr.append(1)
+                >>> arr.append(2)
+                >>> arr.append(3)
+                >>> arr.items
+                [1, 2, 3]
+
+            Any type of value can be appended:
+                >>> arr = DynamicArray()
+                >>> arr.append("hello")
+                >>> arr.items
+                ['hello']
 
         Hint:
             self.items.append(value)
@@ -44,11 +59,25 @@ class DynamicArray:
     def __len__(self) -> int:
         """Return the number of items stored.
 
-        Example:
-            >>> arr = DynamicArray()
-            >>> arr.append(5)
-            >>> len(arr)
-            1
+        Examples:
+            An empty array has length zero:
+                >>> arr = DynamicArray()
+                >>> len(arr)
+                0
+
+            After one append, length is 1:
+                >>> arr = DynamicArray()
+                >>> arr.append(5)
+                >>> len(arr)
+                1
+
+            Length grows with each append:
+                >>> arr = DynamicArray()
+                >>> arr.append("a")
+                >>> arr.append("b")
+                >>> arr.append("c")
+                >>> len(arr)
+                3
 
         Hint:
             return len(self.items)
@@ -77,11 +106,34 @@ class LinkedList:
     def append(self, value: Any) -> None:
         """Add a new node with value at the end of the list.
 
-        Example:
-            >>> ll = LinkedList()
-            >>> ll.append(1)
-            >>> ll.head.value
-            1
+        Examples:
+            Appending to an empty list makes that value the head:
+                >>> ll = LinkedList()
+                >>> ll.append(1)
+                >>> ll.head.value
+                1
+
+            Appending a second element does not change the head:
+                >>> ll = LinkedList()
+                >>> ll.append(1)
+                >>> ll.append(2)
+                >>> ll.head.value
+                1
+
+            After two appends, the second value is accessible via head.next:
+                >>> ll = LinkedList()
+                >>> ll.append(1)
+                >>> ll.append(2)
+                >>> ll.head.next.value
+                2
+
+            All appended values appear in order when converted to a list:
+                >>> ll = LinkedList()
+                >>> ll.append(10)
+                >>> ll.append(20)
+                >>> ll.append(30)
+                >>> ll.to_list()
+                [10, 20, 30]
 
         Hints:
             1. Create new_node = Node(value).
@@ -101,12 +153,32 @@ class LinkedList:
     def to_list(self) -> list[Any]:
         """Return all node values as a plain Python list, head to tail.
 
-        Example:
-            >>> ll = LinkedList()
-            >>> ll.append(1)
-            >>> ll.append(2)
-            >>> ll.to_list()
-            [1, 2]
+        Examples:
+            Two nodes are returned in insertion order:
+                >>> ll = LinkedList()
+                >>> ll.append(1)
+                >>> ll.append(2)
+                >>> ll.to_list()
+                [1, 2]
+
+            An empty linked list produces an empty plain list:
+                >>> ll = LinkedList()
+                >>> ll.to_list()
+                []
+
+            A single node produces a one-element list:
+                >>> ll = LinkedList()
+                >>> ll.append(42)
+                >>> ll.to_list()
+                [42]
+
+            Multiple nodes appear in the order they were appended:
+                >>> ll = LinkedList()
+                >>> ll.append("a")
+                >>> ll.append("b")
+                >>> ll.append("c")
+                >>> ll.to_list()
+                ['a', 'b', 'c']
 
         Hints:
             1. Start with values = [] and current = self.head.

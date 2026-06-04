@@ -16,11 +16,22 @@ def evaluate_skills(scores: list[int]) -> dict[str, float]:
 
     Return {"total": 0, "average": 0.0} for an empty list.
 
-    Example:
-        >>> evaluate_skills([80, 90])
-        {'total': 170, 'average': 85.0}
-        >>> evaluate_skills([])
-        {'total': 0, 'average': 0.0}
+    Examples:
+        Two scores — total is their sum and average is the mean:
+            >>> evaluate_skills([80, 90])
+            {'total': 170, 'average': 85.0}
+
+        An empty list returns a zero-filled dict to avoid division-by-zero:
+            >>> evaluate_skills([])
+            {'total': 0, 'average': 0.0}
+
+        A single score has a total and average equal to itself:
+            >>> evaluate_skills([75])
+            {'total': 75, 'average': 75.0}
+
+        Three scores — average is (60 + 70 + 80) / 3 = 70.0:
+            >>> evaluate_skills([60, 70, 80])
+            {'total': 210, 'average': 70.0}
 
     Hints:
         total = sum(scores)
@@ -35,11 +46,22 @@ def evaluate_skills(scores: list[int]) -> dict[str, float]:
 def next_study_topic(scores: dict[str, int]) -> str:
     """Return the topic with the lowest score, or 'review' if scores is empty.
 
-    Example:
-        >>> next_study_topic({"trees": 70, "sorting": 60})
-        'sorting'
-        >>> next_study_topic({})
-        'review'
+    Examples:
+        The topic with the lowest score is returned — here 'sorting' at 60:
+            >>> next_study_topic({"trees": 70, "sorting": 60})
+            'sorting'
+
+        An empty dict returns 'review' as a fallback:
+            >>> next_study_topic({})
+            'review'
+
+        A single topic is returned as the minimum by default:
+            >>> next_study_topic({"arrays": 85})
+            'arrays'
+
+        When all scores are equal, any one topic may be returned (the first encountered):
+            >>> next_study_topic({"searching": 70, "stacks": 70, "queues": 70}) in {"searching", "stacks", "queues"}
+            True
 
     Hints:
         if not scores: return 'review'

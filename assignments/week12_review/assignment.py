@@ -17,9 +17,22 @@ def review_checklist() -> list[str]:
     The list must contain:
         'arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting'
 
-    Example:
-        >>> 'arrays' in review_checklist()
-        True
+    Examples:
+        'arrays' is one of the six required topics:
+            >>> 'arrays' in review_checklist()
+            True
+
+        All six topics are present:
+            >>> set(review_checklist()) == {'arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting'}
+            True
+
+        Exactly six topics are returned:
+            >>> len(review_checklist())
+            6
+
+        'sorting' is the final topic in the semester sequence:
+            >>> 'sorting' in review_checklist()
+            True
 
     Hint:
         return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting']
@@ -34,13 +47,26 @@ def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
 
     Formula: (completed_topics / total_topics) * 100
 
-    Example:
-        >>> score_readiness(3, 6)
-        50.0
-        >>> score_readiness(6, 6)
-        100.0
-        >>> score_readiness(0, 6)
-        0.0
+    Examples:
+        Half the topics completed gives 50%:
+            >>> score_readiness(3, 6)
+            50.0
+
+        All topics completed gives 100%:
+            >>> score_readiness(6, 6)
+            100.0
+
+        No topics completed gives 0%:
+            >>> score_readiness(0, 6)
+            0.0
+
+        Passing zero as total_topics returns 0.0 to avoid a division-by-zero error:
+            >>> score_readiness(3, 0)
+            0.0
+
+        Works with the default total of 6 topics:
+            >>> score_readiness(2)
+            33.333333333333336
 
     Hint:
         if total_topics == 0: return 0.0

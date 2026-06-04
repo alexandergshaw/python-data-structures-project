@@ -36,11 +36,33 @@ class BinarySearchTree:
     def insert(self, value: int) -> None:
         """Insert value into the BST.
 
-        Example:
-            >>> bst = BinarySearchTree()
-            >>> bst.insert(10)
-            >>> bst.root.value
-            10
+        Examples:
+            Inserting into an empty tree makes that value the root:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.root.value
+                10
+
+            A smaller value goes to the left of the root:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.insert(5)
+                >>> bst.root.left.value
+                5
+
+            A larger value goes to the right of the root:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.insert(15)
+                >>> bst.root.right.value
+                15
+
+            Duplicate values are ignored — the BST only stores unique values:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.insert(10)
+                >>> bst.root.left is None and bst.root.right is None
+                True
 
         Hints:
             Define a helper inside this method:
@@ -64,13 +86,37 @@ class BinarySearchTree:
     def search(self, value: int) -> bool:
         """Return True if value exists in the tree, False otherwise.
 
-        Example:
-            >>> bst = BinarySearchTree()
-            >>> bst.insert(10)
-            >>> bst.search(10)
-            True
-            >>> bst.search(99)
-            False
+        Examples:
+            A value that was inserted is found:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.search(10)
+                True
+
+            A value that was never inserted is not found:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.search(99)
+                False
+
+            Searching an empty tree always returns False:
+                >>> bst = BinarySearchTree()
+                >>> bst.search(5)
+                False
+
+            A value inserted as a left child is found:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.insert(5)
+                >>> bst.search(5)
+                True
+
+            A value inserted as a right child is found:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.insert(15)
+                >>> bst.search(15)
+                True
 
         Hints:
             current = self.root
@@ -93,11 +139,29 @@ class BinarySearchTree:
     def inorder(self) -> list[int]:
         """Return all values in ascending order (left, node, right).
 
-        Example:
-            >>> bst = BinarySearchTree()
-            >>> for v in [10, 5, 15]: bst.insert(v)
-            >>> bst.inorder()
-            [5, 10, 15]
+        Examples:
+            Three values inserted in random order; inorder returns them sorted:
+                >>> bst = BinarySearchTree()
+                >>> for v in [10, 5, 15]: bst.insert(v)
+                >>> bst.inorder()
+                [5, 10, 15]
+
+            An empty tree returns an empty list:
+                >>> bst = BinarySearchTree()
+                >>> bst.inorder()
+                []
+
+            A single node returns a one-element list:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(42)
+                >>> bst.inorder()
+                [42]
+
+            Inorder traversal always produces a sorted sequence for a valid BST:
+                >>> bst = BinarySearchTree()
+                >>> for v in [20, 10, 30, 5, 15]: bst.insert(v)
+                >>> bst.inorder()
+                [5, 10, 15, 20, 30]
 
         Hint:
             def _walk(node):
@@ -144,13 +208,29 @@ class BinarySearchTree:
     def get_height(self) -> int:
         """Return the height of the tree. An empty tree has height 0.
 
-        Example:
-            >>> bst = BinarySearchTree()
-            >>> bst.get_height()
-            0
-            >>> bst.insert(10)
-            >>> bst.get_height()
-            1
+        Examples:
+            An empty tree has height 0:
+                >>> bst = BinarySearchTree()
+                >>> bst.get_height()
+                0
+
+            A single root node has height 1:
+                >>> bst = BinarySearchTree()
+                >>> bst.insert(10)
+                >>> bst.get_height()
+                1
+
+            A tree with root, one left child, and one right child has height 2:
+                >>> bst = BinarySearchTree()
+                >>> for v in [10, 5, 15]: bst.insert(v)
+                >>> bst.get_height()
+                2
+
+            A deeper tree with five nodes has height 3:
+                >>> bst = BinarySearchTree()
+                >>> for v in [10, 5, 15, 3, 7]: bst.insert(v)
+                >>> bst.get_height()
+                3
 
         Hint:
             def _height(node):
