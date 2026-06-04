@@ -18,7 +18,30 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_week13_test2_helpers():
+def test_evaluate_skills_average():
     stats = assignment.evaluate_skills([80, 90])
     assert stats['average'] == 85.0
+
+
+def test_evaluate_skills_total():
+    stats = assignment.evaluate_skills([80, 90])
+    assert stats['total'] == 170
+
+
+def test_evaluate_skills_empty():
+    stats = assignment.evaluate_skills([])
+    assert stats['total'] == 0
+    assert stats['average'] == 0.0
+
+
+def test_next_study_topic_lowest():
     assert assignment.next_study_topic({'trees': 70, 'sorting': 60}) == 'sorting'
+
+
+def test_next_study_topic_single():
+    assert assignment.next_study_topic({'recursion': 50}) == 'recursion'
+
+
+def test_next_study_topic_empty():
+    assert assignment.next_study_topic({}) == 'review'
+

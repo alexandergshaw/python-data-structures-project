@@ -12,15 +12,43 @@ LEARNING_OBJECTIVES = [
 
 
 def review_checklist() -> list[str]:
-    """Return a checklist of topics to review."""
-    return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting']
+    """Return a list of the six core topics covered this semester.
+
+    The list must contain:
+        'arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting'
+
+    Example:
+        >>> 'arrays' in review_checklist()
+        True
+
+    Hint:
+        return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting']
+    """
+    return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', None]  # TODO: replace None with the last missing topic
 
 
 def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
-    """Return completion ratio as a percentage."""
+    """Return the percentage of topics completed.
+
+    Return 0.0 if total_topics is 0.
+
+    Formula: (completed_topics / total_topics) * 100
+
+    Example:
+        >>> score_readiness(3, 6)
+        50.0
+        >>> score_readiness(6, 6)
+        100.0
+        >>> score_readiness(0, 6)
+        0.0
+
+    Hint:
+        if total_topics == 0: return 0.0
+        return (completed_topics / total_topics) * 100
+    """
     if total_topics == 0:
         return 0.0
-    return (completed_topics / total_topics) * 100
+    return None  # TODO: replace None — compute (completed_topics / total_topics) * 100
 
 
 def is_complete() -> bool:

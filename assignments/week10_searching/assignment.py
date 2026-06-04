@@ -14,15 +14,46 @@ LEARNING_OBJECTIVES = [
 
 
 def linear_search(data: list[dict[str, Any]], target: Any, key: str) -> int:
-    """Return the index of the first matching record."""
+    """Return the index of the first row where row[key] == target, or -1.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> linear_search(data, 2, "id")
+        1
+        >>> linear_search(data, 9, "id")
+        -1
+
+    Hints:
+        1. Use enumerate(data) to get both index and row.
+        2. Return index when row.get(key) == target.
+        3. Return -1 after the loop.
+    """
     for index, row in enumerate(data):
         if row.get(key) == target:
-            return index
+            return None  # TODO: replace None — return the index of this matching row
     return -1
 
 
 def binary_search(sorted_data: list[dict[str, Any]], target: Any, key: str) -> int:
-    """Binary search a sorted list of dictionaries."""
+    """Return the index of the row where row[key] == target in a sorted list, or -1.
+
+    sorted_data MUST already be sorted by key in ascending order.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> binary_search(data, 3, "id")
+        2
+
+    Hints:
+        1. low = 0, high = len(sorted_data) - 1
+        2. While low <= high:
+               mid = (low + high) // 2
+               value = sorted_data[mid].get(key)
+               if value == target: return mid
+               elif value < target: low = mid + 1
+               else: high = mid - 1
+        3. Return -1
+    """
     low = 0
     high = len(sorted_data) - 1
     while low <= high:
@@ -30,19 +61,30 @@ def binary_search(sorted_data: list[dict[str, Any]], target: Any, key: str) -> i
         value = sorted_data[mid].get(key)
         if value == target:
             return mid
-        if value < target:
-            low = mid + 1
+        elif value < target:
+            low = None  # TODO: replace None — move the lower bound past mid
         else:
-            high = mid - 1
+            high = None  # TODO: replace None — move the upper bound below mid
     return -1
 
 
 def compare_search_algorithms(data: list[dict[str, Any]], target: Any, key: str) -> dict[str, int]:
-    """Compare linear and binary search results."""
-    sorted_data = sorted(data, key=lambda row: row.get(key))
+    """Run linear and binary search, return both result indices.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> compare_search_algorithms(data, 1, "id")
+        {'linear_index': 0, 'binary_index': 0}
+
+    Hints:
+        1. sorted_data = sorted(data, key=lambda r: r.get(key))
+        2. linear_index = linear_search(data, target, key)
+        3. binary_index = binary_search(sorted_data, target, key)
+    """
+    sorted_data = sorted(data, key=lambda r: r.get(key))
     return {
-        'linear_index': linear_search(data, target, key),
-        'binary_index': binary_search(sorted_data, target, key),
+        "linear_index": linear_search(data, target, key),
+        "binary_index": binary_search(sorted_data, target, key),
     }
 
 

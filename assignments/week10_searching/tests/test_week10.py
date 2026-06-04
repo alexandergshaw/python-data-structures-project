@@ -18,9 +18,44 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_week10_searching_functions():
+def test_linear_search_found():
     data = [{'id': 1}, {'id': 2}, {'id': 3}]
     assert assignment.linear_search(data, 2, 'id') == 1
+
+
+def test_linear_search_first():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    assert assignment.linear_search(data, 1, 'id') == 0
+
+
+def test_linear_search_not_found():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    assert assignment.linear_search(data, 9, 'id') == -1
+
+
+def test_binary_search_found():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
     assert assignment.binary_search(data, 3, 'id') == 2
-    comparison = assignment.compare_search_algorithms(data, 1, 'id')
-    assert comparison['linear_index'] == 0
+
+
+def test_binary_search_first():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    assert assignment.binary_search(data, 1, 'id') == 0
+
+
+def test_binary_search_not_found():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    assert assignment.binary_search(data, 9, 'id') == -1
+
+
+def test_compare_search_linear_index():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    result = assignment.compare_search_algorithms(data, 1, 'id')
+    assert result['linear_index'] == 0
+
+
+def test_compare_search_binary_index():
+    data = [{'id': 1}, {'id': 2}, {'id': 3}]
+    result = assignment.compare_search_algorithms(data, 1, 'id')
+    assert result['binary_index'] == 0
+

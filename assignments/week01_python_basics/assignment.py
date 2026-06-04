@@ -4,55 +4,78 @@ WEEK_NUMBER = 1
 TOPIC = 'Python Basics'
 FEATURE_NAME = 'Dataset Explorer'
 
-from typing import Any
-
 LEARNING_OBJECTIVES = [
-    "Practice working with lists and dictionaries.",
-    "Summarize tabular datasets using Python basics.",
-    "Format numeric analytics results clearly.",
+    "Work with variables and data types.",
+    "Write functions that use arithmetic and f-strings.",
+    "Use the modulo operator to check divisibility.",
 ]
 
 
-def count_records(data: list[dict[str, Any]]) -> int:
-    """Return the number of records in a dataset.
+def greet(name: str) -> str:
+    """Return a greeting string for the given name.
 
     Example:
-        >>> count_records([{"id": 1}, {"id": 2}])
-        2
+        >>> greet("Alice")
+        'Hello, Alice!'
+        >>> greet("World")
+        'Hello, World!'
+
+    Hint:
+        Use an f-string: f"Hello, {name}!"
     """
-    return len(data)
+    return None  # TODO: replace None — return f"Hello, {name}!"
 
 
-def count_columns(data: list[dict[str, Any]]) -> int:
-    """Return the number of columns in the first record.
+def add(a: int | float, b: int | float) -> int | float:
+    """Return the sum of a and b.
 
     Example:
-        >>> count_columns([{"id": 1, "name": "Ava"}])
-        2
+        >>> add(3, 4)
+        7
+        >>> add(1.5, 2.5)
+        4.0
+
+    Hint:
+        Use the + operator: a + b
     """
-    if not data:
-        return 0
-    return len(data[0])
+    return None  # TODO: replace None — return a + b
 
 
-def get_dataset_summary(data: list[dict[str, Any]], name: str) -> dict[str, Any]:
-    """Return a summary dictionary for a dataset.
+def is_even(n: int) -> bool:
+    """Return True if n is even, False otherwise.
 
     Example:
-        >>> get_dataset_summary([{"id": 1}], "sales")
-        {'name': 'sales', 'records': 1, 'columns': 1}
+        >>> is_even(4)
+        True
+        >>> is_even(7)
+        False
+        >>> is_even(0)
+        True
+
+    Hint:
+        A number is even when n % 2 == 0.
+        The % operator gives the remainder after division.
     """
-    return {"name": name, "records": count_records(data), "columns": count_columns(data)}
+    return None  # TODO: replace None — return n % 2 == 0
 
 
-def format_number(n: int | float) -> str:
-    """Format a number with commas for dashboard display.
+def celsius_to_fahrenheit(c: float) -> float:
+    """Convert a Celsius temperature to Fahrenheit.
+
+    Formula: (c * 9 / 5) + 32
 
     Example:
-        >>> format_number(12000)
-        '12,000'
+        >>> celsius_to_fahrenheit(0)
+        32.0
+        >>> celsius_to_fahrenheit(100)
+        212.0
+        >>> celsius_to_fahrenheit(-40)
+        -40.0
+
+    Hint:
+        Apply the formula: (c * 9 / 5) + 32
     """
-    return f"{n:,}"
+    return None  # TODO: replace None — apply the formula (c * 9 / 5) + 32
 
 
 def is_complete() -> bool:

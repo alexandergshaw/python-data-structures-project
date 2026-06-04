@@ -18,7 +18,32 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_week12_review_helpers():
+def test_review_checklist_contains_arrays():
+    assert 'arrays' in assignment.review_checklist()
+
+
+def test_review_checklist_contains_sorting():
+    assert 'sorting' in assignment.review_checklist()
+
+
+def test_review_checklist_contains_all_six():
     checklist = assignment.review_checklist()
-    assert 'arrays' in checklist
+    expected = {'arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting'}
+    assert expected.issubset(set(checklist))
+
+
+def test_score_readiness_half():
     assert assignment.score_readiness(3, 6) == 50.0
+
+
+def test_score_readiness_full():
+    assert assignment.score_readiness(6, 6) == 100.0
+
+
+def test_score_readiness_zero_completed():
+    assert assignment.score_readiness(0, 6) == 0.0
+
+
+def test_score_readiness_zero_total():
+    assert assignment.score_readiness(0, 0) == 0.0
+

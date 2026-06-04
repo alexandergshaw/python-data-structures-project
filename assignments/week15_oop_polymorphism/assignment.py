@@ -12,26 +12,89 @@ LEARNING_OBJECTIVES = [
 
 
 class AnalyticsReport:
+    """Base class for all analytics report types."""
+
     def __init__(self, title: str) -> None:
-        self.title = title
+        """Store the report title.
+
+        Example:
+            >>> report = AnalyticsReport("Overview")
+            >>> report.title
+            'Overview'
+
+        Hint:
+            self.title = title
+        """
+        self.title = None  # TODO: replace None — store the title parameter
 
     def render(self) -> str:
-        return f"Analytics Report: {self.title}"
+        """Return a formatted string describing this report.
+
+        Example:
+            >>> AnalyticsReport("Overview").render()
+            'Analytics Report: Overview'
+
+        Hint:
+            return f"Analytics Report: {self.title}"
+        """
+        return None  # TODO: replace None — return f"Analytics Report: {self.title}"
 
 
 class KPIReport(AnalyticsReport):
+    """A report focused on key performance indicators.
+
+    Inherits __init__ from AnalyticsReport — you only need to override render().
+    """
+
     def render(self) -> str:
-        return f"KPI Report: {self.title}"
+        """Return a KPI-specific report string.
+
+        Example:
+            >>> KPIReport("Revenue").render()
+            'KPI Report: Revenue'
+
+        Hint:
+            return f"KPI Report: {self.title}"
+        """
+        return None  # TODO: replace None — return f"KPI Report: {self.title}"
 
 
 class VisualizationReport(AnalyticsReport):
+    """A report focused on visual charts and graphs.
+
+    Inherits __init__ from AnalyticsReport — you only need to override render().
+    """
+
     def render(self) -> str:
-        return f"Visualization Report: {self.title}"
+        """Return a Visualization-specific report string.
+
+        Example:
+            >>> VisualizationReport("Trend").render()
+            'Visualization Report: Trend'
+
+        Hint:
+            return f"Visualization Report: {self.title}"
+        """
+        return None  # TODO: replace None — return f"Visualization Report: {self.title}"
 
 
 class RecommendationReport(AnalyticsReport):
+    """A report with actionable recommendations.
+
+    Inherits __init__ from AnalyticsReport — you only need to override render().
+    """
+
     def render(self) -> str:
-        return f"Recommendation Report: {self.title}"
+        """Return a Recommendation-specific report string.
+
+        Example:
+            >>> RecommendationReport("Next Steps").render()
+            'Recommendation Report: Next Steps'
+
+        Hint:
+            return f"Recommendation Report: {self.title}"
+        """
+        return None  # TODO: replace None — return f"Recommendation Report: {self.title}"
 
 
 def is_complete() -> bool:
