@@ -26,8 +26,10 @@ def describe_dataset(data: list[dict[str, Any]]) -> dict[str, int]:
         - "records" = len(data)
         - "columns" = len(data[0]) if data else 0
     """
-    # TODO: Return a dict with "records" and "columns"
-    pass
+    return {
+        "records": None,  # TODO: replace None — use len(data)
+        "columns": None,  # TODO: replace None — use len(data[0]) if data else 0
+    }
 
 
 def filter_by_value(data: list[dict[str, Any]], column: str, threshold: float) -> list[dict[str, Any]]:
@@ -42,8 +44,11 @@ def filter_by_value(data: list[dict[str, Any]], column: str, threshold: float) -
         - Loop over rows (or use a list comprehension).
         - Keep a row if float(row.get(column, 0) or 0) >= threshold.
     """
-    # TODO: Return only the rows that meet the threshold
-    pass
+    result = []
+    for row in data:
+        if float(row.get(column, 0) or 0) >= threshold:
+            pass  # TODO: add row to result
+    return result
 
 
 def rank_items(data: list[dict[str, Any]], column: str) -> list[dict[str, Any]]:
@@ -57,8 +62,7 @@ def rank_items(data: list[dict[str, Any]], column: str) -> list[dict[str, Any]]:
     Hint:
         sorted(data, key=lambda row: row.get(column, 0), reverse=True)
     """
-    # TODO: Sort and return data in descending order by column
-    pass
+    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(column, 0) and reverse=True
 
 
 def is_complete() -> bool:

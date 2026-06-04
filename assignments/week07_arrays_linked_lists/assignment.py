@@ -25,8 +25,7 @@ class DynamicArray:
         Hint:
             self.items = []
         """
-        # TODO: Create self.items as an empty list
-        pass
+        self.items = None  # TODO: replace None — initialize as an empty list []
 
     def append(self, value: Any) -> None:
         """Add value to the end of self.items.
@@ -40,8 +39,7 @@ class DynamicArray:
         Hint:
             self.items.append(value)
         """
-        # TODO: Append value to self.items
-        pass
+        pass  # TODO: append value to self.items
 
     def __len__(self) -> int:
         """Return the number of items stored.
@@ -55,8 +53,7 @@ class DynamicArray:
         Hint:
             return len(self.items)
         """
-        # TODO: Return the length of self.items
-        pass
+        return None  # TODO: replace None — use len() on self.items
 
 
 @dataclass
@@ -75,8 +72,7 @@ class LinkedList:
         Hint:
             self.head = None
         """
-        # TODO: Set self.head to None
-        pass
+        self.head = None  # this is correct — head starts as None (empty list)
 
     def append(self, value: Any) -> None:
         """Add a new node with value at the end of the list.
@@ -93,8 +89,14 @@ class LinkedList:
             3. Otherwise, walk from self.head until current.next is None.
             4. Set current.next = new_node.
         """
-        # TODO: Append a new Node to the end of the linked list
-        pass
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        pass  # TODO: set current.next to new_node to attach it at the end
 
     def to_list(self) -> list[Any]:
         """Return all node values as a plain Python list, head to tail.
@@ -113,8 +115,12 @@ class LinkedList:
                    current = current.next
             3. Return values.
         """
-        # TODO: Walk the list and collect values into a plain list
-        pass
+        values = []
+        current = self.head
+        while current is not None:
+            values.append(current.value)
+            current = None  # TODO: replace None — advance to the next node (current.next)
+        return values
 
 
 def is_complete() -> bool:

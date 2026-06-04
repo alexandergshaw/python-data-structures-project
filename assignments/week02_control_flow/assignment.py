@@ -25,8 +25,11 @@ def find_missing_values(data: list[dict[str, Any]]) -> int:
         2. A value is missing when it is None or "" (empty string).
         3. Keep a running count and return it.
     """
-    # TODO: Count every value that is None or "" across all rows
-    pass
+    count = 0
+    for row in data:
+        for value in row.values():
+            pass  # TODO: if value is None or "" (empty string), add 1 to count
+    return count
 
 
 def find_duplicates(data: list[dict[str, Any]]) -> int:
@@ -43,8 +46,12 @@ def find_duplicates(data: list[dict[str, Any]]) -> int:
         3. For each unique marker, check if it appears more than once.
         4. Count how many unique markers are duplicated.
     """
-    # TODO: Count distinct row patterns that appear more than once
-    pass
+    markers = [tuple(sorted(row.items())) for row in data]
+    duplicated = 0
+    for marker in set(markers):
+        if markers.count(marker) > 1:
+            pass  # TODO: add 1 to duplicated
+    return duplicated
 
 
 def validate_positive(value: int | float, field_name: str) -> bool:
@@ -61,8 +68,9 @@ def validate_positive(value: int | float, field_name: str) -> bool:
             raise ValueError(f"{field_name} must be non-negative")
         return True
     """
-    # TODO: Raise ValueError if value is negative, otherwise return True
-    pass
+    if value < 0:
+        pass  # TODO: raise a ValueError with a message like "{field_name} must be non-negative"
+    return True
 
 
 def count_valid_records(data: list[dict[str, Any]]) -> int:
@@ -77,8 +85,11 @@ def count_valid_records(data: list[dict[str, Any]]) -> int:
         2. Check whether all values in the row are neither None nor "".
         3. Count and return the rows that pass.
     """
-    # TODO: Count rows where every value is non-empty and non-None
-    pass
+    count = 0
+    for row in data:
+        if all(v is not None and v != "" for v in row.values()):
+            pass  # TODO: add 1 to count
+    return count
 
 
 def is_complete() -> bool:

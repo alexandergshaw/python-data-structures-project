@@ -25,8 +25,7 @@ class AnalyticsReport:
         Hint:
             self.title = title
         """
-        # TODO: Save title to self.title
-        pass
+        self.title = None  # TODO: replace None — store the title parameter
 
     def render(self) -> str:
         """Return a formatted string describing this report.
@@ -38,8 +37,7 @@ class AnalyticsReport:
         Hint:
             return f"Analytics Report: {self.title}"
         """
-        # TODO: Return the report string
-        pass
+        return None  # TODO: replace None — return f"Analytics Report: {self.title}"
 
 
 class KPIReport(AnalyticsReport):
@@ -58,8 +56,7 @@ class KPIReport(AnalyticsReport):
         Hint:
             return f"KPI Report: {self.title}"
         """
-        # TODO: Return "KPI Report: {self.title}"
-        pass
+        return None  # TODO: replace None — return f"KPI Report: {self.title}"
 
 
 class VisualizationReport(AnalyticsReport):
@@ -78,8 +75,7 @@ class VisualizationReport(AnalyticsReport):
         Hint:
             return f"Visualization Report: {self.title}"
         """
-        # TODO: Return "Visualization Report: {self.title}"
-        pass
+        return None  # TODO: replace None — return f"Visualization Report: {self.title}"
 
 
 class RecommendationReport(AnalyticsReport):
@@ -98,8 +94,7 @@ class RecommendationReport(AnalyticsReport):
         Hint:
             return f"Recommendation Report: {self.title}"
         """
-        # TODO: Return "Recommendation Report: {self.title}"
-        pass
+        return None  # TODO: replace None — return f"Recommendation Report: {self.title}"
 
 
 def is_complete() -> bool:

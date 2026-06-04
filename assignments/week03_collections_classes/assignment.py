@@ -29,8 +29,8 @@ class Dataset:
             - Save a COPY of records to self.records (or [] if records is None).
               Use records[:] to copy, or just [] when None.
         """
-        # TODO: Set self.name and self.records
-        pass
+        self.name = None   # TODO: replace None — store the name parameter
+        self.records = None  # TODO: replace None — use records[:] if records is not None, else []
 
     def add_record(self, record: dict[str, Any]) -> None:
         """Append a new record (dict) to self.records.
@@ -44,8 +44,7 @@ class Dataset:
         Hint:
             Use self.records.append(record).
         """
-        # TODO: Append record to self.records
-        pass
+        pass  # TODO: append record to self.records
 
     def get_summary(self) -> dict[str, Any]:
         """Return a dict with keys "name", "records", and "columns".
@@ -62,8 +61,12 @@ class Dataset:
         Hints:
             - columns = len(self.records[0]) if self.records else 0
         """
-        # TODO: Build and return the summary dict
-        pass
+        columns = None  # TODO: replace None — use len(self.records[0]) if self.records else 0
+        return {
+            "name": self.name,
+            "records": len(self.records),
+            "columns": columns,
+        }
 
 
 class KPI:
@@ -80,8 +83,8 @@ class KPI:
         Hint:
             Set self.name = name and self.value = value.
         """
-        # TODO: Set self.name and self.value
-        pass
+        self.name = None   # TODO: replace None — store the name parameter
+        self.value = None  # TODO: replace None — store the value parameter
 
     def calculate(self, values: list[int | float]) -> float:
         """Compute the average of values, store it in self.value, and return it.
@@ -97,8 +100,10 @@ class KPI:
             - Average = sum(values) / len(values)
             - Guard against empty list: return 0.0 if not values
         """
-        # TODO: Compute average, store in self.value, return it
-        pass
+        if not values:
+            return 0.0
+        self.value = None  # TODO: replace None — compute sum(values) / len(values)
+        return self.value
 
     def format_value(self) -> str:
         """Return self.value formatted to 2 decimal places with commas.
@@ -111,8 +116,7 @@ class KPI:
         Hint:
             Use f"{self.value:,.2f}"
         """
-        # TODO: Return self.value as a formatted string
-        pass
+        return None  # TODO: replace None — use an f-string: f"{self.value:,.2f}"
 
 
 def is_complete() -> bool:

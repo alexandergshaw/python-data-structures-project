@@ -23,8 +23,7 @@ def combine_datasets(d1: list[dict[str, Any]], d2: list[dict[str, Any]]) -> list
     Hint:
         Use the + operator: list(d1) + list(d2)
     """
-    # TODO: Combine and return both lists
-    pass
+    return None  # TODO: replace None — combine d1 and d2 into one list using the + operator
 
 
 def generate_report(datasets: list[list[dict[str, Any]]]) -> dict[str, int]:
@@ -42,8 +41,10 @@ def generate_report(datasets: list[list[dict[str, Any]]]) -> dict[str, int]:
         - dataset_count = len(datasets)
         - total_records = sum(len(ds) for ds in datasets)
     """
-    # TODO: Build and return the report dict
-    pass
+    return {
+        "dataset_count": None,   # TODO: replace None — how many datasets are there?
+        "total_records": None,   # TODO: replace None — use sum(len(ds) for ds in datasets)
+    }
 
 
 def calculate_growth_rate(old_val: float, new_val: float) -> float:
@@ -64,8 +65,9 @@ def calculate_growth_rate(old_val: float, new_val: float) -> float:
     Hint:
         Check if old_val == 0 first and return 0.0.
     """
-    # TODO: Compute and return the growth rate percentage
-    pass
+    if old_val == 0:
+        return 0.0
+    return None  # TODO: replace None — apply the formula: ((new_val - old_val) / old_val) * 100
 
 
 def is_complete() -> bool:

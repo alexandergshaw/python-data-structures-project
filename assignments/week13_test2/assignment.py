@@ -27,8 +27,9 @@ def evaluate_skills(scores: list[int]) -> dict[str, float]:
         average = total / len(scores) if scores else 0.0
         return {'total': total, 'average': average}
     """
-    # TODO: Compute total and average, return as a dict
-    pass
+    total = sum(scores)
+    average = None  # TODO: replace None — compute total / len(scores) if scores else 0.0
+    return {"total": total, "average": average}
 
 
 def next_study_topic(scores: dict[str, int]) -> str:
@@ -44,8 +45,9 @@ def next_study_topic(scores: dict[str, int]) -> str:
         if not scores: return 'review'
         return min(scores, key=scores.get)
     """
-    # TODO: Find and return the topic with the minimum score
-    pass
+    if not scores:
+        return 'review'
+    return None  # TODO: replace None — use min(scores, key=scores.get) to find the lowest topic
 
 
 def is_complete() -> bool:

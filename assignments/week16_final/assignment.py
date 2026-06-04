@@ -31,8 +31,8 @@ def generate_final_summary(progress: dict[int, dict[str, object]]) -> dict[str, 
         Step 2: "total" is just len(progress).
         Step 3: Return {"completed": ..., "total": ...}
     """
-    # TODO: Count completed weeks and return the summary dict
-    pass
+    completed = sum(1 for v in progress.values() if v.get("complete"))
+    return {"completed": completed, "total": None}  # TODO: replace None with len(progress)
 
 
 def create_resume_bullets(skills: list[str]) -> list[str]:
@@ -53,8 +53,7 @@ def create_resume_bullets(skills: list[str]) -> list[str]:
         Step 1: Use a list comprehension.
         Step 2: For each skill: f"Applied {skill} in InsightHub portfolio work."
     """
-    # TODO: Return a list of formatted bullet strings
-    pass
+    return [None for skill in skills]  # TODO: replace None with f"Applied {skill} in InsightHub portfolio work."
 
 
 def calculate_final_grade(weeks_completed: int) -> str:
@@ -77,8 +76,17 @@ def calculate_final_grade(weeks_completed: int) -> str:
         Step 1: percentage = (weeks_completed / 16) * 100
         Step 2: Use if/elif/else comparing percentage to 90, 80, 70, 60.
     """
-    # TODO: Calculate percentage and return the correct letter grade
-    pass
+    percentage = (weeks_completed / 16) * 100
+    if percentage >= 90:
+        return 'A'
+    elif percentage >= 80:
+        return None  # TODO: replace None — what letter grade is 80–89%?
+    elif percentage >= 70:
+        return None  # TODO: replace None — what letter grade is 70–79%?
+    elif percentage >= 60:
+        return None  # TODO: replace None — what letter grade is 60–69%?
+    else:
+        return None  # TODO: replace None — what letter grade is below 60%?
 
 
 def is_complete() -> bool:

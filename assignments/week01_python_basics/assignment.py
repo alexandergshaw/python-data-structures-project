@@ -27,8 +27,7 @@ def count_records(data: list[dict[str, Any]]) -> int:
     Hint:
         Use the built-in len() function on the list.
     """
-    # TODO: Return the number of items in data
-    pass
+    return None  # TODO: replace None — use len() to count the rows in data
 
 
 def count_columns(data: list[dict[str, Any]]) -> int:
@@ -47,8 +46,10 @@ def count_columns(data: list[dict[str, Any]]) -> int:
         2. Access the first row with data[0].
         3. Count the keys in that row with len().
     """
-    # TODO: Return 0 if data is empty, otherwise return the number of keys in data[0]
-    pass
+    if not data:
+        return 0
+    first_row = data[0]
+    return None  # TODO: replace None — use len() to count the keys in first_row
 
 
 def get_dataset_summary(data: list[dict[str, Any]], name: str) -> dict[str, Any]:
@@ -63,8 +64,11 @@ def get_dataset_summary(data: list[dict[str, Any]], name: str) -> dict[str, Any]
     Hint:
         Call count_records() and count_columns() to fill in the values.
     """
-    # TODO: Build and return a dict with keys "name", "records", and "columns"
-    pass
+    return {
+        "name": None,     # TODO: replace None with the dataset name
+        "records": None,  # TODO: replace None — call count_records(data)
+        "columns": None,  # TODO: replace None — call count_columns(data)
+    }
 
 
 def format_number(n: int | float) -> str:
@@ -79,8 +83,7 @@ def format_number(n: int | float) -> str:
     Hint:
         Use an f-string with the comma format specifier: f"{n:,}"
     """
-    # TODO: Return n formatted with commas
-    pass
+    return None  # TODO: replace None — use an f-string with the :, format specifier on n
 
 
 def is_complete() -> bool:

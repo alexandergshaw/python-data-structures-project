@@ -24,8 +24,7 @@ def review_checklist() -> list[str]:
     Hint:
         return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', 'sorting']
     """
-    # TODO: Return a list of the six topic strings
-    pass
+    return ['arrays', 'linked lists', 'stacks', 'queues', 'searching', None]  # TODO: replace None with the last missing topic
 
 
 def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
@@ -47,8 +46,9 @@ def score_readiness(completed_topics: int, total_topics: int = 6) -> float:
         if total_topics == 0: return 0.0
         return (completed_topics / total_topics) * 100
     """
-    # TODO: Compute and return the readiness percentage
-    pass
+    if total_topics == 0:
+        return 0.0
+    return None  # TODO: replace None — compute (completed_topics / total_topics) * 100
 
 
 def is_complete() -> bool:

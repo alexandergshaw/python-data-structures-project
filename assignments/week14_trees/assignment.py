@@ -51,8 +51,15 @@ class BinarySearchTree:
                     return node
             Then call: self.root = _insert(self.root, value)
         """
-        # TODO: Use a recursive helper to insert value in the correct position
-        pass
+        def _insert(node, new_value):
+            if node is None:
+                return TreeNode(new_value)
+            if new_value < node.value:
+                node.left = _insert(node.left, new_value)
+            elif new_value > node.value:
+                pass  # TODO: set node.right = _insert(node.right, new_value)
+            return node
+        self.root = _insert(self.root, value)
 
     def search(self, value: int) -> bool:
         """Return True if value exists in the tree, False otherwise.
@@ -73,8 +80,15 @@ class BinarySearchTree:
                 else: current = current.right
             return False
         """
-        # TODO: Walk the tree to find the value
-        pass
+        current = self.root
+        while current is not None:
+            if current.value == value:
+                return True
+            elif value < current.value:
+                current = None  # TODO: replace None — move to the left child
+            else:
+                current = None  # TODO: replace None — move to the right child
+        return False
 
     def inorder(self) -> list[int]:
         """Return all values in ascending order (left, node, right).
@@ -91,8 +105,11 @@ class BinarySearchTree:
                 return _walk(node.left) + [node.value] + _walk(node.right)
             return _walk(self.root)
         """
-        # TODO: Return values in inorder (left → node → right)
-        pass
+        def _walk(node):
+            if node is None:
+                return []
+            return None  # TODO: replace None — return _walk(node.left) + [node.value] + _walk(node.right)
+        return _walk(self.root)
 
     def preorder(self) -> list[int]:
         """Return values in preorder (node, left, right).
@@ -103,8 +120,11 @@ class BinarySearchTree:
                 return [node.value] + _walk(node.left) + _walk(node.right)
             return _walk(self.root)
         """
-        # TODO: Return values in preorder (node → left → right)
-        pass
+        def _walk(node):
+            if node is None:
+                return []
+            return None  # TODO: replace None — return [node.value] + _walk(node.left) + _walk(node.right)
+        return _walk(self.root)
 
     def postorder(self) -> list[int]:
         """Return values in postorder (left, right, node).
@@ -115,8 +135,11 @@ class BinarySearchTree:
                 return _walk(node.left) + _walk(node.right) + [node.value]
             return _walk(self.root)
         """
-        # TODO: Return values in postorder (left → right → node)
-        pass
+        def _walk(node):
+            if node is None:
+                return []
+            return None  # TODO: replace None — return _walk(node.left) + _walk(node.right) + [node.value]
+        return _walk(self.root)
 
     def get_height(self) -> int:
         """Return the height of the tree. An empty tree has height 0.
@@ -135,8 +158,11 @@ class BinarySearchTree:
                 return 1 + max(_height(node.left), _height(node.right))
             return _height(self.root)
         """
-        # TODO: Compute and return the tree's height recursively
-        pass
+        def _height(node):
+            if node is None:
+                return 0
+            return None  # TODO: replace None — return 1 + max(_height(node.left), _height(node.right))
+        return _height(self.root)
 
 
 def is_complete() -> bool:

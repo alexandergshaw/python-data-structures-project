@@ -26,8 +26,9 @@ def recursive_sum(data: list[int]) -> int:
         Base case:     if not data: return 0
         Recursive case: data[0] + recursive_sum(data[1:])
     """
-    # TODO: Add the first element to the recursive sum of the rest
-    pass
+    if not data:
+        return 0
+    return None  # TODO: replace None — add data[0] to the recursive sum of data[1:]
 
 
 def recursive_search(data: list[Any], target: Any, index: int = 0) -> int:
@@ -44,8 +45,11 @@ def recursive_search(data: list[Any], target: Any, index: int = 0) -> int:
         Base case 2:   if data[index] == target: return index
         Recursive case: return recursive_search(data, target, index + 1)
     """
-    # TODO: Check current index, recurse on remaining
-    pass
+    if index >= len(data):
+        return -1
+    if data[index] == target:
+        return index
+    return None  # TODO: replace None — recurse with index + 1
 
 
 def flatten_nested(data: list[Any]) -> list[Any]:
@@ -64,8 +68,13 @@ def flatten_nested(data: list[Any]) -> list[Any]:
                else:                      flat.append(item)
         3. Return flat
     """
-    # TODO: Build and return a flat list, recursing into nested lists
-    pass
+    flat = []
+    for item in data:
+        if isinstance(item, list):
+            pass  # TODO: extend flat with the result of recursively flattening item
+        else:
+            pass  # TODO: append item to flat
+    return flat
 
 
 def recursive_count(data: list[Any]) -> int:
@@ -78,8 +87,7 @@ def recursive_count(data: list[Any]) -> int:
     Hint:
         Use flatten_nested(data) and return len() of the result.
     """
-    # TODO: Flatten and count the items
-    pass
+    return None  # TODO: replace None — call flatten_nested(data) then return len() of the result
 
 
 def is_complete() -> bool:
