@@ -1,57 +1,8 @@
 # Assignment 0: Development Environment Setup
 
-## Assignment Overview
-
-Assignment 0 establishes the professional software development workflow you will use throughout this course. Every assignment going forward will follow the same process: fork a repository, write code in a cloud environment, test your changes, and submit your work using a Pull Request.
-
-By completing this assignment, you will learn how to:
-
-- Fork a GitHub repository
-- Create and use a GitHub Codespace
-- Run an application in a cloud development environment
-- Deploy an application to Vercel
-- Create and use Git branches
-- Make and test code changes
-- Commit and push code to GitHub
-- Open and manage Pull Requests
-- Review automated CI/CD checks
-- Merge changes into the main branch
-- Verify production deployments
-
-> **Estimated completion time:** 1–2 hours
-
----
-
-## Learning Objectives
-
-By the end of this assignment, you will be able to:
-
-- Explain the purpose of repositories, forks, branches, and pull requests
-- Run an application using GitHub Codespaces
-- Deploy an application using Vercel
-- Use Git commands to manage source code
-- Verify automated tests and deployment pipelines
-- Follow a professional software development workflow
-
----
-
 ## Phase 1: Repository Setup & Deployment
 
-### Objective
-
-In this phase, you will create your own copy of the project, launch a cloud development environment, run the application locally, and deploy it to production.
-
----
-
 ### Step 1: Fork the Repository
-
-**What is a repository?**
-A **repository** (often called a "repo") is a folder that stores your project's code, history, and files. It lives on GitHub and tracks every change ever made to the project.
-
-**What is a fork?**
-A **fork** is your personal copy of someone else's repository. Forking lets you make changes without affecting the original project. You need your own fork so you can freely experiment, commit code, and submit your work independently.
-
-**Instructions:**
 
 1. Open your web browser and navigate to the course repository on GitHub.
 2. In the top-right corner of the repository page, click the **Fork** button.
@@ -68,14 +19,6 @@ GitHub will redirect you to your personal copy of the repository. The URL will i
 
 ### Step 2: Create a GitHub Codespace
 
-**What is GitHub Codespaces?**
-**GitHub Codespaces** is a cloud-based development environment that runs directly in your browser. It gives you a full code editor, terminal, and all the tools you need — with no local installation required.
-
-**Why Codespaces instead of installing software locally?**
-Setting up a development environment locally can be complex and error-prone, especially across different operating systems. Codespaces provides a consistent, pre-configured environment that works the same way for every student.
-
-**Instructions:**
-
 1. Open your forked repository on GitHub.
 2. Click the green **Code** button near the top-right of the repository page.
 3. Select the **Codespaces** tab in the dropdown.
@@ -89,18 +32,14 @@ GitHub will begin building your Codespace. This opens a browser-based version of
 
 ### Step 3: Explore the Development Environment
 
-Once your Codespace is ready, take a moment to get familiar with the interface:
-
 - **File Explorer** (left sidebar, folder icon): Browse and open project files.
 - **Source Control panel** (left sidebar, branch icon): Stage, commit, and manage Git changes without typing commands.
-- **Terminal** (bottom panel or `Ctrl+\``): Run commands directly on the cloud server. This is where you will install dependencies, run the app, and execute tests.
-- **Ports panel** (bottom panel, "Ports" tab): Lists network ports being used by your running application. Use this to open the app in your browser.
+- **Terminal** (bottom panel or `Ctrl+\``): Run commands directly on the cloud server.
+- **Ports panel** (bottom panel, "Ports" tab): Lists network ports being used by your running application.
 
 ---
 
 ### Step 4: Install Project Dependencies
-
-**Dependencies** are external packages your project needs to run. This project uses Python and Flask.
 
 In the Terminal, run:
 
@@ -108,23 +47,19 @@ In the Terminal, run:
 pip install -r requirements.txt
 ```
 
-This reads the `requirements.txt` file and installs all required packages automatically.
-
 > **Tip:** If you see a "command not found" error, make sure you are in the Terminal panel at the bottom of the editor, not the search bar.
 
 ---
 
 ### Step 5: Run the Application
 
-Start the application by running the following command in the Terminal:
+In the Terminal, run:
 
 ```bash
 python app.py
 ```
 
-You should see output indicating the Flask development server has started.
-
-**Opening the application in your browser:**
+**Open the application in your browser:**
 
 1. Click the **Ports** tab at the bottom of the editor.
 2. Locate the forwarded port (typically port `5000`).
@@ -134,25 +69,15 @@ You should see output indicating the Flask development server has started.
 
 ### Step 6: Verify the Application
 
-Before moving on, confirm that the application is working:
+- Confirm the application loads successfully in your browser.
+- Browse the application briefly.
+- Note any error messages in the terminal or browser before continuing.
 
-- The application should load successfully in your browser.
-- Browse the application briefly to understand what it does.
-- If you see any error messages in the terminal or browser, note them before continuing.
-
-> **Tip:** Most startup errors are caused by missing dependencies. If the app fails to start, re-run `pip install -r requirements.txt` and try again.
+> **Tip:** If the app fails to start, re-run `pip install -r requirements.txt` and try again.
 
 ---
 
 ### Step 7: Deploy to Vercel
-
-**What is Vercel?**
-**Vercel** is a cloud platform that hosts web applications and makes them publicly accessible on the internet. When you push code changes to GitHub, Vercel can automatically rebuild and redeploy your application — this is called **continuous deployment**.
-
-**Why use Vercel?**
-Professional development teams use automated deployment platforms so that every approved code change immediately goes live without manual intervention. Learning this workflow now prepares you for real-world software development.
-
-**Instructions:**
 
 1. Go to [https://vercel.com](https://vercel.com) and sign in with your GitHub account (or create a free account).
 2. From the Vercel dashboard, click **Add New… → Project**.
@@ -176,29 +101,11 @@ Vercel will build and deploy your application. This typically takes 1–2 minute
 
 ---
 
-### Phase 1 Deliverables
-
-- ✅ Forked GitHub repository
-- ✅ Working GitHub Codespace
-- ✅ Successful Vercel deployment with a live URL
-
----
-
 ## Phase 2: First Code Change
-
-### Objective
-
-In this phase, you will create your first branch, make a visible change to the application, run the automated tests, and prepare your changes for submission.
 
 ---
 
 ### Step 1: Create a Feature Branch
-
-**What is a branch?**
-A **branch** is an independent line of development within a repository. It lets you work on changes without affecting the main codebase until your work is reviewed and approved.
-
-**Why do professional teams use branches?**
-Branches keep work isolated. Multiple developers can work simultaneously without overwriting each other's changes. When work is complete, it is reviewed and merged into the main branch.
 
 In the Terminal, run:
 
@@ -206,23 +113,13 @@ In the Terminal, run:
 git checkout -b assignment-0-setup
 ```
 
-This creates a new branch named `assignment-0-setup` and switches to it immediately.
-
 > **Tip:** You can verify which branch you are on by running `git branch`. The active branch is marked with an asterisk (`*`).
 
 ---
 
 ### Step 2: Make a Visible Change
 
-Make a simple, visible modification to the application. The goal is to confirm you can edit code and see the result.
-
-**Suggestions:**
-
-- Add your name to the homepage or a status message
-- Update a welcome heading or introductory text
-- Add a short personal introduction to a page
-
-Open a template file (look in the `templates/` folder), find text you want to change, and edit it. Save the file when done.
+Open a template file in the `templates/` folder, make a small visible edit (e.g., add your name to a heading or welcome message), and save the file.
 
 > **Note:** Keep the change small. You are not expected to build a feature — you are learning the workflow.
 
@@ -240,88 +137,47 @@ If your change does not appear, double-check that you saved the file and that yo
 
 ### Step 4: Run Automated Tests
 
-**What are automated tests?**
-**Automated tests** are scripts that verify your code behaves correctly. Instead of manually clicking through the application every time you make a change, tests check expected behavior instantly and consistently.
-
-**Why is testing important?**
-Tests catch bugs early, prevent regressions (accidentally breaking existing features), and give your team confidence that changes are safe to deploy.
-
-Run the project's test suite with:
-
 ```bash
 python -m pytest assignments/ -q
 ```
 
-Review the output. All tests should pass (shown as dots or `passed`). If any tests fail, read the error message carefully — it will tell you which test failed and why.
+Review the output. All tests should pass. If any tests fail, read the error message — it will tell you which test failed and why.
 
-> **Tip:** Tests that were already failing before you made any changes are not your responsibility for this assignment. Focus on ensuring your changes do not introduce new failures.
+> **Tip:** Tests that were already failing before you made any changes are not your responsibility for this assignment.
 
 ---
 
 ### Step 5: Commit the Change
 
-**Committing** saves a snapshot of your changes to the repository's history. Each commit should represent a single logical change with a descriptive message.
-
-Run the following commands in order:
-
 ```bash
 git status
 ```
-Shows which files have been modified. Review this before adding anything.
 
 ```bash
 git add .
 ```
-Stages all modified files, marking them to be included in the next commit.
 
 ```bash
 git commit -m "Complete Assignment 0 setup"
 ```
-Creates a commit with the message `Complete Assignment 0 setup`. The message describes what changed and why.
 
 ---
 
 ### Step 6: Push the Branch
 
-**Pushing** uploads your local commits to GitHub so they are visible online and can be reviewed.
-
 ```bash
 git push origin assignment-0-setup
 ```
-
-- `origin` refers to your forked repository on GitHub.
-- `assignment-0-setup` is the name of the branch being pushed.
 
 After pushing, your branch and commits will appear on your GitHub repository page.
 
 ---
 
-### Phase 2 Deliverables
-
-- ✅ Feature branch (`assignment-0-setup`)
-- ✅ Visible code change in the application
-- ✅ Passing automated tests
-- ✅ Branch pushed to GitHub
-
----
-
 ## Phase 3: Pull Request Workflow
-
-### Objective
-
-In this phase, you will submit your work using the same workflow used by professional software development teams.
 
 ---
 
 ### Step 1: Open a Pull Request
-
-**What is a Pull Request?**
-A **Pull Request** (PR) is a formal request to merge changes from one branch into another. It provides a space for code review, discussion, and automated checks before changes are accepted.
-
-**Why are Pull Requests used?**
-Pull Requests are the standard mechanism for submitting, reviewing, and approving code in professional teams. They create a permanent record of what changed, who reviewed it, and why it was approved.
-
-**Instructions:**
 
 1. Go to your forked repository on GitHub.
 2. GitHub will display a banner saying your branch was recently pushed. Click **Compare & pull request**.
@@ -353,18 +209,6 @@ Completed repository setup, deployment verification, first code change, testing,
 
 ### Step 3: Review Automated Checks
 
-**What is GitHub Actions?**
-**GitHub Actions** is a built-in automation platform that runs tasks automatically when you push code or open a Pull Request. These tasks are defined in workflow files inside the repository.
-
-**What does CI/CD mean?**
-- **CI (Continuous Integration):** Automatically builds and tests every change to catch problems early.
-- **CD (Continuous Deployment):** Automatically deploys changes that pass all checks.
-
-**Why do automated checks exist?**
-Checks ensure that code meets quality standards before it is merged. They prevent broken code from reaching the main branch and, ultimately, production.
-
-**Instructions:**
-
 1. On your Pull Request page, scroll down to the **Checks** section.
 2. Wait for all checks to complete (this may take a minute or two).
 3. Verify that all checks show a green ✅ status.
@@ -375,63 +219,20 @@ If any check fails, click on it to view the detailed log and understand what wen
 
 ### Step 4: Merge the Pull Request
 
-Once all checks pass:
-
 1. Scroll to the bottom of the Pull Request page.
 2. Click **Merge pull request**.
 3. Click **Confirm merge**.
-4. After a successful merge, click **Delete branch** to clean up the feature branch.
-
-> **Tip:** Deleting merged branches is a professional best practice. It keeps the repository tidy and makes it clear which branches contain active work.
+4. Click **Delete branch** to clean up the feature branch.
 
 ---
 
 ### Step 5: Verify Automatic Redeployment
 
-When changes are merged into `main`, Vercel automatically detects the update and triggers a new deployment. This is continuous deployment in action.
-
-**Instructions:**
-
 1. Open your Vercel dashboard at [https://vercel.com](https://vercel.com).
 2. Select your project.
 3. Confirm a new deployment was triggered after the merge (check the deployments list).
 4. Once the deployment finishes, click the live URL.
-5. Verify that your code change (e.g., your name or message) appears in the production application.
-
----
-
-### Phase 3 Deliverables
-
-- ✅ Pull Request URL
-- ✅ Passing GitHub Actions checks
-- ✅ Merged Pull Request
-- ✅ Updated production deployment on Vercel
-
----
-
-## Submission Requirements
-
-Submit the following in the course learning management system:
-
-| Item | Description |
-|---|---|
-| GitHub Repository URL | Link to your forked repository |
-| Vercel Deployment URL | Link to your live production deployment |
-| Pull Request URL | Link to the merged Pull Request |
-| Screenshot — Tests | Screenshot showing passing `pytest` output in the terminal |
-| Screenshot — Deployment | Screenshot showing successful deployment in the Vercel dashboard |
-
----
-
-## Grading Rubric
-
-| Category | Points |
-|---|---|
-| Repository Setup & Deployment | 35 |
-| First Code Change | 35 |
-| Pull Request Workflow | 30 |
-
-**Total: 100 Points**
+5. Verify that your code change appears in the production application.
 
 ---
 
