@@ -14,37 +14,105 @@ LEARNING_OBJECTIVES = [
 
 
 class Dataset:
-    """Represent a named collection of records."""
+    """A named collection of records (rows as dictionaries)."""
 
     def __init__(self, name: str, records: list[dict[str, Any]] | None = None) -> None:
-        self.name = name
-        self.records = records[:] if records else []
+        """Store the dataset name and an initial list of records.
+
+        Example:
+            >>> ds = Dataset("sales", [{"id": 1}])
+            >>> ds.name
+            'sales'
+
+        Hints:
+            - Save name to self.name.
+            - Save a COPY of records to self.records (or [] if records is None).
+              Use records[:] to copy, or just [] when None.
+        """
+        # TODO: Set self.name and self.records
+        pass
 
     def add_record(self, record: dict[str, Any]) -> None:
-        """Add a record to the dataset."""
-        self.records.append(record)
+        """Append a new record (dict) to self.records.
+
+        Example:
+            >>> ds = Dataset("sales")
+            >>> ds.add_record({"id": 1})
+            >>> len(ds.records)
+            1
+
+        Hint:
+            Use self.records.append(record).
+        """
+        # TODO: Append record to self.records
+        pass
 
     def get_summary(self) -> dict[str, Any]:
-        """Return a summary of the dataset."""
-        columns = len(self.records[0]) if self.records else 0
-        return {"name": self.name, "records": len(self.records), "columns": columns}
+        """Return a dict with keys "name", "records", and "columns".
+
+        "records" is the row count.
+        "columns" is the number of keys in the first row (0 if empty).
+
+        Example:
+            >>> ds = Dataset("sales")
+            >>> ds.add_record({"id": 1, "amount": 50})
+            >>> ds.get_summary()
+            {'name': 'sales', 'records': 1, 'columns': 2}
+
+        Hints:
+            - columns = len(self.records[0]) if self.records else 0
+        """
+        # TODO: Build and return the summary dict
+        pass
 
 
 class KPI:
-    """Represent a KPI metric with a numeric value."""
+    """A named key performance indicator with a numeric value."""
 
     def __init__(self, name: str, value: float = 0.0) -> None:
-        self.name = name
-        self.value = value
+        """Store the KPI name and initial value.
+
+        Example:
+            >>> kpi = KPI("Revenue")
+            >>> kpi.name
+            'Revenue'
+
+        Hint:
+            Set self.name = name and self.value = value.
+        """
+        # TODO: Set self.name and self.value
+        pass
 
     def calculate(self, values: list[int | float]) -> float:
-        """Calculate the average from a sequence of values."""
-        self.value = sum(values) / len(values) if values else 0.0
-        return self.value
+        """Compute the average of values, store it in self.value, and return it.
+
+        Return 0.0 when values is empty.
+
+        Example:
+            >>> kpi = KPI("Revenue")
+            >>> kpi.calculate([10, 20, 30])
+            20.0
+
+        Hints:
+            - Average = sum(values) / len(values)
+            - Guard against empty list: return 0.0 if not values
+        """
+        # TODO: Compute average, store in self.value, return it
+        pass
 
     def format_value(self) -> str:
-        """Format the KPI value for display."""
-        return f"{self.value:,.2f}"
+        """Return self.value formatted to 2 decimal places with commas.
+
+        Example:
+            >>> kpi = KPI("Revenue", 20.0)
+            >>> kpi.format_value()
+            '20.00'
+
+        Hint:
+            Use f"{self.value:,.2f}"
+        """
+        # TODO: Return self.value as a formatted string
+        pass
 
 
 def is_complete() -> bool:

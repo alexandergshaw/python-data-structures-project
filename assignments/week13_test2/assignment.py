@@ -12,15 +12,40 @@ LEARNING_OBJECTIVES = [
 
 
 def evaluate_skills(scores: list[int]) -> dict[str, float]:
-    """Return total and average practice scores."""
-    total = sum(scores)
-    average = total / len(scores) if scores else 0.0
-    return {'total': total, 'average': average}
+    """Return the total and average of a list of practice scores.
+
+    Return {"total": 0, "average": 0.0} for an empty list.
+
+    Example:
+        >>> evaluate_skills([80, 90])
+        {'total': 170, 'average': 85.0}
+        >>> evaluate_skills([])
+        {'total': 0, 'average': 0.0}
+
+    Hints:
+        total = sum(scores)
+        average = total / len(scores) if scores else 0.0
+        return {'total': total, 'average': average}
+    """
+    # TODO: Compute total and average, return as a dict
+    pass
 
 
 def next_study_topic(scores: dict[str, int]) -> str:
-    """Return the topic with the lowest score."""
-    return min(scores, key=scores.get) if scores else 'review'
+    """Return the topic with the lowest score, or 'review' if scores is empty.
+
+    Example:
+        >>> next_study_topic({"trees": 70, "sorting": 60})
+        'sorting'
+        >>> next_study_topic({})
+        'review'
+
+    Hints:
+        if not scores: return 'review'
+        return min(scores, key=scores.get)
+    """
+    # TODO: Find and return the topic with the minimum score
+    pass
 
 
 def is_complete() -> bool:

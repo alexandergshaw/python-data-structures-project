@@ -18,10 +18,60 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_week14_tree_structure():
+def test_insert_root():
     tree = assignment.BinarySearchTree()
-    for value in [10, 5, 15, 12]:
-        tree.insert(value)
+    tree.insert(10)
+    assert tree.root.value == 10
+
+
+def test_search_found():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15, 12]:
+        tree.insert(v)
     assert tree.search(12) is True
+
+
+def test_search_not_found():
+    tree = assignment.BinarySearchTree()
+    tree.insert(10)
+    assert tree.search(99) is False
+
+
+def test_inorder_sorted():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15, 12]:
+        tree.insert(v)
     assert tree.inorder() == [5, 10, 12, 15]
+
+
+def test_preorder_root_first():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15]:
+        tree.insert(v)
+    assert tree.preorder()[0] == 10
+
+
+def test_postorder_root_last():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15]:
+        tree.insert(v)
+    assert tree.postorder()[-1] == 10
+
+
+def test_get_height_empty():
+    tree = assignment.BinarySearchTree()
+    assert tree.get_height() == 0
+
+
+def test_get_height_single():
+    tree = assignment.BinarySearchTree()
+    tree.insert(10)
+    assert tree.get_height() == 1
+
+
+def test_get_height_multi():
+    tree = assignment.BinarySearchTree()
+    for v in [10, 5, 15, 12]:
+        tree.insert(v)
     assert tree.get_height() >= 2
+

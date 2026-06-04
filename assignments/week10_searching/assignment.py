@@ -14,36 +14,63 @@ LEARNING_OBJECTIVES = [
 
 
 def linear_search(data: list[dict[str, Any]], target: Any, key: str) -> int:
-    """Return the index of the first matching record."""
-    for index, row in enumerate(data):
-        if row.get(key) == target:
-            return index
-    return -1
+    """Return the index of the first row where row[key] == target, or -1.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> linear_search(data, 2, "id")
+        1
+        >>> linear_search(data, 9, "id")
+        -1
+
+    Hints:
+        1. Use enumerate(data) to get both index and row.
+        2. Return index when row.get(key) == target.
+        3. Return -1 after the loop.
+    """
+    # TODO: Scan through data and return the matching index or -1
+    pass
 
 
 def binary_search(sorted_data: list[dict[str, Any]], target: Any, key: str) -> int:
-    """Binary search a sorted list of dictionaries."""
-    low = 0
-    high = len(sorted_data) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        value = sorted_data[mid].get(key)
-        if value == target:
-            return mid
-        if value < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-    return -1
+    """Return the index of the row where row[key] == target in a sorted list, or -1.
+
+    sorted_data MUST already be sorted by key in ascending order.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> binary_search(data, 3, "id")
+        2
+
+    Hints:
+        1. low = 0, high = len(sorted_data) - 1
+        2. While low <= high:
+               mid = (low + high) // 2
+               value = sorted_data[mid].get(key)
+               if value == target: return mid
+               elif value < target: low = mid + 1
+               else: high = mid - 1
+        3. Return -1
+    """
+    # TODO: Implement binary search on sorted_data
+    pass
 
 
 def compare_search_algorithms(data: list[dict[str, Any]], target: Any, key: str) -> dict[str, int]:
-    """Compare linear and binary search results."""
-    sorted_data = sorted(data, key=lambda row: row.get(key))
-    return {
-        'linear_index': linear_search(data, target, key),
-        'binary_index': binary_search(sorted_data, target, key),
-    }
+    """Run linear and binary search, return both result indices.
+
+    Example:
+        >>> data = [{"id": 1}, {"id": 2}, {"id": 3}]
+        >>> compare_search_algorithms(data, 1, "id")
+        {'linear_index': 0, 'binary_index': 0}
+
+    Hints:
+        1. sorted_data = sorted(data, key=lambda r: r.get(key))
+        2. linear_index = linear_search(data, target, key)
+        3. binary_index = binary_search(sorted_data, target, key)
+    """
+    # TODO: Call both search functions and return their indices in a dict
+    pass
 
 
 def is_complete() -> bool:

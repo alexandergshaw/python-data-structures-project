@@ -15,36 +15,130 @@ LEARNING_OBJECTIVES = [
 
 
 class Stack:
+    """Last-In, First-Out (LIFO) data structure."""
+
     def __init__(self) -> None:
-        self.items: list[Any] = []
+        """Initialize self.items as an empty list.
+
+        Hint:
+            self.items = []
+        """
+        # TODO: Create self.items as an empty list
+        pass
 
     def push(self, value: Any) -> None:
-        self.items.append(value)
+        """Add value to the top (end) of the stack.
+
+        Example:
+            >>> s = Stack()
+            >>> s.push('a')
+            >>> s.items
+            ['a']
+
+        Hint:
+            self.items.append(value)
+        """
+        # TODO: Append value to self.items
+        pass
 
     def pop(self) -> Any:
-        return self.items.pop()
+        """Remove and return the top (last) item.
+
+        Example:
+            >>> s = Stack()
+            >>> s.push('a')
+            >>> s.pop()
+            'a'
+
+        Hint:
+            return self.items.pop()
+        """
+        # TODO: Remove and return the last item in self.items
+        pass
 
 
 class Queue:
+    """First-In, First-Out (FIFO) data structure backed by a deque."""
+
     def __init__(self) -> None:
-        self.items: deque[Any] = deque()
+        """Initialize self.items as an empty deque.
+
+        Hint:
+            self.items = deque()
+        """
+        # TODO: Create self.items as a deque()
+        pass
 
     def enqueue(self, value: Any) -> None:
-        self.items.append(value)
+        """Add value to the back (right) of the queue.
+
+        Example:
+            >>> q = Queue()
+            >>> q.enqueue('x')
+
+        Hint:
+            self.items.append(value)
+        """
+        # TODO: Append value to the right of self.items
+        pass
 
     def dequeue(self) -> Any:
-        return self.items.popleft()
+        """Remove and return the item at the front (left) of the queue.
+
+        Example:
+            >>> q = Queue()
+            >>> q.enqueue('x')
+            >>> q.dequeue()
+            'x'
+
+        Hint:
+            return self.items.popleft()
+        """
+        # TODO: Remove and return the leftmost item in self.items
+        pass
 
 
 class DataPipeline:
+    """An ordered list of named processing steps."""
+
     def __init__(self) -> None:
-        self.steps: list[str] = []
+        """Initialize self.steps as an empty list.
+
+        Hint:
+            self.steps = []
+        """
+        # TODO: Create self.steps as an empty list
+        pass
 
     def add_step(self, step: str) -> None:
-        self.steps.append(step)
+        """Append step name to self.steps.
+
+        Example:
+            >>> p = DataPipeline()
+            >>> p.add_step('extract')
+            >>> p.steps
+            ['extract']
+
+        Hint:
+            self.steps.append(step)
+        """
+        # TODO: Append step to self.steps
+        pass
 
     def run(self) -> list[str]:
-        return self.steps[:]
+        """Return a copy of self.steps.
+
+        Example:
+            >>> p = DataPipeline()
+            >>> p.add_step('extract')
+            >>> p.run()
+            ['extract']
+
+        Hint:
+            return self.steps[:]
+        """
+        # TODO: Return a copy of self.steps (use self.steps[:])
+        pass
 
 
 def is_complete() -> bool:
@@ -66,4 +160,5 @@ def get_week_summary() -> dict[str, object]:
         'objectives': LEARNING_OBJECTIVES,
         'complete': is_complete(),
     }
+
 

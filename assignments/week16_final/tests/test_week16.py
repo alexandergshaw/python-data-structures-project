@@ -18,9 +18,45 @@ def test_unlocked_feature_returns_string():
     assert isinstance(assignment.get_unlocked_feature(), str)
 
 
-def test_week16_final_functions():
+def test_generate_final_summary_counts_completed():
     progress = {1: {'complete': True}, 2: {'complete': False}}
-    assert assignment.generate_final_summary(progress) == {'completed': 1, 'total': 2}
+    result = assignment.generate_final_summary(progress)
+    assert result['completed'] == 1
+
+
+def test_generate_final_summary_total():
+    progress = {1: {'complete': True}, 2: {'complete': False}, 3: {'complete': True}}
+    result = assignment.generate_final_summary(progress)
+    assert result['total'] == 3
+
+
+def test_generate_final_summary_all_complete():
+    progress = {1: {'complete': True}, 2: {'complete': True}}
+    result = assignment.generate_final_summary(progress)
+    assert result['completed'] == 2
+
+
+def test_create_resume_bullets_content():
     bullets = assignment.create_resume_bullets(['Python'])
-    assert bullets[0].startswith('Applied Python')
+    assert bullets[0] == 'Applied Python in InsightHub portfolio work.'
+
+
+def test_create_resume_bullets_multiple():
+    bullets = assignment.create_resume_bullets(['Python', 'Sorting'])
+    assert len(bullets) == 2
+
+
+def test_create_resume_bullets_empty():
+    assert assignment.create_resume_bullets([]) == []
+
+
+def test_calculate_final_grade_a():
     assert assignment.calculate_final_grade(16) == 'A'
+
+
+def test_calculate_final_grade_b():
+    assert assignment.calculate_final_grade(13) == 'B'
+
+
+def test_calculate_final_grade_f():
+    assert assignment.calculate_final_grade(0) == 'F'

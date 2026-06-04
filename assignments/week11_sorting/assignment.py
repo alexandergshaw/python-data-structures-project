@@ -14,35 +14,69 @@ LEARNING_OBJECTIVES = [
 
 
 def bubble_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
-    """Return data sorted by key using Python's sort as a placeholder."""
-    items = data[:]
-    items.sort(key=lambda row: row.get(key))
-    return items
+    """Sort data ascending by key using the bubble sort algorithm.
+
+    Example:
+        >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
+        >>> bubble_sort(data, "score")
+        [{'score': 1}, {'score': 2}, {'score': 3}]
+
+    Algorithm:
+        1. items = data[:]            # copy the list
+        2. Outer loop: for i in range(len(items))
+        3. Inner loop: for j in range(len(items) - 1 - i)
+        4.     if items[j][key] > items[j+1][key]:
+                   items[j], items[j+1] = items[j+1], items[j]
+        5. return items
+    """
+    # TODO: Implement bubble sort using nested loops
+    pass
 
 
 def insertion_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
-    """Return data sorted by key."""
-    return sorted(data, key=lambda row: row.get(key))
+    """Return data sorted ascending by key.
+
+    Hint:
+        sorted(data, key=lambda row: row.get(key))
+    """
+    # TODO: Return data sorted by key (use sorted())
+    pass
 
 
 def merge_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
-    """Return data sorted by key."""
-    return sorted(data, key=lambda row: row.get(key))
+    """Return data sorted ascending by key.
+
+    Hint:
+        sorted(data, key=lambda row: row.get(key))
+    """
+    # TODO: Return data sorted by key (use sorted())
+    pass
 
 
 def quick_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
-    """Return data sorted by key."""
-    return sorted(data, key=lambda row: row.get(key))
+    """Return data sorted ascending by key.
+
+    Hint:
+        sorted(data, key=lambda row: row.get(key))
+    """
+    # TODO: Return data sorted by key (use sorted())
+    pass
 
 
 def compare_sort_algorithms(data: list[dict[str, Any]], key: str) -> dict[str, list[dict[str, Any]]]:
-    """Return outputs from multiple sorting approaches."""
-    return {
-        'bubble': bubble_sort(data, key),
-        'insertion': insertion_sort(data, key),
-        'merge': merge_sort(data, key),
-        'quick': quick_sort(data, key),
-    }
+    """Run all four sorts and return their outputs in a single dict.
+
+    The dict must have keys: "bubble", "insertion", "merge", "quick".
+
+    Example:
+        >>> compare_sort_algorithms([{"score": 2}, {"score": 1}], "score")
+        {'bubble': [...], 'insertion': [...], 'merge': [...], 'quick': [...]}
+
+    Hint:
+        Call each of the four sorting functions and put the results in a dict.
+    """
+    # TODO: Call all four sort functions and return their results in a dict
+    pass
 
 
 def is_complete() -> bool:

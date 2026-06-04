@@ -14,18 +14,51 @@ LEARNING_OBJECTIVES = [
 
 
 def describe_dataset(data: list[dict[str, Any]]) -> dict[str, int]:
-    """Describe dataset size and column count."""
-    return {"records": len(data), "columns": len(data[0]) if data else 0}
+    """Return the row count and column count for a dataset.
+
+    Example:
+        >>> describe_dataset([{"score": 10}, {"score": 20}])
+        {'records': 2, 'columns': 1}
+        >>> describe_dataset([])
+        {'records': 0, 'columns': 0}
+
+    Hints:
+        - "records" = len(data)
+        - "columns" = len(data[0]) if data else 0
+    """
+    # TODO: Return a dict with "records" and "columns"
+    pass
 
 
 def filter_by_value(data: list[dict[str, Any]], column: str, threshold: float) -> list[dict[str, Any]]:
-    """Return records where the column value is at least the threshold."""
-    return [row for row in data if float(row.get(column, 0) or 0) >= threshold]
+    """Return rows where the column value is >= threshold.
+
+    Example:
+        >>> data = [{"score": 10}, {"score": 20}, {"score": 15}]
+        >>> filter_by_value(data, "score", 15)
+        [{'score': 20}, {'score': 15}]
+
+    Hints:
+        - Loop over rows (or use a list comprehension).
+        - Keep a row if float(row.get(column, 0) or 0) >= threshold.
+    """
+    # TODO: Return only the rows that meet the threshold
+    pass
 
 
 def rank_items(data: list[dict[str, Any]], column: str) -> list[dict[str, Any]]:
-    """Return data sorted descending by a chosen column."""
-    return sorted(data, key=lambda row: row.get(column, 0), reverse=True)
+    """Return the rows sorted from highest to lowest by column.
+
+    Example:
+        >>> data = [{"score": 10}, {"score": 20}, {"score": 15}]
+        >>> rank_items(data, "score")
+        [{'score': 20}, {'score': 15}, {'score': 10}]
+
+    Hint:
+        sorted(data, key=lambda row: row.get(column, 0), reverse=True)
+    """
+    # TODO: Sort and return data in descending order by column
+    pass
 
 
 def is_complete() -> bool:

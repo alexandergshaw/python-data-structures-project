@@ -14,35 +14,72 @@ LEARNING_OBJECTIVES = [
 
 
 def recursive_sum(data: list[int]) -> int:
-    """Return the recursive sum of a list of integers."""
-    if not data:
-        return 0
-    return data[0] + recursive_sum(data[1:])
+    """Return the sum of all integers in data using recursion (no sum()).
+
+    Example:
+        >>> recursive_sum([1, 2, 3])
+        6
+        >>> recursive_sum([])
+        0
+
+    Hints:
+        Base case:     if not data: return 0
+        Recursive case: data[0] + recursive_sum(data[1:])
+    """
+    # TODO: Add the first element to the recursive sum of the rest
+    pass
 
 
 def recursive_search(data: list[Any], target: Any, index: int = 0) -> int:
-    """Return the index of target or -1 when missing."""
-    if index >= len(data):
-        return -1
-    if data[index] == target:
-        return index
-    return recursive_search(data, target, index + 1)
+    """Return the index of the first occurrence of target, or -1 if not found.
+
+    Example:
+        >>> recursive_search(['a', 'b', 'c'], 'b')
+        1
+        >>> recursive_search(['a', 'b', 'c'], 'z')
+        -1
+
+    Hints:
+        Base case 1:   if index >= len(data): return -1
+        Base case 2:   if data[index] == target: return index
+        Recursive case: return recursive_search(data, target, index + 1)
+    """
+    # TODO: Check current index, recurse on remaining
+    pass
 
 
 def flatten_nested(data: list[Any]) -> list[Any]:
-    """Flatten nested lists recursively."""
-    flat: list[Any] = []
-    for item in data:
-        if isinstance(item, list):
-            flat.extend(flatten_nested(item))
-        else:
-            flat.append(item)
-    return flat
+    """Return a flat list from a nested list structure.
+
+    Example:
+        >>> flatten_nested([1, [2, [3]]])
+        [1, 2, 3]
+        >>> flatten_nested([1, 2, 3])
+        [1, 2, 3]
+
+    Hints:
+        1. Start with flat = []
+        2. For each item in data:
+               if isinstance(item, list): flat.extend(flatten_nested(item))
+               else:                      flat.append(item)
+        3. Return flat
+    """
+    # TODO: Build and return a flat list, recursing into nested lists
+    pass
 
 
 def recursive_count(data: list[Any]) -> int:
-    """Count items recursively, flattening nested lists."""
-    return len(flatten_nested(data))
+    """Return the total number of non-list items in a nested list.
+
+    Example:
+        >>> recursive_count([1, [2, [3]]])
+        3
+
+    Hint:
+        Use flatten_nested(data) and return len() of the result.
+    """
+    # TODO: Flatten and count the items
+    pass
 
 
 def is_complete() -> bool:

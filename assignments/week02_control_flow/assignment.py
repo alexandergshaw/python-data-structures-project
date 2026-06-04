@@ -14,26 +14,71 @@ LEARNING_OBJECTIVES = [
 
 
 def find_missing_values(data: list[dict[str, Any]]) -> int:
-    """Count empty or missing values across all records."""
-    return sum(1 for row in data for value in row.values() if value in (None, ""))
+    """Count empty or None values across all rows and columns.
+
+    Example:
+        >>> find_missing_values([{"id": 1, "name": "Ava"}, {"id": 2, "name": None}])
+        1
+
+    Hints:
+        1. Use a nested loop: outer over rows, inner over row.values().
+        2. A value is missing when it is None or "" (empty string).
+        3. Keep a running count and return it.
+    """
+    # TODO: Count every value that is None or "" across all rows
+    pass
 
 
 def find_duplicates(data: list[dict[str, Any]]) -> int:
-    """Count repeated record patterns beyond the first occurrence."""
-    markers = [tuple(sorted(row.items())) for row in data]
-    return sum(1 for marker in set(markers) if markers.count(marker) > 1)
+    """Return the number of distinct row patterns that appear more than once.
+
+    Example:
+        >>> find_duplicates([{"x": 1}, {"x": 2}, {"x": 1}])
+        1
+
+    Hints:
+        1. Convert each row to a comparable form:
+               marker = tuple(sorted(row.items()))
+        2. Build a list of all markers.
+        3. For each unique marker, check if it appears more than once.
+        4. Count how many unique markers are duplicated.
+    """
+    # TODO: Count distinct row patterns that appear more than once
+    pass
 
 
 def validate_positive(value: int | float, field_name: str) -> bool:
-    """Return True when a numeric field is zero or greater."""
-    if value < 0:
-        raise ValueError(f"{field_name} must be non-negative")
-    return True
+    """Return True when value >= 0, raise ValueError when value < 0.
+
+    Example:
+        >>> validate_positive(10, "price")
+        True
+        >>> validate_positive(-1, "price")   # raises ValueError
+        ...
+
+    Hint:
+        if value < 0:
+            raise ValueError(f"{field_name} must be non-negative")
+        return True
+    """
+    # TODO: Raise ValueError if value is negative, otherwise return True
+    pass
 
 
 def count_valid_records(data: list[dict[str, Any]]) -> int:
-    """Count records that have no empty values."""
-    return sum(1 for row in data if all(value not in (None, "") for value in row.values()))
+    """Return the number of rows that have no empty or None values.
+
+    Example:
+        >>> count_valid_records([{"id": 1, "name": "Ava"}, {"id": 2, "name": ""}])
+        1
+
+    Hints:
+        1. Loop over each row.
+        2. Check whether all values in the row are neither None nor "".
+        3. Count and return the rows that pass.
+    """
+    # TODO: Count rows where every value is non-empty and non-None
+    pass
 
 
 def is_complete() -> bool:
