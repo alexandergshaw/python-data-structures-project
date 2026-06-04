@@ -195,7 +195,7 @@ def grade_distribution(students):
 ## Unit Tests
 
 ### What are unit tests and why do they matter?
-The final assignment has the most tests of any week — 23 in total — because it combines all previous concepts. Tests verify each `Student` method individually, then each standalone function with multiple inputs including edge cases (empty list, student not found, all same grade). Running the full test suite tells you at a glance which parts of your implementation are correct and which still need work.
+The final assignment has the most tests of any week — 24 in total — because it combines all previous concepts. Tests verify each `Student` method individually, then each standalone function with multiple inputs including edge cases (empty list, student not found, all same grade). Running the full test suite tells you at a glance which parts of your implementation are correct and which still need work.
 
 ### How to run the tests
 
@@ -241,7 +241,7 @@ pytest assignments/week16_final/tests/ -v --tb=short
 | `test_grade_distribution_all_same` | 3 A students → `{'A':3}` |
 
 ### Understanding the output
-All 21 tests above plus the 2 infrastructure tests (`test_is_complete_returns_boolean`, `test_get_week_summary_type`) should pass — 23 total. Use the verbose `-v` flag to see each test name as it passes or fails, which makes debugging much easier.
+All 21 tests above plus 3 infrastructure tests (`test_is_complete_returns_boolean`, `test_get_week_summary_type`, `test_unlocked_feature_returns_string`) should pass — 24 total. Use the verbose `-v` flag to see each test name as it passes or fails, which makes debugging much easier.
 
 **Common pitfalls to watch for:**
 - `test_student_scores_default_empty`: if you write `self.scores = scores or []`, then passing `[]` explicitly would also trigger the fallback. Use `if scores is not None` instead.
