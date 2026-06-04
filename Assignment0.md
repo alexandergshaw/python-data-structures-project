@@ -107,13 +107,16 @@ Vercel will build and deploy your application. This typically takes 1–2 minute
 
 ### Step 1: Create a Feature Branch
 
-In the Terminal, run:
+Use the **Source Control panel** in your Codespace to create a new branch:
 
-```bash
-git checkout -b assignment-0-setup
-```
+1. Click the **Source Control** icon in the left sidebar (branch icon), or press `Ctrl+Shift+G`.
+2. Click the branch name shown in the bottom-left status bar (it will say `main`).
+3. Select **Create new branch…** from the dropdown that appears at the top of the screen.
+4. Type `assignment-0-setup` and press **Enter**.
 
-> **Tip:** You can verify which branch you are on by running `git branch`. The active branch is marked with an asterisk (`*`).
+Your Codespace will automatically switch to the new branch.
+
+> **Tip:** You can always confirm which branch you are on by looking at the branch name in the bottom-left status bar of the editor.
 
 ---
 
@@ -149,27 +152,27 @@ Review the output. All tests should pass. If any tests fail, read the error mess
 
 ### Step 5: Commit the Change
 
-```bash
-git status
-```
+Use the **Source Control panel** in your Codespace to stage and commit:
 
-```bash
-git add .
-```
-
-```bash
-git commit -m "Complete Assignment 0 setup"
-```
+1. Click the **Source Control** icon in the left sidebar (`Ctrl+Shift+G`).
+2. You will see your changed file(s) listed under **Changes**.
+3. Hover over the file and click the **+** icon to stage it (or click the **+** next to **Changes** to stage all files).
+4. In the **Message** box at the top of the panel, type your commit message:
+   ```
+   Complete Assignment 0 setup
+   ```
+5. Click the **✓ Commit** button (or press `Ctrl+Enter`).
 
 ---
 
 ### Step 6: Push the Branch
 
-```bash
-git push origin assignment-0-setup
-```
+Still in the **Source Control panel**:
 
-After pushing, your branch and commits will appear on your GitHub repository page.
+1. Click the **⋯** (three-dot menu) at the top of the Source Control panel.
+2. Select **Push** (or **Publish Branch** if this is the first push for this branch).
+
+Your branch and commits will now appear on your GitHub repository page.
 
 ---
 
@@ -261,7 +264,8 @@ If any check fails, click on it to view the detailed log and understand what wen
 **Solutions:**
 - Run `pip install -r requirements.txt` and try `python app.py` again.
 - Read the error message in the terminal carefully — it usually points to the exact file and line number with the problem.
-- Undo any recent changes with `git diff` to see what you modified, or `git checkout -- <filename>` to revert a specific file.
+- To see what you modified, open the **Source Control panel** (`Ctrl+Shift+G`) and click on a changed file to view the diff.
+- To revert a specific file, right-click it in the Source Control panel and select **Discard Changes**.
 
 ---
 
@@ -299,7 +303,7 @@ If any check fails, click on it to view the detailed log and understand what wen
 
 **Solutions:**
 - Confirm that your Codespace is connected to your fork, not the original repository. Check the URL of your repository in the browser.
-- Run `git remote -v` to see where your repository is pointing. The URL should contain your GitHub username.
+- Open the **Source Control panel** (`Ctrl+Shift+G`) and check the remote listed under the **⋯ menu → Remote**. The URL should contain your GitHub username.
 - In the Codespace, GitHub authentication is handled automatically. If you are prompted to log in, follow the on-screen instructions.
 
 ---
@@ -311,7 +315,7 @@ If any check fails, click on it to view the detailed log and understand what wen
 - Comparing against the wrong repository
 
 **Solutions:**
-- Run `git push origin assignment-0-setup` again and check for errors.
+- In the **Source Control panel**, click the **⋯ menu → Push** and check for errors. If the branch has not been published yet, select **Publish Branch** instead.
 - On GitHub, go to your fork (not the original repository), click **Pull requests → New pull request**, and manually select your branch.
 - Make sure the **base repository** is your fork, not the upstream course repository.
 
@@ -326,7 +330,7 @@ If any check fails, click on it to view the detailed log and understand what wen
 **Solutions:**
 - Click the failing check to open the detailed log.
 - Run the same command locally in the terminal: `python -m pytest assignments/ -q`
-- Fix the errors reported in the log, commit, and push again. The checks will re-run automatically.
+- Fix the errors reported in the log, then commit and push your changes using the **Source Control panel**. The checks will re-run automatically.
 
 ---
 
