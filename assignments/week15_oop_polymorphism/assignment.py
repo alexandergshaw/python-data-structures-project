@@ -17,10 +17,16 @@ class AnalyticsReport:
     def __init__(self, title: str) -> None:
         """Store the report title.
 
-        Example:
-            >>> report = AnalyticsReport("Overview")
-            >>> report.title
-            'Overview'
+        Examples:
+            The title is stored as-is and can be any string:
+                >>> report = AnalyticsReport("Overview")
+                >>> report.title
+                'Overview'
+
+            Titles with spaces and special characters are preserved:
+                >>> report = AnalyticsReport("Q4 Revenue & Growth")
+                >>> report.title
+                'Q4 Revenue & Growth'
 
         Hint:
             self.title = title
@@ -30,9 +36,14 @@ class AnalyticsReport:
     def render(self) -> str:
         """Return a formatted string describing this report.
 
-        Example:
-            >>> AnalyticsReport("Overview").render()
-            'Analytics Report: Overview'
+        Examples:
+            The base class prefixes the title with "Analytics Report:":
+                >>> AnalyticsReport("Overview").render()
+                'Analytics Report: Overview'
+
+            Works with any title string:
+                >>> AnalyticsReport("Monthly Summary").render()
+                'Analytics Report: Monthly Summary'
 
         Hint:
             return f"Analytics Report: {self.title}"
@@ -49,9 +60,14 @@ class KPIReport(AnalyticsReport):
     def render(self) -> str:
         """Return a KPI-specific report string.
 
-        Example:
-            >>> KPIReport("Revenue").render()
-            'KPI Report: Revenue'
+        Examples:
+            KPIReport overrides the prefix to "KPI Report:":
+                >>> KPIReport("Revenue").render()
+                'KPI Report: Revenue'
+
+            The behavior differs from the base AnalyticsReport class:
+                >>> KPIReport("Revenue").render() != AnalyticsReport("Revenue").render()
+                True
 
         Hint:
             return f"KPI Report: {self.title}"
@@ -68,9 +84,14 @@ class VisualizationReport(AnalyticsReport):
     def render(self) -> str:
         """Return a Visualization-specific report string.
 
-        Example:
-            >>> VisualizationReport("Trend").render()
-            'Visualization Report: Trend'
+        Examples:
+            VisualizationReport overrides the prefix to "Visualization Report:":
+                >>> VisualizationReport("Trend").render()
+                'Visualization Report: Trend'
+
+            The behavior differs from the base AnalyticsReport class:
+                >>> VisualizationReport("Trend").render() != AnalyticsReport("Trend").render()
+                True
 
         Hint:
             return f"Visualization Report: {self.title}"
@@ -87,9 +108,14 @@ class RecommendationReport(AnalyticsReport):
     def render(self) -> str:
         """Return a Recommendation-specific report string.
 
-        Example:
-            >>> RecommendationReport("Next Steps").render()
-            'Recommendation Report: Next Steps'
+        Examples:
+            RecommendationReport overrides the prefix to "Recommendation Report:":
+                >>> RecommendationReport("Next Steps").render()
+                'Recommendation Report: Next Steps'
+
+            The behavior differs from the base AnalyticsReport class:
+                >>> RecommendationReport("Next Steps").render() != AnalyticsReport("Next Steps").render()
+                True
 
         Hint:
             return f"Recommendation Report: {self.title}"

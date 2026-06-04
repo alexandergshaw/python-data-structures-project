@@ -16,10 +16,30 @@ LEARNING_OBJECTIVES = [
 def bubble_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Sort data ascending by key using the bubble sort algorithm.
 
-    Example:
-        >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
-        >>> bubble_sort(data, "score")
-        [{'score': 1}, {'score': 2}, {'score': 3}]
+    Examples:
+        Three rows sorted by "score" in ascending order:
+            >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
+            >>> bubble_sort(data, "score")
+            [{'score': 1}, {'score': 2}, {'score': 3}]
+
+        Already-sorted data is returned unchanged:
+            >>> data = [{"score": 1}, {"score": 2}, {"score": 3}]
+            >>> bubble_sort(data, "score")
+            [{'score': 1}, {'score': 2}, {'score': 3}]
+
+        An empty list returns an empty list:
+            >>> bubble_sort([], "score")
+            []
+
+        A single-element list is trivially sorted:
+            >>> bubble_sort([{"score": 5}], "score")
+            [{'score': 5}]
+
+        The original list is not modified — a copy is returned:
+            >>> original = [{"score": 3}, {"score": 1}]
+            >>> sorted_copy = bubble_sort(original, "score")
+            >>> original
+            [{'score': 3}, {'score': 1}]
 
     Algorithm:
         1. items = data[:]            # copy the list
@@ -40,6 +60,21 @@ def bubble_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
 def insertion_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
+    Examples:
+        Three rows sorted by "score" in ascending order:
+            >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
+            >>> insertion_sort(data, "score")
+            [{'score': 1}, {'score': 2}, {'score': 3}]
+
+        An empty list returns an empty list:
+            >>> insertion_sort([], "score")
+            []
+
+        Already-sorted data is returned unchanged:
+            >>> data = [{"score": 1}, {"score": 2}]
+            >>> insertion_sort(data, "score")
+            [{'score': 1}, {'score': 2}]
+
     Hint:
         sorted(data, key=lambda row: row.get(key))
     """
@@ -49,6 +84,21 @@ def insertion_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]
 def merge_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
+    Examples:
+        Three rows sorted by "score" in ascending order:
+            >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
+            >>> merge_sort(data, "score")
+            [{'score': 1}, {'score': 2}, {'score': 3}]
+
+        An empty list returns an empty list:
+            >>> merge_sort([], "score")
+            []
+
+        Already-sorted data is returned unchanged:
+            >>> data = [{"score": 1}, {"score": 2}]
+            >>> merge_sort(data, "score")
+            [{'score': 1}, {'score': 2}]
+
     Hint:
         sorted(data, key=lambda row: row.get(key))
     """
@@ -57,6 +107,21 @@ def merge_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
 
 def quick_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
+
+    Examples:
+        Three rows sorted by "score" in ascending order:
+            >>> data = [{"score": 3}, {"score": 1}, {"score": 2}]
+            >>> quick_sort(data, "score")
+            [{'score': 1}, {'score': 2}, {'score': 3}]
+
+        An empty list returns an empty list:
+            >>> quick_sort([], "score")
+            []
+
+        Already-sorted data is returned unchanged:
+            >>> data = [{"score": 1}, {"score": 2}]
+            >>> quick_sort(data, "score")
+            [{'score': 1}, {'score': 2}]
 
     Hint:
         sorted(data, key=lambda row: row.get(key))
@@ -69,9 +134,23 @@ def compare_sort_algorithms(data: list[dict[str, Any]], key: str) -> dict[str, l
 
     The dict must have keys: "bubble", "insertion", "merge", "quick".
 
-    Example:
-        >>> compare_sort_algorithms([{"score": 2}, {"score": 1}], "score")
-        {'bubble': [...], 'insertion': [...], 'merge': [...], 'quick': [...]}
+    Examples:
+        All four algorithms produce the same sorted output for the same input:
+            >>> data = [{"score": 2}, {"score": 1}]
+            >>> result = compare_sort_algorithms(data, "score")
+            >>> result["bubble"]
+            [{'score': 1}, {'score': 2}]
+            >>> result["insertion"]
+            [{'score': 1}, {'score': 2}]
+            >>> result["merge"]
+            [{'score': 1}, {'score': 2}]
+            >>> result["quick"]
+            [{'score': 1}, {'score': 2}]
+
+        All four keys are always present in the returned dict:
+            >>> result = compare_sort_algorithms([{"score": 5}], "score")
+            >>> sorted(result.keys())
+            ['bubble', 'insertion', 'merge', 'quick']
 
     Hint:
         Call each of the four sorting functions and put the results in a dict.

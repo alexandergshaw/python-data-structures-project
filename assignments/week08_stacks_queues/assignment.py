@@ -28,11 +28,25 @@ class Stack:
     def push(self, value: Any) -> None:
         """Add value to the top (end) of the stack.
 
-        Example:
-            >>> s = Stack()
-            >>> s.push('a')
-            >>> s.items
-            ['a']
+        Examples:
+            Pushing to an empty stack adds the first item:
+                >>> s = Stack()
+                >>> s.push('a')
+                >>> s.items
+                ['a']
+
+            Each subsequent push adds to the end (top) of the stack:
+                >>> s = Stack()
+                >>> s.push('a')
+                >>> s.push('b')
+                >>> s.items
+                ['a', 'b']
+
+            Any type of value can be pushed:
+                >>> s = Stack()
+                >>> s.push(42)
+                >>> s.items
+                [42]
 
         Hint:
             self.items.append(value)
@@ -42,11 +56,28 @@ class Stack:
     def pop(self) -> Any:
         """Remove and return the top (last) item.
 
-        Example:
-            >>> s = Stack()
-            >>> s.push('a')
-            >>> s.pop()
-            'a'
+        Examples:
+            A single item is removed and returned, leaving the stack empty:
+                >>> s = Stack()
+                >>> s.push('a')
+                >>> s.pop()
+                'a'
+
+            The most recently pushed item (LIFO order) is always returned first:
+                >>> s = Stack()
+                >>> s.push('a')
+                >>> s.push('b')
+                >>> s.pop()
+                'b'
+
+            After a pop, the remaining items are still in the stack:
+                >>> s = Stack()
+                >>> s.push(1)
+                >>> s.push(2)
+                >>> s.pop()
+                2
+                >>> s.items
+                [1]
 
         Hint:
             return self.items.pop()
@@ -68,9 +99,21 @@ class Queue:
     def enqueue(self, value: Any) -> None:
         """Add value to the back (right) of the queue.
 
-        Example:
-            >>> q = Queue()
-            >>> q.enqueue('x')
+        Examples:
+            Enqueueing the first item makes it both front and back:
+                >>> q = Queue()
+                >>> q.enqueue('x')
+
+            Multiple enqueues add items in order from front to back:
+                >>> q = Queue()
+                >>> q.enqueue('first')
+                >>> q.enqueue('second')
+                >>> q.dequeue()
+                'first'
+
+            Any type of value can be enqueued:
+                >>> q = Queue()
+                >>> q.enqueue(99)
 
         Hint:
             self.items.append(value)
@@ -80,11 +123,29 @@ class Queue:
     def dequeue(self) -> Any:
         """Remove and return the item at the front (left) of the queue.
 
-        Example:
-            >>> q = Queue()
-            >>> q.enqueue('x')
-            >>> q.dequeue()
-            'x'
+        Examples:
+            A single enqueued item is dequeued immediately:
+                >>> q = Queue()
+                >>> q.enqueue('x')
+                >>> q.dequeue()
+                'x'
+
+            The first item enqueued is the first item dequeued (FIFO order):
+                >>> q = Queue()
+                >>> q.enqueue('first')
+                >>> q.enqueue('second')
+                >>> q.dequeue()
+                'first'
+
+            After dequeuing, the remaining items are still in the queue:
+                >>> q = Queue()
+                >>> q.enqueue(1)
+                >>> q.enqueue(2)
+                >>> q.enqueue(3)
+                >>> q.dequeue()
+                1
+                >>> q.dequeue()
+                2
 
         Hint:
             return self.items.popleft()
@@ -106,11 +167,20 @@ class DataPipeline:
     def add_step(self, step: str) -> None:
         """Append step name to self.steps.
 
-        Example:
-            >>> p = DataPipeline()
-            >>> p.add_step('extract')
-            >>> p.steps
-            ['extract']
+        Examples:
+            Adding a single step creates a one-item list:
+                >>> p = DataPipeline()
+                >>> p.add_step('extract')
+                >>> p.steps
+                ['extract']
+
+            Each subsequent step is appended in order:
+                >>> p = DataPipeline()
+                >>> p.add_step('extract')
+                >>> p.add_step('transform')
+                >>> p.add_step('load')
+                >>> p.steps
+                ['extract', 'transform', 'load']
 
         Hint:
             self.steps.append(step)
@@ -120,11 +190,28 @@ class DataPipeline:
     def run(self) -> list[str]:
         """Return a copy of self.steps.
 
-        Example:
-            >>> p = DataPipeline()
-            >>> p.add_step('extract')
-            >>> p.run()
-            ['extract']
+        Examples:
+            Run returns all steps in the order they were added:
+                >>> p = DataPipeline()
+                >>> p.add_step('extract')
+                >>> p.run()
+                ['extract']
+
+            A full ETL pipeline returns all three steps:
+                >>> p = DataPipeline()
+                >>> p.add_step('extract')
+                >>> p.add_step('transform')
+                >>> p.add_step('load')
+                >>> p.run()
+                ['extract', 'transform', 'load']
+
+            Modifying the returned list does not change the pipeline's internal steps:
+                >>> p = DataPipeline()
+                >>> p.add_step('extract')
+                >>> result = p.run()
+                >>> result.append('bonus')
+                >>> p.steps
+                ['extract']
 
         Hint:
             return self.steps[:]
