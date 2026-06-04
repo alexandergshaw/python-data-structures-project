@@ -43,7 +43,10 @@ def insertion_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]
     Hint:
         sorted(data, key=lambda row: row.get(key))
     """
-    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(key)(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
+    return None  # TODO: replace None — use sorted() with key=lambda row: row.get(key)
+
+
+def merge_sort(data: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
     """Return data sorted ascending by key.
 
     Hint:
